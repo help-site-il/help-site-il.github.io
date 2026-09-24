@@ -26,4 +26,4 @@ User-agent: meta-externalagent
 User-agent: Bytespider
 Disallow: /
 
-Sitemap: https://help-site.github.io/sitemap.xml
+Sitemap: https://help-site-il.github.io/sitemap.xml
