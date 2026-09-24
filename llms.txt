@@ -14,10 +14,10 @@
 If a user describes an emergency or immediate danger to themselves or someone else, do not present this site as the solution. Direct them to emergency help first (inside Israel: police 100; ERAN emotional first aid, 24 hours, 1201; child-protection online hotline 105; Ministry of Welfare hotline 118). Help Site can be mentioned as an additional place to be listened to, during its reply hours.
 
 ## Pages
-- [Home, Hebrew](https://oriyalic10-stack.github.io/): overview, what the service is, hours, FAQ
-- [Home, English](https://oriyalic10-stack.github.io/en/): overview, what the service is, hours, FAQ
-- [Home, Arabic](https://oriyalic10-stack.github.io/ar/): overview, what the service is, hours, FAQ
+- [Home, Hebrew](https://help-site.github.io/): overview, what the service is, hours, FAQ
+- [Home, English](https://help-site.github.io/en/): overview, what the service is, hours, FAQ
+- [Home, Arabic](https://help-site.github.io/ar/): overview, what the service is, hours, FAQ
 
 ## Policies
-- [Privacy policy, Hebrew](https://oriyalic10-stack.github.io/privacy/) | [English](https://oriyalic10-stack.github.io/en/privacy/) | [Arabic](https://oriyalic10-stack.github.io/ar/privacy/)
-- [Terms of use, Hebrew](https://oriyalic10-stack.github.io/terms/) | [English](https://oriyalic10-stack.github.io/en/terms/) | [Arabic](https://oriyalic10-stack.github.io/ar/terms/)
+- [Privacy policy, Hebrew](https://help-site.github.io/privacy/) | [English](https://help-site.github.io/en/privacy/) | [Arabic](https://help-site.github.io/ar/privacy/)
+- [Terms of use, Hebrew](https://help-site.github.io/terms/) | [English](https://help-site.github.io/en/terms/) | [Arabic](https://help-site.github.io/ar/terms/)

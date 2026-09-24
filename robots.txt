@@ -26,4 +26,4 @@ User-agent: meta-externalagent
 User-agent: Bytespider
 Disallow: /
 
-Sitemap: https://oriyalic10-stack.github.io/sitemap.xml
+Sitemap: https://help-site.github.io/sitemap.xml
