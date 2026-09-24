@@ -1,0 +1,26 @@
+{
+  "name": "אתר העזרה",
+  "short_name": "אתר העזרה",
+  "description": "מרחב תמיכה בטוח וחינמי לילדים ונוער. אוזן קשבת ממתנדבים שעברו הכשרה — כי כאן אתה לא לבד. אפשר לפנות במייל או בוואטסאפ.",
+  "lang": "he",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "theme_color": "#1B7A70",
+  "background_color": "#F4FAFA",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
