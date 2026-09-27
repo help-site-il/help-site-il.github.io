@@ -335,19 +335,6 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 .day-tag { padding:7px 16px; border-radius:999px; font-size:0.85rem; font-weight:700; background:var(--primary-soft); color:var(--primary-ink); }
 .day-tag.inactive { background:var(--bg-alt); color:var(--muted); }
 
-/* TESTIMONIALS */
-.testimonials-section { background:var(--surface); }
-.testimonials-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.testimonial-card { background:var(--bg); border-radius:30px; padding:30px; border:2px solid transparent; transition:all 0.3s; }
-.testimonial-card:hover { transform:translateY(-5px); border-color:var(--primary-soft); box-shadow:0 20px 44px rgba(var(--primary-rgb),0.12); background:var(--surface); }
-.t-stars { color:var(--star); font-size:0.95rem; margin-bottom:6px; letter-spacing:2px; }
-.t-quote { font-size:4rem; font-weight:800; color:var(--primary); opacity:0.28; line-height:0.85; margin-bottom:6px; }
-.t-text { font-size:0.98rem; line-height:1.8; margin-bottom:20px; }
-.t-author { display:flex; align-items:center; gap:12px; }
-.t-avatar { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; flex-shrink:0; }
-.t-name { font-weight:700; font-size:0.92rem; }
-.t-role { font-size:0.85rem; color:var(--muted); }
-
 /* FAQ */
 .faq-section { background:var(--bg-alt); }
 .faq-list { max-width:740px; margin:0 auto; }
@@ -514,7 +501,7 @@ html.nav-compact #langBtn, html.nav-compact .lang-menu { margin-inline-start:aut
   --cta:#FFC93C; --cta-dark:#7A5A00; --footer:#000000;
 }
 .a11y-contrast .shape { display:none; }
-.a11y-contrast .feature-card, .a11y-contrast .step-card, .a11y-contrast .testimonial-card, .a11y-contrast .hours-card,
+.a11y-contrast .feature-card, .a11y-contrast .step-card, .a11y-contrast .hours-card,
 .a11y-contrast .faq-item, .a11y-contrast .sf-item, .a11y-contrast .hero-profile, .a11y-contrast .floating-card,
 .a11y-contrast .a11y-panel, .a11y-contrast .mobile-menu { border:2px solid #000 !important; }
 .a11y-contrast a { text-decoration:underline; }
@@ -627,7 +614,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   section { padding:64px 18px 100px; }
   main > section + section { margin-top:-40px; border-radius:40px 40px 0 0; }
   main > .stats-section + section { margin-top:-70px; padding-top:130px; }
-  .features-grid, .support-inner, .hours-grid, .testimonials-grid { grid-template-columns:1fr; }
+  .features-grid, .support-inner, .hours-grid { grid-template-columns:1fr; }
   .steps-grid { grid-template-columns:1fr 1fr; }
   .support-inner { gap:40px; }
   .cta-section .section-inner { padding:56px 22px; border-radius:36px; }
@@ -884,46 +871,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div class="section-inner">
-    <div class="sec-head text-center">
-      <span class="section-tag" data-i18n="rev-tag">What They Say</span>
-      <h2 class="section-title" data-i18n="rev-title">Children Who Got Help</h2>
-      <p class="section-sub" data-i18n="rev-sub">Every child who comes to us finds a listening ear and an open heart.</p>
-    </div>
-    <div class="testimonials-grid">
-      <div class="testimonial-card">
-        <div class="t-stars" aria-hidden="true">★★★★★</div>
-        <div class="t-quote">"</div>
-        <div class="t-text" data-i18n="t1-text">I didn't know where to turn. When I found Help Site, I felt like someone finally understood me.</div>
-        <div class="t-author">
-          <div class="t-avatar" aria-hidden="true" style="background:var(--primary-soft);">😊</div>
-          <div><div class="t-name" data-i18n="t1-name">Boy, 11</div><div class="t-role" data-i18n="t1-role">Active user</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="t-stars" aria-hidden="true">★★★★★</div>
-        <div class="t-quote">"</div>
-        <div class="t-text" data-i18n="t2-text">The chat helped me feel less alone. The volunteers there really listen and care.</div>
-        <div class="t-author">
-          <div class="t-avatar" aria-hidden="true" style="background:var(--accent-soft);">🌟</div>
-          <div><div class="t-name" data-i18n="t2-name">Girl, 13</div><div class="t-role" data-i18n="t2-role">Community member</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="t-stars" aria-hidden="true">★★★★★</div>
-        <div class="t-quote">"</div>
-        <div class="t-text" data-i18n="t3-text">I was going through a hard time. The Help Site team helped me get through it. I recommend it to every child who feels alone.</div>
-        <div class="t-author">
-          <div class="t-avatar" aria-hidden="true" style="background:#d1fae5;">💪</div>
-          <div><div class="t-name" data-i18n="t3-name">Boy, 14</div><div class="t-role" data-i18n="t3-role">Satisfied user</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- FAQ -->
 <section class="faq-section" id="faq">
   <div class="section-inner">
@@ -1051,7 +998,7 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.feature-card, .step-card, .testimonial-card, .hours-card').forEach(el => {
+  document.querySelectorAll('.feature-card, .step-card, .hours-card').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(24px)';
     el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
