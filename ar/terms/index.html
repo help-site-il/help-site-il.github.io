@@ -135,6 +135,10 @@ h1, h2, h3, .nav-logo, .stat-num, .feature-title, .step-title, .footer-brand .lo
 
 /* SITE NOTICE */
 .site-notice { background:var(--primary-soft); color:var(--primary-ink); border-bottom:1px solid rgba(var(--primary-rgb),0.2); padding:9px 24px; text-align:center; font-size:0.85rem; font-weight:500; position:relative; z-index:101; }
+.site-notice a { color:inherit; font-weight:800; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+.chat-urgent { background:var(--marker); color:var(--text); font-size:0.78rem; font-weight:600; text-align:center; padding:7px 12px; border-top:1px solid rgba(var(--primary-rgb),0.15); line-height:1.5; }
+.chat-urgent a { color:var(--primary-ink); font-weight:800; text-decoration:underline; white-space:nowrap; }
+.a11y-contrast .chat-urgent, .a11y-contrast .site-notice { border-color:#000; }
 
 /* NAV — floating pill */
 nav {

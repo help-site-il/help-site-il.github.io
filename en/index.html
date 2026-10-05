@@ -135,6 +135,10 @@ h1, h2, h3, .nav-logo, .stat-num, .feature-title, .step-title, .footer-brand .lo
 
 /* SITE NOTICE */
 .site-notice { background:var(--primary-soft); color:var(--primary-ink); border-bottom:1px solid rgba(var(--primary-rgb),0.2); padding:9px 24px; text-align:center; font-size:0.85rem; font-weight:500; position:relative; z-index:101; }
+.site-notice a { color:inherit; font-weight:800; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
+.chat-urgent { background:var(--marker); color:var(--text); font-size:0.78rem; font-weight:600; text-align:center; padding:7px 12px; border-top:1px solid rgba(var(--primary-rgb),0.15); line-height:1.5; }
+.chat-urgent a { color:var(--primary-ink); font-weight:800; text-decoration:underline; white-space:nowrap; }
+.a11y-contrast .chat-urgent, .a11y-contrast .site-notice { border-color:#000; }
 
 /* NAV — floating pill */
 nav {
@@ -642,7 +646,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <!-- SITE NOTICE -->
 <div class="site-notice">
-  <span data-i18n="notice">⚠️ The site is being upgraded — some design changes may occur. We are working hard to bring you the best version! 💙</span>
+  <span data-i18n="notice">In distress right now? ERAN (Israel) <a href="tel:1201" dir="ltr">1201</a>, 24 hours · Immediate danger <a href="tel:100" dir="ltr">100</a> · This site is not an emergency service</span>
 </div>
 <nav>
   <a href="./" class="nav-logo">
@@ -1071,6 +1075,9 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       <div id="topicsContainer"></div>
     </div>
     
+    <!-- Always-visible emergency strip -->
+    <div id="chatUrgent" class="chat-urgent" data-i18n="chat-urgent">In distress now? ERAN <a href="tel:1201" dir="ltr">1201</a> (24 hours) · Immediate danger <a href="tel:100" dir="ltr">100</a></div>
+    
     <!-- Back button (shown after topic selected) -->
     <div id="backBtn" style="display:none;padding:8px 16px;border-top:1px solid rgba(var(--primary-rgb),0.1);">
       <button type="button" onclick="resetChat()" style="background:none;border:1px solid rgba(var(--primary-rgb),0.3);color:var(--primary);padding:6px 14px;border-radius:14px;font-size:0.85rem;cursor:pointer;font-family:Heebo,sans-serif;" data-i18n="chat-back">← Back to list</button>
@@ -1210,8 +1217,24 @@ var chatTopics = [
     "label_ar": "أريد فقط أن أتحدث",
     "msg_ar": "يسعدنا أنك تواصلت! 😊\n\nنحن دائمًا سعداء بالاستماع إليك.\n\nيمكنك أن تكتب لنا — يكفي اسم مستعار وطريقة واحدة للتواصل معك، وسيردّ عليك متطوع خلال ساعات العمل.",
     "subject_ar": "رسالة"
+  },
+  {
+    "id": "crisis",
+    "icon": "🆘",
+    "danger": false,
+    "crisis": true,
+    "label_he": "מחשבות לפגוע בעצמי / קשה לי מאוד",
+    "label_en": "Thoughts of hurting myself / It is too much",
+    "label_ar": "أفكار بإيذاء نفسي / الأمر صعب جدًّا جدًّا",
+    "subject_he": "בקשת עזרה — מצוקה",
+    "subject_en": "Help Request — Distress",
+    "subject_ar": "طلب مساعدة — ضائقة",
+    "msg_he": "מה שאתה מרגיש עכשיו חשוב, ואתה לא לבד 💙\nמגיע לך שמישהו יקשיב לך עכשיו, בלי לחכות.\n\nאפשר להתקשר לער״ן, עזרה ראשונה נפשית, בכל שעה ביום ובלילה. אם אתה בסכנה מיידית, חייג 100.\n\nואם יש לידך מבוגר שאתה סומך עליו — הורה, מורה או יועצת — ספר לו עכשיו.",
+    "msg_en": "What you are feeling right now matters, and you are not alone 💙\nYou deserve someone to listen to you right now, without waiting.\n\nYou can call ERAN, emotional first aid, at any hour of the day or night. If you are in immediate danger, dial 100 (numbers work inside Israel).\n\nAnd if there is an adult you trust nearby — a parent, teacher, or counselor — tell them now.",
+    "msg_ar": "ما تشعر به الآن مهم، ولست وحدك 💙\nمن حقك أن يصغي إليك أحد الآن، دون انتظار.\n\nيمكنك الاتصال بـ«عيران» للإسعاف النفسي الأولي في أي ساعة من الليل أو النهار. وإذا كنت في خطر وشيك فاتصل بالرقم 100 (الأرقام تعمل داخل إسرائيل).\n\nوإذا كان بجانبك شخص بالغ تثق به — أحد الوالدين أو معلّم أو مستشار — فأخبره الآن."
   }
 ];
+
 
 var CHAT_STR = {
   "he": {
@@ -1228,7 +1251,10 @@ var CHAT_STR = {
       "📅 ראשון, שלישי-חמישי: 16:00-21:00",
       "📅 שני: 14:30-21:00",
       "❌ שישי, שבת וחגים: אין תמיכה"
-    ]
+    ],
+    "crisisEran": "📞 התקשר לער״ן: <bdi dir=\"ltr\">1201</bdi> (24 שעות)",
+    "crisisPolice": "🚨 סכנה מיידית? משטרה: <bdi dir=\"ltr\">100</bdi>",
+    "crisisNote": "המתנדבים כאן אינם שירות חירום ועונים רק בשעות הפעילות. כשקשה מאוד, פנה קודם לער״ן."
   },
   "en": {
     "sendEmail": "Send a message by email",
@@ -1244,7 +1270,10 @@ var CHAT_STR = {
       "📅 Sun, Tue–Thu: 16:00–21:00",
       "📅 Mon: 14:30–21:00",
       "❌ Fri, Sat & holidays: no support"
-    ]
+    ],
+    "crisisEran": "📞 Call ERAN: <bdi dir=\"ltr\">1201</bdi> (24 hours)",
+    "crisisPolice": "🚨 Immediate danger? Police: <bdi dir=\"ltr\">100</bdi>",
+    "crisisNote": "The volunteers here are not an emergency service and reply only during opening hours. When things are very hard, reach out to ERAN first."
   },
   "ar": {
     "sendEmail": "أرسل رسالة بالبريد الإلكتروني",
@@ -1260,7 +1289,10 @@ var CHAT_STR = {
       "📅 الأحد، الثلاثاء-الخميس: <bdi dir=\"ltr\">16:00-21:00</bdi>",
       "📅 الاثنين: <bdi dir=\"ltr\">14:30-21:00</bdi>",
       "❌ الجمعة والسبت والأعياد: لا يوجد دعم"
-    ]
+    ],
+    "crisisEran": "📞 اتصل بـ«عيران»: <bdi dir=\"ltr\">1201</bdi> (على مدار الساعة)",
+    "crisisPolice": "🚨 خطر وشيك؟ الشرطة: <bdi dir=\"ltr\">100</bdi>",
+    "crisisNote": "المتطوعون هنا ليسوا خدمة طوارئ ويردّون فقط خلال ساعات العمل. عندما يصعب الأمر جدًّا، تواصل مع «عيران» أولًا."
   }
 };
 function chatLang() { return (typeof currentLang !== 'undefined' && CHAT_STR[currentLang]) ? currentLang : 'he'; }
@@ -1339,6 +1371,25 @@ function selectTopic(topic) {
     aiDiv.textContent = topic['msg_' + lang];
     msgs.appendChild(aiDiv);
 
+    // Crisis topic: the way to real help comes FIRST (two big call buttons), before anything about volunteers
+    if (topic.crisis) {
+      var crisisBtn = function (href, html, strong) {
+        var c = document.createElement('a');
+        c.href = href;
+        c.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;font-family:Heebo,sans-serif;font-weight:800;border-radius:14px;padding:13px 16px;margin-top:4px;text-align:center;' +
+          (strong ? 'background:var(--cta);color:var(--text);font-size:0.95rem;box-shadow:0 3px 0 var(--cta-dark);' : 'background:white;color:var(--primary-ink);border:2px solid var(--primary);font-size:0.88rem;');
+        c.innerHTML = html;
+        return c;
+      };
+      msgs.appendChild(crisisBtn('tel:1201', T.crisisEran, true));
+      msgs.appendChild(crisisBtn('tel:100', T.crisisPolice, false));
+      var crisisNote = document.createElement('div');
+      crisisNote.className = 'ai-msg';
+      crisisNote.style.cssText = 'font-size:0.8rem;color:var(--muted);';
+      crisisNote.textContent = T.crisisNote;
+      msgs.appendChild(crisisNote);
+    }
+
     // Topics about being hurt: one line with the emergency number (details in the Terms of use)
     if (topic.danger) {
       var dangerDiv = document.createElement('div');
@@ -1376,8 +1427,10 @@ function selectTopic(topic) {
     noteDiv.textContent = T.note;
     msgs.appendChild(noteDiv);
     
-    // Check if agent available
-    if (isAgentAvailable()) {
+    // Check if agent available (not shown for the crisis topic: volunteers are not an emergency service)
+    if (topic.crisis) {
+      // nothing more: the emergency buttons above are the answer
+    } else if (isAgentAvailable()) {
       var availDiv = document.createElement('div');
       availDiv.className = 'ai-msg';
       availDiv.style.cssText = 'background:#d1fae5;color:#065f46;font-size:0.85rem;';
