@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -652,8 +653,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">Help Site</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../#features" data-i18n="nav-features">Services</a></li>
-    <li><a href="../#how" data-i18n="nav-how">How it works</a></li>
+    <li><a href="../#features" data-i18n="nav-features">Features</a></li>
+    <li><a href="../#how" data-i18n="nav-how">Future Ideas</a></li>
     <li><a href="../#support" data-i18n="nav-support">Support</a></li>
     <li><a href="../#hours" data-i18n="nav-hours">Hours</a></li>
     <li><a href="../#faq" data-i18n="nav-faq">FAQ</a></li>
@@ -662,8 +663,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="Menu"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="../#features" data-i18n="nav-features">Services</a></li>
-      <li><a href="../#how" data-i18n="nav-how">How it works</a></li>
+      <li><a href="../#features" data-i18n="nav-features">Features</a></li>
+      <li><a href="../#how" data-i18n="nav-how">Future Ideas</a></li>
       <li><a href="../#support" data-i18n="nav-support">Support</a></li>
       <li><a href="../#hours" data-i18n="nav-hours">Hours</a></li>
       <li><a href="../#faq" data-i18n="nav-faq">FAQ</a></li>
@@ -674,7 +675,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <main id="main" tabindex="-1" style="outline:none;"><section class="legal-section legal"><div class="legal-inner">
     <a class="legal-back" href="../">← Back to home</a>
-    <div class="legal-tabs" role="navigation" aria-label="Legal documents"><a class="legal-tab" href="../privacy/">Privacy policy</a><a class="legal-tab" href="./" aria-current="page">Terms of use</a></div>
+    <div class="legal-tabs" role="navigation" aria-label="Legal documents"><a class="legal-tab" href="../privacy/">Privacy policy</a><a class="legal-tab" href="./" aria-current="page">Terms of use</a><a class="legal-tab" href="../accessibility/">Accessibility statement</a></div>
     <h1>Terms of Use</h1>
     <p class="legal-updated">Last updated: <time datetime="2026-09-24">24 September 2026</time></p>
     <div class="legal-tldr"><h2>In short</h2><ul><li>The site is a place to listen and support. It is not a substitute for professional care, whether mental, medical, or other.</li><li>The site is not an emergency service. In an emergency or immediate danger, contact the emergency lines (details below).</li><li>Those who reply to you are trained volunteers, not professionals. We do not promise a response time.</li><li>We protect your privacy, except in the case of a real danger (see the Privacy policy).</li><li>Please be respectful and do not harm others.</li></ul></div>
@@ -693,10 +694,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <p><strong>If you or someone else is in immediate danger, call now (these numbers work inside Israel):</strong></p>
           <ul>
             <li>Police: <a href="tel:100" dir="ltr">100</a></li>
-            <li>ERAN, emotional first aid, 24 hours a day: <a href="tel:1201" dir="ltr">1201</a></li>
-            <li>Hotline 105, protection of children and teens online, 24 hours a day: <a href="tel:105" dir="ltr">105</a></li>
+            <li>ERAN, emotional first aid: phone line <a href="tel:1201" dir="ltr">1201</a>, 24 hours a day. You can also use <a href="https://www.eran.org.il/online-emotional-help/" target="_blank" rel="noopener noreferrer">chat, WhatsApp, the forum, email or SMS</a>, in Hebrew, between 08:00 and 02:00. In Arabic: <a href="tel:1201,7" dir="ltr">1201</a> extension 7, between 10:00-12:00 and 19:00-21:00; outside these hours you can leave a phone number for a callback, or use the Hebrew-language online services.</li>
+            <li>Police hotline 105, protecting children and teens online, 24 hours a day: <a href="tel:105" dir="ltr">105</a> from any phone. You can also use an <a href="https://govforms.gov.il/mw/forms/moked105@police.gov.il" target="_blank" rel="noopener noreferrer">online form</a> in Hebrew, Arabic and English, or <a href="https://www.gov.il/he/pages/whatsapp_105" target="_blank" rel="noopener noreferrer">WhatsApp</a> at <a href="tel:0521210105" dir="ltr">052-1210105</a>. For the hard of hearing: the "Listening Ear" line, <a href="tel:0522020100" dir="ltr">052-2020100</a>.</li>
             <li>Hotline 118 of the Ministry of Welfare, information and guidance in emergencies: <a href="tel:118" dir="ltr">118</a></li>
+            <li>SAHAR, online support and listening: a free, anonymous chat for emotional support, in Hebrew and Arabic, at <a href="https://www.sahar.org.il/" target="_blank" rel="noopener noreferrer">sahar.org.il</a>.</li>
           </ul>
+          <p style="margin-top:10px;font-size:0.9rem;">Information, opening hours and contact details for these organizations may change. We try to keep this updated, but we cannot guarantee it is always fully accurate or current, so it is best to check directly on the relevant organization's own site.</p>
         </div>
     <h2 class="legal-h">Opening hours and replies</h2>
 <p>Replies are given during the opening hours listed on the <a href="../#hours">home page</a>. Outside these hours you can leave a message, and we will get back to you as soon as possible during opening hours. We do not promise a specific response time.</p>
@@ -744,7 +747,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">Privacy policy</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">Terms of use</a></div>
+    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">Privacy policy</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">Terms of use</a><span aria-hidden="true">·</span><a href="../accessibility/" data-i18n="foot-accessibility">Accessibility statement</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© Uriah. All rights reserved.</span>
     <span data-i18n="foot-copy2">🌟 Here to listen and make room for whatever is on your mind</span>

@@ -21,3 +21,4 @@ If a user describes an emergency or immediate danger to themselves or someone el
 ## Policies
 - [Privacy policy, Hebrew](https://help-site-il.github.io/privacy/) | [English](https://help-site-il.github.io/en/privacy/) | [Arabic](https://help-site-il.github.io/ar/privacy/)
 - [Terms of use, Hebrew](https://help-site-il.github.io/terms/) | [English](https://help-site-il.github.io/en/terms/) | [Arabic](https://help-site-il.github.io/ar/terms/)
+- [Accessibility statement, Hebrew](https://help-site-il.github.io/accessibility/) | [English](https://help-site-il.github.io/en/accessibility/) | [Arabic](https://help-site-il.github.io/ar/accessibility/)

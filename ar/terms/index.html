@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -652,8 +653,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">موقع المساعدة</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../#features" data-i18n="nav-features">الخدمات</a></li>
-    <li><a href="../#how" data-i18n="nav-how">كيف يعمل</a></li>
+    <li><a href="../#features" data-i18n="nav-features">ميزاتنا</a></li>
+    <li><a href="../#how" data-i18n="nav-how">أفكار للمستقبل</a></li>
     <li><a href="../#support" data-i18n="nav-support">الدعم</a></li>
     <li><a href="../#hours" data-i18n="nav-hours">الساعات</a></li>
     <li><a href="../#faq" data-i18n="nav-faq">الأسئلة</a></li>
@@ -662,8 +663,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="القائمة"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="../#features" data-i18n="nav-features">الخدمات</a></li>
-      <li><a href="../#how" data-i18n="nav-how">كيف يعمل</a></li>
+      <li><a href="../#features" data-i18n="nav-features">ميزاتنا</a></li>
+      <li><a href="../#how" data-i18n="nav-how">أفكار للمستقبل</a></li>
       <li><a href="../#support" data-i18n="nav-support">الدعم</a></li>
       <li><a href="../#hours" data-i18n="nav-hours">الساعات</a></li>
       <li><a href="../#faq" data-i18n="nav-faq">الأسئلة</a></li>
@@ -674,7 +675,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <main id="main" tabindex="-1" style="outline:none;"><section class="legal-section legal"><div class="legal-inner">
     <a class="legal-back" href="../">→ العودة إلى الصفحة الرئيسية</a>
-    <div class="legal-tabs" role="navigation" aria-label="المستندات القانونية"><a class="legal-tab" href="../privacy/">سياسة الخصوصية</a><a class="legal-tab" href="./" aria-current="page">شروط الاستخدام</a></div>
+    <div class="legal-tabs" role="navigation" aria-label="المستندات القانونية"><a class="legal-tab" href="../privacy/">سياسة الخصوصية</a><a class="legal-tab" href="./" aria-current="page">شروط الاستخدام</a><a class="legal-tab" href="../accessibility/">بيان إمكانية الوصول</a></div>
     <h1>شروط الاستخدام</h1>
     <p class="legal-updated">آخر تحديث: <time datetime="2026-09-24">24.09.2026</time></p>
     <div class="legal-tldr"><h2>باختصار</h2><ul><li>الموقع مكان للإصغاء والدعم. وهو ليس بديلًا عن العلاج المهني، سواء النفسي أو الطبي أو غيره.</li><li>الموقع ليس خدمة طوارئ. في حالة طوارئ أو خطر وشيك، تواصل مع خطوط الطوارئ (التفاصيل أدناه).</li><li>من يردّ عليك متطوعون خضعوا لتدريب، وليسوا مختصّين. ولا نَعِد بمدة معيّنة للرد.</li><li>نحافظ على خصوصيتك، إلا في حالة وجود خطر حقيقي (انظر سياسة الخصوصية).</li><li>يُرجى التعامل باحترام وعدم إيذاء الآخرين.</li></ul></div>
@@ -693,10 +694,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <p><strong>إذا كنت أنت أو شخص آخر في خطر وشيك، فاتصل الآن (هذه الأرقام تعمل داخل إسرائيل):</strong></p>
           <ul>
             <li>الشرطة: <a href="tel:100" dir="ltr">100</a></li>
-            <li>خط «عيران» للإسعاف النفسي الأولي، على مدار الساعة: <a href="tel:1201" dir="ltr">1201</a></li>
-            <li>الخط 105 لحماية الأطفال والشباب على الإنترنت، على مدار الساعة: <a href="tel:105" dir="ltr">105</a></li>
+            <li>خط «عيران» للإسعاف النفسي الأولي: الخط الهاتفي <a href="tel:1201" dir="ltr">1201</a>، على مدار الساعة. يمكن أيضًا استخدام <a href="https://www.eran.org.il/online-emotional-help/" target="_blank" rel="noopener noreferrer">الدردشة أو واتساب أو المنتدى أو البريد الإلكتروني أو الرسائل النصية</a>، بالعبرية، بين الساعة 08:00 و02:00. بالعربية: <a href="tel:1201,7" dir="ltr">1201</a> تحويلة 7، بين الساعتين 10:00–12:00 و19:00–21:00؛ خارج هذه الساعات يمكن ترك رقم هاتف لمعاودة الاتصال، أو استخدام الخدمات الإلكترونية بالعبرية.</li>
+            <li>خط الشرطة 105 لحماية الأطفال والشباب على الإنترنت، على مدار الساعة: <a href="tel:105" dir="ltr">105</a> من أي هاتف. يمكن أيضًا استخدام <a href="https://govforms.gov.il/mw/forms/moked105@police.gov.il" target="_blank" rel="noopener noreferrer">نموذج إلكتروني</a> بالعبرية والعربية والإنجليزية، أو <a href="https://www.gov.il/he/pages/whatsapp_105" target="_blank" rel="noopener noreferrer">واتساب</a> على الرقم <a href="tel:0521210105" dir="ltr">052-1210105</a>. لضعاف السمع: خط «أذن صاغية»، <a href="tel:0522020100" dir="ltr">052-2020100</a>.</li>
             <li>الخط 118 التابع لوزارة الرفاه، معلومات وإرشاد في حالات الطوارئ: <a href="tel:118" dir="ltr">118</a></li>
+            <li>«سهر» - مساعدة وإصغاء عبر الإنترنت: دردشة مجانية ومجهولة الهوية للدعم النفسي، بالعبرية والعربية، على موقع <a href="https://www.sahar.org.il/" target="_blank" rel="noopener noreferrer">sahar.org.il</a>.</li>
           </ul>
+          <p style="margin-top:10px;font-size:0.9rem;">قد تتغيّر المعلومات وساعات العمل وبيانات التواصل الخاصة بهذه الجهات. نحن نحاول إبقاء هذه المعلومات محدَّثة، لكن لا يمكننا ضمان دقتها الكاملة أو كونها محدَّثة دائمًا، لذا يُفضَّل التحقق مباشرة من موقع الجهة المعنية.</p>
         </div>
     <h2 class="legal-h">ساعات العمل والرد</h2>
 <p>يُقدَّم الرد خلال ساعات العمل المذكورة في <a href="../#hours">الصفحة الرئيسية</a>. خارج هذه الساعات يمكنك ترك رسالة، وسنعاود الاتصال بك في أقرب وقت ممكن خلال ساعات العمل. لا نَعِد بمدة معيّنة للرد.</p>
@@ -744,7 +747,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">سياسة الخصوصية</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">شروط الاستخدام</a></div>
+    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">سياسة الخصوصية</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">شروط الاستخدام</a><span aria-hidden="true">·</span><a href="../accessibility/" data-i18n="foot-accessibility">بيان إمكانية الوصول</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© جميع الحقوق محفوظة لأوريا</span>
     <span data-i18n="foot-copy2">🌟 نحن هنا لنصغي إليك ونفسح المجال لكل ما في قلبك</span>

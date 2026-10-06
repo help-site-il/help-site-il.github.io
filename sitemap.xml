@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://help-site-il.github.io/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/"/>
@@ -25,8 +25,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/terms/"/>
   </url>
   <url>
+    <loc>https://help-site-il.github.io/accessibility/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/accessibility/"/>
+  </url>
+  <url>
     <loc>https://help-site-il.github.io/en/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/"/>
@@ -49,8 +57,16 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/terms/"/>
   </url>
   <url>
+    <loc>https://help-site-il.github.io/en/accessibility/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/accessibility/"/>
+  </url>
+  <url>
     <loc>https://help-site-il.github.io/ar/</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-06</lastmod>
     <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/"/>
@@ -71,5 +87,13 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/terms/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/terms/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/terms/"/>
+  </url>
+  <url>
+    <loc>https://help-site-il.github.io/ar/accessibility/</loc>
+    <lastmod>2026-10-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/accessibility/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/accessibility/"/>
   </url>
 </urlset>

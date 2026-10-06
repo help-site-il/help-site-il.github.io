@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -652,8 +653,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">موقع المساعدة</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../#features" data-i18n="nav-features">الخدمات</a></li>
-    <li><a href="../#how" data-i18n="nav-how">كيف يعمل</a></li>
+    <li><a href="../#features" data-i18n="nav-features">ميزاتنا</a></li>
+    <li><a href="../#how" data-i18n="nav-how">أفكار للمستقبل</a></li>
     <li><a href="../#support" data-i18n="nav-support">الدعم</a></li>
     <li><a href="../#hours" data-i18n="nav-hours">الساعات</a></li>
     <li><a href="../#faq" data-i18n="nav-faq">الأسئلة</a></li>
@@ -662,8 +663,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="القائمة"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="../#features" data-i18n="nav-features">الخدمات</a></li>
-      <li><a href="../#how" data-i18n="nav-how">كيف يعمل</a></li>
+      <li><a href="../#features" data-i18n="nav-features">ميزاتنا</a></li>
+      <li><a href="../#how" data-i18n="nav-how">أفكار للمستقبل</a></li>
       <li><a href="../#support" data-i18n="nav-support">الدعم</a></li>
       <li><a href="../#hours" data-i18n="nav-hours">الساعات</a></li>
       <li><a href="../#faq" data-i18n="nav-faq">الأسئلة</a></li>
@@ -674,7 +675,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <main id="main" tabindex="-1" style="outline:none;"><section class="legal-section legal"><div class="legal-inner">
     <a class="legal-back" href="../">→ العودة إلى الصفحة الرئيسية</a>
-    <div class="legal-tabs" role="navigation" aria-label="المستندات القانونية"><a class="legal-tab" href="./" aria-current="page">سياسة الخصوصية</a><a class="legal-tab" href="../terms/">شروط الاستخدام</a></div>
+    <div class="legal-tabs" role="navigation" aria-label="المستندات القانونية"><a class="legal-tab" href="./" aria-current="page">سياسة الخصوصية</a><a class="legal-tab" href="../terms/">شروط الاستخدام</a><a class="legal-tab" href="../accessibility/">بيان إمكانية الوصول</a></div>
     <h1>سياسة الخصوصية</h1>
     <p class="legal-updated">آخر تحديث: <time datetime="2026-09-24">24.09.2026</time></p>
     <div class="legal-tldr"><h2>باختصار</h2><ul><li>يمكنك استخدام الموقع دون تسجيل ودون تعريف نفسك. لا يوجد حساب ولا كلمة مرور.</li><li>لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز) ولا الإعلانات ولا أدوات تتبّعك.</li><li>إذا تواصلت معنا عبر البريد الإلكتروني أو واتساب، فسنستلم ما تكتبه، ولن نستخدمه إلا للرد عليك.</li><li>لن نبيع معلوماتك ولن ننقلها إلى أحد. والاستثناءات: خطر حقيقي على شخص ما، أو التزام يفرضه القانون (انظر أدناه).</li><li>يكفي أن تذكر اسمك الأول أو اسمًا مستعارًا. لا حاجة إلى الاسم الكامل أو العنوان أو تفاصيل غير ضرورية.</li></ul></div>
@@ -740,7 +741,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="./" data-i18n="foot-privacy" aria-current="page">سياسة الخصوصية</a><span aria-hidden="true">·</span><a href="../terms/" data-i18n="foot-terms">شروط الاستخدام</a></div>
+    <div class="footer-legal"><a href="./" data-i18n="foot-privacy" aria-current="page">سياسة الخصوصية</a><span aria-hidden="true">·</span><a href="../terms/" data-i18n="foot-terms">شروط الاستخدام</a><span aria-hidden="true">·</span><a href="../accessibility/" data-i18n="foot-accessibility">بيان إمكانية الوصول</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© جميع الحقوق محفوظة لأوريا</span>
     <span data-i18n="foot-copy2">🌟 نحن هنا لنصغي إليك ونفسح المجال لكل ما في قلبك</span>

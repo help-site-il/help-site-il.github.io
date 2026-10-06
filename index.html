@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -654,8 +655,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">אתר העזרה</span>
   </a>
   <ul class="nav-links">
-    <li><a href="#features" data-i18n="nav-features">שירותים</a></li>
-    <li><a href="#how" data-i18n="nav-how">איך זה עובד</a></li>
+    <li><a href="#features" data-i18n="nav-features">התכונות שלנו</a></li>
+    <li><a href="#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
     <li><a href="#support" data-i18n="nav-support">תמיכה</a></li>
     <li><a href="#hours" data-i18n="nav-hours">שעות</a></li>
     <li><a href="#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -664,8 +665,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="תפריט"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="#features" data-i18n="nav-features">שירותים</a></li>
-      <li><a href="#how" data-i18n="nav-how">איך זה עובד</a></li>
+      <li><a href="#features" data-i18n="nav-features">התכונות שלנו</a></li>
+      <li><a href="#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
       <li><a href="#support" data-i18n="nav-support">תמיכה</a></li>
       <li><a href="#hours" data-i18n="nav-hours">שעות</a></li>
       <li><a href="#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -950,7 +951,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="privacy/" data-i18n="foot-privacy">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="terms/" data-i18n="foot-terms">תנאי שימוש</a></div>
+    <div class="footer-legal"><a href="privacy/" data-i18n="foot-privacy">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="terms/" data-i18n="foot-terms">תנאי שימוש</a><span aria-hidden="true">·</span><a href="accessibility/" data-i18n="foot-accessibility">הצהרת נגישות</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© כל הזכויות שמורות לאוריייה</span>
     <span data-i18n="foot-copy2">🌟 כאן כדי להקשיב לך ולתת מקום לכול מה שעל הלב</span>

@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -652,8 +653,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">אתר העזרה</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../#features" data-i18n="nav-features">שירותים</a></li>
-    <li><a href="../#how" data-i18n="nav-how">איך זה עובד</a></li>
+    <li><a href="../#features" data-i18n="nav-features">התכונות שלנו</a></li>
+    <li><a href="../#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
     <li><a href="../#support" data-i18n="nav-support">תמיכה</a></li>
     <li><a href="../#hours" data-i18n="nav-hours">שעות</a></li>
     <li><a href="../#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -662,8 +663,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="תפריט"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="../#features" data-i18n="nav-features">שירותים</a></li>
-      <li><a href="../#how" data-i18n="nav-how">איך זה עובד</a></li>
+      <li><a href="../#features" data-i18n="nav-features">התכונות שלנו</a></li>
+      <li><a href="../#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
       <li><a href="../#support" data-i18n="nav-support">תמיכה</a></li>
       <li><a href="../#hours" data-i18n="nav-hours">שעות</a></li>
       <li><a href="../#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -674,7 +675,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <main id="main" tabindex="-1" style="outline:none;"><section class="legal-section legal"><div class="legal-inner">
     <a class="legal-back" href="../">→ חזרה לדף הבית</a>
-    <div class="legal-tabs" role="navigation" aria-label="מסמכים משפטיים"><a class="legal-tab" href="./" aria-current="page">מדיניות פרטיות</a><a class="legal-tab" href="../terms/">תנאי שימוש</a></div>
+    <div class="legal-tabs" role="navigation" aria-label="מסמכים משפטיים"><a class="legal-tab" href="./" aria-current="page">מדיניות פרטיות</a><a class="legal-tab" href="../terms/">תנאי שימוש</a><a class="legal-tab" href="../accessibility/">הצהרת נגישות</a></div>
     <h1>מדיניות פרטיות</h1>
     <p class="legal-updated">עודכן לאחרונה: <time datetime="2026-09-24">24.09.2026</time></p>
     <div class="legal-tldr"><h2>בקצרה</h2><ul><li>אפשר להשתמש באתר בלי להירשם ובלי להזדהות. אין חשבון ואין סיסמה.</li><li>האתר לא משתמש בעוגיות, בפרסומות או בכלים שעוקבים אחריך.</li><li>אם תפנו אלינו במייל או בוואטסאפ, נקבל את מה שתכתבו, ונשתמש בזה רק כדי לענות לכם.</li><li>לא נמכור את המידע שלכם ולא נעביר אותו הלאה. יוצאים מן הכלל: סכנה ממשית למישהו, או חובה לפי חוק (ראו בהמשך).</li><li>מספיק למסור שם פרטי או כינוי. אין צורך בשם מלא, בכתובת או בפרטים שלא נחוצים.</li></ul></div>
@@ -740,7 +741,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="./" data-i18n="foot-privacy" aria-current="page">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="../terms/" data-i18n="foot-terms">תנאי שימוש</a></div>
+    <div class="footer-legal"><a href="./" data-i18n="foot-privacy" aria-current="page">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="../terms/" data-i18n="foot-terms">תנאי שימוש</a><span aria-hidden="true">·</span><a href="../accessibility/" data-i18n="foot-accessibility">הצהרת נגישות</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© כל הזכויות שמורות לאוריייה</span>
     <span data-i18n="foot-copy2">🌟 כאן כדי להקשיב לך ולתת מקום לכול מה שעל הלב</span>

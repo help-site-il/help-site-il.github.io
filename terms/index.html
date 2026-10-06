@@ -530,6 +530,7 @@ html.a11y-gray { filter:grayscale(1); }
 .legal-back { display:inline-flex; align-items:center; gap:8px; margin-bottom:22px; padding:9px 18px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
 .legal-back:hover { text-decoration:underline; }
 .legal-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px; }
+.legal-tab { white-space:nowrap; }
 .legal-tab { padding:10px 22px; border-radius:999px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text); font-weight:700; text-decoration:none; }
 .legal-tab:hover { background:var(--primary-soft); }
 .legal-tab[aria-current="page"] { background:var(--primary); border-color:var(--primary); color:#fff; }
@@ -652,8 +653,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <span data-i18n="nav-logo">אתר העזרה</span>
   </a>
   <ul class="nav-links">
-    <li><a href="../#features" data-i18n="nav-features">שירותים</a></li>
-    <li><a href="../#how" data-i18n="nav-how">איך זה עובד</a></li>
+    <li><a href="../#features" data-i18n="nav-features">התכונות שלנו</a></li>
+    <li><a href="../#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
     <li><a href="../#support" data-i18n="nav-support">תמיכה</a></li>
     <li><a href="../#hours" data-i18n="nav-hours">שעות</a></li>
     <li><a href="../#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -662,8 +663,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mobileMenu" data-i18n-aria="menu-label" aria-label="תפריט"><span class="bars" aria-hidden="true"></span></button>
   <div class="mobile-menu" id="mobileMenu" hidden="">
     <ul>
-      <li><a href="../#features" data-i18n="nav-features">שירותים</a></li>
-      <li><a href="../#how" data-i18n="nav-how">איך זה עובד</a></li>
+      <li><a href="../#features" data-i18n="nav-features">התכונות שלנו</a></li>
+      <li><a href="../#how" data-i18n="nav-how">רעיונות לעתיד</a></li>
       <li><a href="../#support" data-i18n="nav-support">תמיכה</a></li>
       <li><a href="../#hours" data-i18n="nav-hours">שעות</a></li>
       <li><a href="../#faq" data-i18n="nav-faq">שאלות</a></li>
@@ -674,7 +675,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <main id="main" tabindex="-1" style="outline:none;"><section class="legal-section legal"><div class="legal-inner">
     <a class="legal-back" href="../">→ חזרה לדף הבית</a>
-    <div class="legal-tabs" role="navigation" aria-label="מסמכים משפטיים"><a class="legal-tab" href="../privacy/">מדיניות פרטיות</a><a class="legal-tab" href="./" aria-current="page">תנאי שימוש</a></div>
+    <div class="legal-tabs" role="navigation" aria-label="מסמכים משפטיים"><a class="legal-tab" href="../privacy/">מדיניות פרטיות</a><a class="legal-tab" href="./" aria-current="page">תנאי שימוש</a><a class="legal-tab" href="../accessibility/">הצהרת נגישות</a></div>
     <h1>תנאי שימוש</h1>
     <p class="legal-updated">עודכן לאחרונה: <time datetime="2026-09-24">24.09.2026</time></p>
     <div class="legal-tldr"><h2>בקצרה</h2><ul><li>האתר הוא מקום להקשיב ולתמוך. הוא אינו תחליף לטיפול מקצועי, נפשי, רפואי או אחר.</li><li>האתר אינו שירות חירום. במצב חירום או בסכנה מיידית, פנו למוקדי החירום (הפרטים בהמשך).</li><li>מי שעונה לכם הם מתנדבים שעברו הכשרה, ולא אנשי מקצוע. אין התחייבות לזמן מענה.</li><li>אנחנו שומרים על הפרטיות שלכם, פרט למקרה של סכנה ממשית (ראו מדיניות פרטיות).</li><li>נא להתנהג בכבוד ולא לפגוע באחרים.</li></ul></div>
@@ -693,10 +694,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <p><strong>אם אתם או מישהו אחר בסכנה מיידית, התקשרו עכשיו:</strong></p>
           <ul>
             <li>משטרה: <a href="tel:100" dir="ltr">100</a></li>
-            <li>ער״ן, עזרה ראשונה נפשית, 24 שעות ביממה: <a href="tel:1201" dir="ltr">1201</a></li>
-            <li>מוקד 105, הגנה על ילדים ונוער ברשת, 24 שעות ביממה: <a href="tel:105" dir="ltr">105</a></li>
+            <li>ער״ן, עזרה ראשונה נפשית: קו טלפוני <a href="tel:1201" dir="ltr">1201</a>, 24 שעות ביממה. אפשר גם <a href="https://www.eran.org.il/online-emotional-help/" target="_blank" rel="noopener noreferrer">צ'אט, וואטסאפ, פורום, מייל או SMS</a>, בעברית, בין השעות 08:00 ו-02:00 בלילה. בערבית: <a href="tel:1201,7" dir="ltr">1201</a> שלוחה 7, בין השעות 10:00–12:00 ו-19:00–21:00; מחוץ לשעות אלה אפשר להשאיר מספר טלפון לחזרה, או לפנות לשירותים המקוונים בעברית.</li>
+            <li>מוקד 105 של המשטרה, הגנה על ילדים ונוער ברשת, 24 שעות ביממה: <a href="tel:105" dir="ltr">105</a> מכל מכשיר. אפשר גם <a href="https://govforms.gov.il/mw/forms/moked105@police.gov.il" target="_blank" rel="noopener noreferrer">טופס מקוון</a> בעברית, בערבית ובאנגלית, או <a href="https://www.gov.il/he/pages/whatsapp_105" target="_blank" rel="noopener noreferrer">וואטסאפ</a> במספר <a href="tel:0521210105" dir="ltr">052-1210105</a>. לכבדי שמיעה: עמדת "אוזן קשבת", <a href="tel:0522020100" dir="ltr">052-2020100</a>.</li>
             <li>מוקד 118 של משרד הרווחה, מידע והכוונה במקרי חירום: <a href="tel:118" dir="ltr">118</a></li>
+            <li>סה״ר, סיוע והקשבה ברשת: צ'אט אנונימי וחינמי לתמיכה נפשית, בעברית ובערבית, באתר <a href="https://www.sahar.org.il/" target="_blank" rel="noopener noreferrer">sahar.org.il</a>.</li>
           </ul>
+          <p style="margin-top:10px;font-size:0.9rem;">המידע, שעות הפעילות ופרטי הקשר של הארגונים עשויים להשתנות. אנו משתדלים לעדכן, אך איננו יכולים להבטיח שהמידע תמיד מדויק או עדכני במאה אחוז, ולכן מומלץ לבדוק ישירות באתר הארגון הרלוונטי.</p>
         </div>
     <h2 class="legal-h">שעות פעילות ומענה</h2>
 <p>המענה ניתן בשעות הפעילות המופיעות ב<a href="../#hours">דף הבית</a>. מחוץ לשעות אלה אפשר להשאיר הודעה, ונחזור אליכם בהקדם האפשרי בשעות הפעילות. איננו מתחייבים לזמן מענה מסוים.</p>
@@ -744,7 +747,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">תנאי שימוש</a></div>
+    <div class="footer-legal"><a href="../privacy/" data-i18n="foot-privacy">מדיניות פרטיות</a><span aria-hidden="true">·</span><a href="./" data-i18n="foot-terms" aria-current="page">תנאי שימוש</a><span aria-hidden="true">·</span><a href="../accessibility/" data-i18n="foot-accessibility">הצהרת נגישות</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© כל הזכויות שמורות לאוריייה</span>
     <span data-i18n="foot-copy2">🌟 כאן כדי להקשיב לך ולתת מקום לכול מה שעל הלב</span>
