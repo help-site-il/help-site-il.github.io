@@ -136,8 +136,10 @@ h1, h2, h3, .nav-logo, .stat-num, .feature-title, .step-title, .footer-brand .lo
 /* SITE NOTICE */
 .site-notice { background:var(--primary-soft); color:var(--primary-ink); border-bottom:1px solid rgba(var(--primary-rgb),0.2); padding:9px 24px; text-align:center; font-size:0.85rem; font-weight:500; position:relative; z-index:101; }
 .site-notice a { color:inherit; font-weight:800; text-decoration:underline; text-underline-offset:3px; white-space:nowrap; }
-.chat-urgent { background:var(--marker); color:var(--text); font-size:0.78rem; font-weight:600; text-align:center; padding:7px 12px; border-top:1px solid rgba(var(--primary-rgb),0.15); line-height:1.5; }
-.chat-urgent a { color:var(--primary-ink); font-weight:800; text-decoration:underline; white-space:nowrap; }
+.chat-urgent { background:var(--primary-soft); color:var(--primary-ink); font-size:0.72rem; font-weight:500; text-align:center; padding:6px 12px; border-top:1px solid rgba(var(--primary-rgb),0.15); line-height:1.5; }
+.chat-urgent a { color:var(--primary-ink); font-weight:700; text-decoration:underline; white-space:nowrap; }
+.chat-urgent[hidden] { display:none; }
+.chat-danger-inline { color:var(--muted); font-size:0.78rem; background:transparent; box-shadow:none; padding-top:0; margin-top:-6px; }
 .a11y-contrast .chat-urgent, .a11y-contrast .site-notice { border-color:#000; }
 
 /* NAV — floating pill */
@@ -1247,6 +1249,7 @@ var CHAT_STR = {
     "body": "שלום,\n\nהכינוי שלי: \nאפשר לחזור אליי ב: \n\nאני רוצה לדבר על: ",
     "waBody": "שלום, אני רוצה לדבר על: ",
     "danger": "🚨 אם אתה בסכנה עכשיו — חייג 100 (משטרה). עוד מוקדי חירום ב",
+    "dangerQuiet": "אם אתה בסכנה ממשית עכשיו — חייג 100. עוד מוקדי חירום ב",
     "dangerLink": "תנאי השימוש",
     "hours": [
       "📅 ראשון, שלישי-חמישי: 16:00-21:00",
@@ -1266,6 +1269,7 @@ var CHAT_STR = {
     "body": "Hello,\n\nMy nickname: \nYou can reach me at: \n\nI would like to talk about: ",
     "waBody": "Hello, I would like to talk about: ",
     "danger": "🚨 If you are in danger right now, call 100 (police). More emergency lines in the ",
+    "dangerQuiet": "If you are in real danger right now, call 100. More emergency lines in the ",
     "dangerLink": "Terms of use",
     "hours": [
       "📅 Sun, Tue–Thu: 16:00–21:00",
@@ -1285,6 +1289,7 @@ var CHAT_STR = {
     "body": "مرحبًا،\n\nاسمي المستعار: \nيمكنكم التواصل معي عبر: \n\nأريد أن أتحدث عن: ",
     "waBody": "مرحبًا، أريد أن أتحدث عن: ",
     "danger": "🚨 إذا كنت في خطر الآن، فاتصل بالرقم 100 (الشرطة). المزيد من خطوط الطوارئ في ",
+    "dangerQuiet": "إذا كنت في خطر حقيقي الآن، فاتصل بالرقم 100. المزيد من خطوط الطوارئ في ",
     "dangerLink": "شروط الاستخدام",
     "hours": [
       "📅 الأحد، الثلاثاء-الخميس: <bdi dir=\"ltr\">16:00-21:00</bdi>",
@@ -1358,7 +1363,12 @@ function selectTopic(topic) {
   userDiv.className = 'user-msg';
   userDiv.textContent = topic.icon + ' ' + topic['label_' + lang];
   msgs.appendChild(userDiv);
-  
+
+  // The always-on safety strip stays out of the way once the full crisis screen (with its own
+  // call buttons) is showing — otherwise the same two numbers would appear twice.
+  var urgentBar = document.getElementById('chatUrgent');
+  if (urgentBar) urgentBar.hidden = !!topic.crisis;
+
   // Show typing
   showTyping();
   
@@ -1391,13 +1401,13 @@ function selectTopic(topic) {
       msgs.appendChild(crisisNote);
     }
 
-    // Topics about being hurt: one line with the emergency number (details in the Terms of use)
+    // Topics about being hurt: a quiet one-liner folded into the reply, not a second loud banner
+    // (the always-on strip below already carries ERAN/100 — this just points at the Terms of use).
     if (topic.danger) {
       var dangerDiv = document.createElement('div');
-      dangerDiv.className = 'ai-msg';
-      dangerDiv.style.cssText = 'background:var(--marker);color:var(--text);font-size:0.85rem;font-weight:600;';
+      dangerDiv.className = 'ai-msg chat-danger-inline';
       var termsHref = 'terms/' + (location.protocol === 'file:' ? 'index.html' : '');
-      dangerDiv.innerHTML = T.danger + '<a href="' + termsHref + '" style="color:var(--primary-ink);text-decoration:underline;">' + T.dangerLink + '</a>.';
+      dangerDiv.innerHTML = T.dangerQuiet + '<a href="' + termsHref + '" style="color:var(--primary-ink);text-decoration:underline;">' + T.dangerLink + '</a>.';
       msgs.appendChild(dangerDiv);
     }
 
@@ -1466,6 +1476,8 @@ function resetChat() {
   
   if (welcomeMsg) welcomeMsg.style.display = 'block';
   if (backBtn) backBtn.style.display = 'none';
+  var urgentBar = document.getElementById('chatUrgent');
+  if (urgentBar) urgentBar.hidden = false;
   renderTopics();
   msgs.scrollTop = 0;
 }
