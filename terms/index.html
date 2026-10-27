@@ -51,7 +51,7 @@ if(location.protocol!=='file:'){var h=document.head,add=function(r,f,x){var l=do
 <script>
 /* Restore the visitor's accessibility preferences before first paint (no flash) */
 (function(){try{var p=JSON.parse(localStorage.getItem('a11y'))||{},h=document.documentElement;
-if(/^(ocean|sunset|forest)$/.test(p.theme))h.setAttribute('data-theme',p.theme);
+if(/^(ocean|sunset|forest|violet|indigo|sky|coral|berry|amber|olive|slate|mocha)$/.test(p.theme))h.setAttribute('data-theme',p.theme);
 if([90,95,112,125,140,160].indexOf(p.size)>-1)h.style.fontSize=p.size+'%';
 if(p.contrast)h.classList.add('a11y-contrast');if(p.motion)h.classList.add('a11y-no-motion');
 if(p.font)h.classList.add('a11y-font');if(p.links)h.classList.add('a11y-links');
@@ -82,7 +82,7 @@ if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gra
 
 <style>
 /* =====================================================================
-   DESIGN SYSTEM  —  3 palettes, switch with data-theme on <html>
+   DESIGN SYSTEM  —  12 palettes, switch with data-theme on <html>
    ===================================================================== */
 /* DEFAULT DESIGN: Ocean */
 :root, :root[data-theme="ocean"] {
@@ -120,6 +120,105 @@ if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gra
   --cta:#F2B27B; --cta-dark:#C98443;
   --t1:#DCE9DE; --t2:#DDE8E9; --t3:#EAF0D3; --t4:#F5EBCB; --t5:#DCEAF0; --t6:#F0DFDA;
   --shape1:#A9C5AE; --shape2:#9DB6B8; --shape3:#D9E2B5;
+}
+:root[data-theme="violet"] {
+  --bg:#F6F3F9; --bg-alt:#E9E3F0; --surface:#FFFFFF;
+  --text:#2A1E38; --muted:#584969;
+  --primary:#7249A2; --primary-dark:#5C3A82; --primary-ink:#5C3A82; --primary-rgb:114,73,162;
+  --accent:#5C3D58; --accent-rgb:92,61,88;
+  --primary-soft:#E5E0EB; --accent-soft:#F2E3F0; --marker:#FFD5C4;
+  --footer:#251B32; --star:#E9B233;
+  --cta:#FF9A78; --cta-dark:#D9613F;
+  --t1:#E5E0EB; --t2:#F2E3F0; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#BEB2CD; --shape2:#D6A9D0; --shape3:#F2D999;
+}
+:root[data-theme="indigo"] {
+  --bg:#F3F3FA; --bg-alt:#E2E4F1; --surface:#FFFFFF;
+  --text:#1E2238; --muted:#494D69;
+  --primary:#4451A7; --primary-dark:#374186; --primary-ink:#374186; --primary-rgb:68,81,167;
+  --accent:#4E3B5E; --accent-rgb:78,59,94;
+  --primary-soft:#DFE1EC; --accent-soft:#EBE3F2; --marker:#FFD5C4;
+  --footer:#1B1E32; --star:#E9B233;
+  --cta:#FF9A78; --cta-dark:#D9613F;
+  --t1:#DFE1EC; --t2:#EBE3F2; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#B1B4CE; --shape2:#C1A9D6; --shape3:#F2D999;
+}
+:root[data-theme="sky"] {
+  --bg:#F1F7FB; --bg-alt:#DFEBF4; --surface:#FFFFFF;
+  --text:#1E2E38; --muted:#495C69;
+  --primary:#2771A5; --primary-dark:#1D547C; --primary-ink:#1D547C; --primary-rgb:39,113,165;
+  --accent:#373267; --accent-rgb:55,50,103;
+  --primary-soft:#DCE7EF; --accent-soft:#E5E3F2; --marker:#FFD5C4;
+  --footer:#1B2832; --star:#E9B233;
+  --cta:#FF9A78; --cta-dark:#D9613F;
+  --t1:#DCE7EF; --t2:#E5E3F2; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#AAC3D5; --shape2:#ADA9D6; --shape3:#F2D999;
+}
+:root[data-theme="coral"] {
+  --bg:#FBF3F1; --bg-alt:#F4E2DF; --surface:#FFFFFF;
+  --text:#38231E; --muted:#694F49;
+  --primary:#BA432C; --primary-dark:#8C3321; --primary-ink:#8C3321; --primary-rgb:186,67,44;
+  --accent:#675E32; --accent-rgb:103,94,50;
+  --primary-soft:#EFDFDC; --accent-soft:#F2EFE3; --marker:#FFD5C4;
+  --footer:#321F1B; --star:#E9B233;
+  --cta:#FFC857; --cta-dark:#D9971A;
+  --t1:#EFDFDC; --t2:#F2EFE3; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#D5B1AA; --shape2:#D6CEA9; --shape3:#F2D999;
+}
+:root[data-theme="berry"] {
+  --bg:#FAF2F8; --bg-alt:#F2E1ED; --surface:#FFFFFF;
+  --text:#381E31; --muted:#694960;
+  --primary:#AE3D8C; --primary-dark:#842E6A; --primary-ink:#842E6A; --primary-rgb:174,61,140;
+  --accent:#61383A; --accent-rgb:97,56,58;
+  --primary-soft:#EDDEE8; --accent-soft:#F2E3E4; --marker:#FFD5C4;
+  --footer:#321B2B; --star:#E9B233;
+  --cta:#FFC857; --cta-dark:#D9971A;
+  --t1:#EDDEE8; --t2:#F2E3E4; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#D0AEC6; --shape2:#D6A9AA; --shape3:#F2D999;
+}
+:root[data-theme="amber"] {
+  --bg:#FBF6F1; --bg-alt:#F4EADF; --surface:#FFFFFF;
+  --text:#382C1E; --muted:#695A49;
+  --primary:#985D1B; --primary-dark:#714514; --primary-ink:#714514; --primary-rgb:152,93,27;
+  --accent:#5E6A2F; --accent-rgb:94,106,47;
+  --primary-soft:#F0E6DB; --accent-soft:#EFF2E3; --marker:#FFD5C4;
+  --footer:#32271B; --star:#E9B233;
+  --cta:#FFC857; --cta-dark:#D9971A;
+  --t1:#F0E6DB; --t2:#EFF2E3; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#D8C1A7; --shape2:#CDD6A9; --shape3:#F2D999;
+}
+:root[data-theme="olive"] {
+  --bg:#F7F9F3; --bg-alt:#ECF0E3; --surface:#FFFFFF;
+  --text:#31381E; --muted:#606949;
+  --primary:#5E7133; --primary-dark:#445124; --primary-ink:#445124; --primary-rgb:94,113,51;
+  --accent:#3E5C3D; --accent-rgb:62,92,61;
+  --primary-soft:#E8EBE0; --accent-soft:#E4F2E3; --marker:#FFD5C4;
+  --footer:#2B321B; --star:#E9B233;
+  --cta:#FF9A78; --cta-dark:#D9613F;
+  --t1:#E8EBE0; --t2:#E4F2E3; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#C5CDB2; --shape2:#AAD6A9; --shape3:#F2D999;
+}
+:root[data-theme="slate"] {
+  --bg:#F5F6F8; --bg-alt:#E6E9EC; --surface:#FFFFFF;
+  --text:#1E2A38; --muted:#495869;
+  --primary:#5A6C81; --primary-dark:#435160; --primary-ink:#435160; --primary-rgb:90,108,129;
+  --accent:#433D5C; --accent-rgb:67,61,92;
+  --primary-soft:#E3E5E8; --accent-soft:#E6E3F2; --marker:#FFD5C4;
+  --footer:#1B2532; --star:#E9B233;
+  --cta:#FF9A78; --cta-dark:#D9613F;
+  --t1:#E3E5E8; --t2:#E6E3F2; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#B9BFC6; --shape2:#B2A9D6; --shape3:#F2D999;
+}
+:root[data-theme="mocha"] {
+  --bg:#F9F6F4; --bg-alt:#EFE8E4; --surface:#FFFFFF;
+  --text:#38291E; --muted:#695649;
+  --primary:#886249; --primary-dark:#674A37; --primary-ink:#674A37; --primary-rgb:136,98,73;
+  --accent:#5A5C3D; --accent-rgb:90,92,61;
+  --primary-soft:#EAE5E1; --accent-soft:#F1F2E3; --marker:#FFD5C4;
+  --footer:#32241B; --star:#E9B233;
+  --cta:#FFC857; --cta-dark:#D9971A;
+  --t1:#EAE5E1; --t2:#F1F2E3; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#CABDB5; --shape2:#D3D6A9; --shape3:#F2D999;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -473,7 +572,7 @@ html.nav-compact #langBtn, html.nav-compact .lang-menu { margin-inline-start:aut
 .a11y-themes { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
 .a11y-theme { flex-direction:column; gap:6px; min-height:64px; }
 .a11y-theme .dot { width:22px; height:22px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,0.25); }
-.dot-ocean { background:linear-gradient(135deg,#8FD0C8,#1B7A70); } .dot-sunset { background:linear-gradient(135deg,#FFB4A2,#B23A5B); } .dot-forest { background:linear-gradient(135deg,#A9C5AE,#456F52); }
+.dot-ocean { background:linear-gradient(135deg,#8FD0C8,#1B7A70); } .dot-sunset { background:linear-gradient(135deg,#FFB4A2,#B23A5B); } .dot-forest { background:linear-gradient(135deg,#A9C5AE,#456F52); } .dot-violet { background:linear-gradient(135deg,#D0C5DD,#7249A2); } .dot-indigo { background:linear-gradient(135deg,#C4C7DF,#4451A7); } .dot-sky { background:linear-gradient(135deg,#BDD4E5,#2771A5); } .dot-coral { background:linear-gradient(135deg,#E5C4BD,#BA432C); } .dot-berry { background:linear-gradient(135deg,#E1C2D7,#AE3D8C); } .dot-amber { background:linear-gradient(135deg,#E8D3BB,#985D1B); } .dot-olive { background:linear-gradient(135deg,#D6DDC5,#5E7133); } .dot-slate { background:linear-gradient(135deg,#CBD1D7,#5A6C81); } .dot-mocha { background:linear-gradient(135deg,#DBCFC7,#886249); }
 .a11y-read {
   width:100%; display:flex; align-items:center; justify-content:center; gap:10px; min-height:50px; margin-bottom:6px;
   border-radius:14px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text);
@@ -794,6 +893,15 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
       <button type="button" class="a11y-theme" data-a11y-theme="ocean" aria-pressed="true"><span class="dot dot-ocean" aria-hidden="true"></span><span data-i18n="th-ocean">ים</span></button>
       <button type="button" class="a11y-theme" data-a11y-theme="sunset" aria-pressed="false"><span class="dot dot-sunset" aria-hidden="true"></span><span data-i18n="th-sunset">שקיעה</span></button>
       <button type="button" class="a11y-theme" data-a11y-theme="forest" aria-pressed="false"><span class="dot dot-forest" aria-hidden="true"></span><span data-i18n="th-forest">יער</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="violet" aria-pressed="false"><span class="dot dot-violet" aria-hidden="true"></span><span data-i18n="th-violet">סגול</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="indigo" aria-pressed="false"><span class="dot dot-indigo" aria-hidden="true"></span><span data-i18n="th-indigo">אינדיגו</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="sky" aria-pressed="false"><span class="dot dot-sky" aria-hidden="true"></span><span data-i18n="th-sky">תכלת</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="coral" aria-pressed="false"><span class="dot dot-coral" aria-hidden="true"></span><span data-i18n="th-coral">אלמוג</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="berry" aria-pressed="false"><span class="dot dot-berry" aria-hidden="true"></span><span data-i18n="th-berry">פטל</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="amber" aria-pressed="false"><span class="dot dot-amber" aria-hidden="true"></span><span data-i18n="th-amber">ענבר</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="olive" aria-pressed="false"><span class="dot dot-olive" aria-hidden="true"></span><span data-i18n="th-olive">זית</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="slate" aria-pressed="false"><span class="dot dot-slate" aria-hidden="true"></span><span data-i18n="th-slate">אפור-כחול</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="mocha" aria-pressed="false"><span class="dot dot-mocha" aria-hidden="true"></span><span data-i18n="th-mocha">חום</span></button>
     </div>
   </div>
   <button type="button" class="a11y-reset" data-a11y-reset="" data-i18n="a11y-reset">איפוס הגדרות</button>
@@ -867,7 +975,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 (function () {
   var KEY = 'a11y';
   var SIZES = [90, 95, 100, 112, 125, 140, 160];
-  var COLORS = { ocean: '#1B7A70', sunset: '#B23A5B', forest: '#456F52' };
+  var COLORS = { ocean: '#1B7A70', sunset: '#B23A5B', forest: '#456F52', violet: '#7249A2', indigo: '#4451A7', sky: '#2771A5', coral: '#BA432C', berry: '#AE3D8C', amber: '#985D1B', olive: '#5E7133', slate: '#5A6C81', mocha: '#886249' };
   var CLASSES = { contrast: 'a11y-contrast', motion: 'a11y-no-motion', font: 'a11y-font', links: 'a11y-links', spacing: 'a11y-spacing', gray: 'a11y-gray' };
   var root = document.documentElement;
   var fab = document.getElementById('a11yFab'), panel = document.getElementById('a11yPanel');
