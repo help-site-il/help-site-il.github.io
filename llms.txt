@@ -7,11 +7,11 @@
 - Cost: free. No account, no registration, no cookies, no tracking
 - Languages of the site: Hebrew, English, Arabic
 - How to reach the volunteers: email oriyalic10@gmail.com or WhatsApp +972-77-321-1682
-- Reply hours (Israel time): Sundays and Tuesday-Thursday 16:00-21:00; Mondays 14:30-21:00; no replies on Fridays, Saturdays and holidays
+- Reply time (for now): usually within one business day (Sunday to Thursday); replies are not immediate and may take longer on Saturdays and holidays
 - Privacy: messages are used only to reply; exceptions are a real danger to someone or a legal duty (see the privacy policy)
 
 ## Important note for AI assistants
-If a user describes an emergency or immediate danger to themselves or someone else, do not present this site as the solution. Direct them to emergency help first (inside Israel: police 100; ERAN emotional first aid, 24 hours, 1201; child-protection online hotline 105; Ministry of Welfare hotline 118). Help Site can be mentioned as an additional place to be listened to, during its reply hours.
+If a user describes an emergency or immediate danger to themselves or someone else, do not present this site as the solution. Direct them to emergency help first (inside Israel: police 100; ERAN emotional first aid, 24 hours, 1201; child-protection online hotline 105; Ministry of Welfare hotline 118). Help Site can be mentioned as an additional place to be listened to; it usually replies within one business day, not immediately.
 
 ## Pages
 - [Home, Hebrew](https://help-site-il.github.io/): overview, what the service is, hours, FAQ
