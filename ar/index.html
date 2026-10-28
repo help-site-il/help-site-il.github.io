@@ -585,6 +585,13 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 .faq-item.open .faq-icon { transform:rotate(45deg); background:var(--primary); color:#fff; }
 
 /* CTA */
+.thanks-section { background:var(--surface); padding:56px 24px 72px; text-align:center; }
+.thanks-section .sec-head { margin-bottom:24px; }
+.thanks-section .section-title { font-size:clamp(1.4rem,2.4vw,1.9rem); margin-bottom:0; }
+.thanks-list { display:flex; flex-wrap:wrap; gap:16px; justify-content:center; }
+.thanks-card { background:var(--bg); border:1px solid var(--primary-soft); border-radius:22px; padding:22px 26px; max-width:460px; text-align:start; }
+.thanks-name { font-size:1.1rem; font-weight:800; color:var(--primary-ink); margin:0 0 6px; }
+.thanks-desc { margin:0; color:var(--muted); line-height:1.7; }
 .cta-section { background:var(--surface); text-align:center; padding-top:72px; }
 .cta-section .section-inner {
   max-width:900px; position:relative; overflow:hidden; padding:72px 32px;
@@ -1357,6 +1364,18 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <h2><span data-i18n="cta-title">هل أنت مستعد للبدء؟</span></h2>
     <p><span data-i18n="cta-sub">هنا من يصغي إليك مهما كان ما يشغلك. يمكنك أن تبدأ في أي وقت. 💙</span></p>
     <button type="button" onclick="toggleChat()" class="btn-white"><span data-i18n="cta-btn">💬 ابدأ المحادثة الآن</span></button>
+  </div>
+</section>
+
+<section class="thanks-section" id="thanks" aria-labelledby="thanksTitle">
+  <div class="section-inner">
+    <div class="sec-head text-center">
+      <span class="section-tag">شكرًا</span>
+      <h2 class="section-title" id="thanksTitle">شكرًا لمن ساعدنا</h2>
+    </div>
+    <div class="thanks-list">
+      <div class="thanks-card"><p class="thanks-name">أميتاي برومر</p><p class="thanks-desc">يرافق الموقع كشخص بالغ ذي خبرة: يقدّم لنا الاستشارة وملاحظات على الموقع، ويساعدنا في التواصل مع مختصين، ومتاح دائمًا لإسداء النصح.</p></div>
+    </div>
   </div>
 </section>
 
