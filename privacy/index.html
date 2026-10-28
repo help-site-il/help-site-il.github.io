@@ -51,9 +51,9 @@ if(location.protocol!=='file:'){var h=document.head,add=function(r,f,x){var l=do
 <script>
 /* Restore the visitor's accessibility preferences before first paint (no flash) */
 (function(){try{var p=JSON.parse(localStorage.getItem('a11y'))||{},h=document.documentElement;
-if(/^(ocean|sunset|forest|violet|indigo|sky|coral|berry|amber|olive|slate|mocha)$/.test(p.theme))h.setAttribute('data-theme',p.theme);
+if(/^(ocean|sunset|forest|violet|indigo|sky|coral|berry|amber|olive|slate|mocha|mint|honey|lavender|graphite|peach|aqua|rose|midnight|spring|paper|cvd)$/.test(p.theme))h.setAttribute('data-theme',p.theme);
 if([90,95,112,125,140,160].indexOf(p.size)>-1)h.style.fontSize=p.size+'%';
-if(p.contrast)h.classList.add('a11y-contrast');if(p.motion)h.classList.add('a11y-no-motion');
+if(p.contrast)h.classList.add('a11y-contrast');if(p.night&&!p.contrast)h.classList.add('a11y-night');if(p.motion)h.classList.add('a11y-no-motion');
 if(p.font)h.classList.add('a11y-font');if(p.links)h.classList.add('a11y-links');
 if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gray');}catch(e){}})();
 </script>
@@ -82,7 +82,7 @@ if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gra
 
 <style>
 /* =====================================================================
-   DESIGN SYSTEM  —  12 palettes, switch with data-theme on <html>
+   DESIGN SYSTEM  —  23 palettes + night mode, switch with data-theme on <html>
    ===================================================================== */
 /* DEFAULT DESIGN: Ocean */
 :root, :root[data-theme="ocean"] {
@@ -199,15 +199,15 @@ if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gra
   --shape1:#C5CDB2; --shape2:#AAD6A9; --shape3:#F2D999;
 }
 :root[data-theme="slate"] {
-  --bg:#F5F6F8; --bg-alt:#E6E9EC; --surface:#FFFFFF;
-  --text:#1E2A38; --muted:#495869;
-  --primary:#5A6C81; --primary-dark:#435160; --primary-ink:#435160; --primary-rgb:90,108,129;
-  --accent:#433D5C; --accent-rgb:67,61,92;
-  --primary-soft:#E3E5E8; --accent-soft:#E6E3F2; --marker:#FFD5C4;
-  --footer:#1B2532; --star:#E9B233;
+  --bg:#F1F6FA; --bg-alt:#E1EBF3; --surface:#FFFFFF;
+  --text:#1F2D3D; --muted:#46596E;
+  --primary:#50677F; --primary-dark:#3C5068; --primary-ink:#3C5068; --primary-rgb:80,103,127;
+  --accent:#3A3F66; --accent-rgb:58,63,102;
+  --primary-soft:#DCE7F1; --accent-soft:#E3E6F3; --marker:#CFE0EE;
+  --footer:#1B2838; --star:#E9B233;
   --cta:#FF9A78; --cta-dark:#D9613F;
-  --t1:#E3E5E8; --t2:#E6E3F2; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
-  --shape1:#B9BFC6; --shape2:#B2A9D6; --shape3:#F2D999;
+  --t1:#DCE7F1; --t2:#E6E3F2; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
+  --shape1:#B3C4D6; --shape2:#B2A9D6; --shape3:#F2D999;
 }
 :root[data-theme="mocha"] {
   --bg:#F9F6F4; --bg-alt:#EFE8E4; --surface:#FFFFFF;
@@ -219,6 +219,127 @@ if(p.spacing)h.classList.add('a11y-spacing');if(p.gray)h.classList.add('a11y-gra
   --cta:#FFC857; --cta-dark:#D9971A;
   --t1:#EAE5E1; --t2:#F1F2E3; --t3:#E3F3DA; --t4:#FBEFC8; --t5:#D7ECF8; --t6:#F6DDE3;
   --shape1:#CABDB5; --shape2:#D3D6A9; --shape3:#F2D999;
+}
+:root[data-theme="mint"] {
+  --bg:#F0FDF4; --bg-alt:#DDF6E6; --surface:#FFFFFF;
+  --text:#166534; --muted:#3A6B4A;
+  --primary:#15803D; --primary-dark:#166534; --primary-ink:#166534; --primary-rgb:21,128,61;
+  --accent:#0F766E; --accent-rgb:15,118,110;
+  --primary-soft:#D1F5DE; --accent-soft:#D3F3EE; --marker:#BBF7D0;
+  --footer:#15382A; --star:#E9B233;
+  --cta:#FFD27A; --cta-dark:#D9A43A;
+  --t1:#D1F5DE; --t2:#D3F3EE; --t3:#DFF5D0; --t4:#FBF0C4; --t5:#D5ECF5; --t6:#F6E0E6;
+  --shape1:#A7E3BD; --shape2:#9CD6CE; --shape3:#F2DE9C;
+}
+:root[data-theme="honey"] {
+  --bg:#FEFCE8; --bg-alt:#FBF2C6; --surface:#FFFFFF;
+  --text:#713F12; --muted:#7F5420;
+  --primary:#B45309; --primary-dark:#92400E; --primary-ink:#92400E; --primary-rgb:180,83,9;
+  --accent:#8A4B14; --accent-rgb:138,75,20;
+  --primary-soft:#FDEFC0; --accent-soft:#F5E6D0; --marker:#FDE68A;
+  --footer:#3B2A14; --star:#E9B233;
+  --cta:#FFC857; --cta-dark:#D9971A;
+  --t1:#FDEFC0; --t2:#F5E6D0; --t3:#E6F0CB; --t4:#FDE9B0; --t5:#DCEBF2; --t6:#F6DDE0;
+  --shape1:#F2D58A; --shape2:#E2BE8F; --shape3:#F7E3A1;
+}
+:root[data-theme="lavender"] {
+  --bg:#F3E8FF; --bg-alt:#E8D6FB; --surface:#FFFFFF;
+  --text:#581C87; --muted:#6A4590;
+  --primary:#7E22CE; --primary-dark:#6B21A8; --primary-ink:#6B21A8; --primary-rgb:126,34,206;
+  --accent:#5B21B6; --accent-rgb:91,33,182;
+  --primary-soft:#EBDAFB; --accent-soft:#E2DBFA; --marker:#D8B4FE;
+  --footer:#2E1065; --star:#E9B233;
+  --cta:#FFB86B; --cta-dark:#D98A36;
+  --t1:#EBDAFB; --t2:#E2DBFA; --t3:#DDF3E4; --t4:#FBEFC8; --t5:#D7E8F8; --t6:#F8DCEB;
+  --shape1:#C9A6EE; --shape2:#A8A0E8; --shape3:#F2C9A0;
+}
+:root[data-theme="graphite"] {
+  --bg:#F5F5F4; --bg-alt:#E7E5E4; --surface:#FFFFFF;
+  --text:#27272A; --muted:#52525B;
+  --primary:#3F3F46; --primary-dark:#27272A; --primary-ink:#27272A; --primary-rgb:63,63,70;
+  --accent:#52525B; --accent-rgb:82,82,91;
+  --primary-soft:#EAE8E6; --accent-soft:#EDEDEE; --marker:#E5E1DA;
+  --footer:#1F1F23; --star:#E9B233;
+  --cta:#FFB48A; --cta-dark:#D98450;
+  --t1:#EAE8E6; --t2:#EDEDEE; --t3:#E8EDE6; --t4:#F3EEDD; --t5:#E3EAEE; --t6:#F0E6E8;
+  --shape1:#D4D4D8; --shape2:#C8C8CE; --shape3:#E4DCCB;
+}
+:root[data-theme="peach"] {
+  --bg:#FFF7ED; --bg-alt:#FFEBD6; --surface:#FFFFFF;
+  --text:#431407; --muted:#7A4A32;
+  --primary:#C2410C; --primary-dark:#9A3412; --primary-ink:#9A3412; --primary-rgb:194,65,12;
+  --accent:#9F1239; --accent-rgb:159,18,57;
+  --primary-soft:#FFE3CC; --accent-soft:#FBE1E6; --marker:#FED7AA;
+  --footer:#3B1C10; --star:#E9B233;
+  --cta:#FFD08A; --cta-dark:#D9A04A;
+  --t1:#FFE3CC; --t2:#FBE1E6; --t3:#E9F0D2; --t4:#FFF0C9; --t5:#DDEBF5; --t6:#F7DDE6;
+  --shape1:#F6B98E; --shape2:#EDA3B0; --shape3:#F7DC9D;
+}
+:root[data-theme="aqua"] {
+  --bg:#ECFEFF; --bg-alt:#D3F4F8; --surface:#FFFFFF;
+  --text:#164E63; --muted:#3A6272;
+  --primary:#0E7490; --primary-dark:#155E75; --primary-ink:#155E75; --primary-rgb:14,116,144;
+  --accent:#0C4A6E; --accent-rgb:12,74,110;
+  --primary-soft:#CDF2F7; --accent-soft:#D4E7F5; --marker:#A5F3FC;
+  --footer:#11323F; --star:#E9B233;
+  --cta:#FFB08A; --cta-dark:#D9724E;
+  --t1:#CDF2F7; --t2:#D4E7F5; --t3:#DDF3E4; --t4:#FBF0C8; --t5:#CFE9F8; --t6:#F6DDE6;
+  --shape1:#9ADCE6; --shape2:#9DB9D6; --shape3:#F2D999;
+}
+:root[data-theme="rose"] {
+  --bg:#FDF3F6; --bg-alt:#F8E1E9; --surface:#FFFFFF;
+  --text:#4A1830; --muted:#7A4459;
+  --primary:#B03A68; --primary-dark:#8E2A52; --primary-ink:#8E2A52; --primary-rgb:176,58,104;
+  --accent:#7C2D4F; --accent-rgb:124,45,79;
+  --primary-soft:#F8DDE7; --accent-soft:#F1DDE8; --marker:#FBCFE0;
+  --footer:#3A1526; --star:#E9B233;
+  --cta:#FFC79A; --cta-dark:#DB9558;
+  --t1:#F8DDE7; --t2:#F1DDE8; --t3:#E6F1DA; --t4:#FCEFC9; --t5:#DCEAF6; --t6:#F9E0D6;
+  --shape1:#EFB2C6; --shape2:#D9A9C6; --shape3:#F5DB9F;
+}
+:root[data-theme="midnight"] {
+  --bg:#F1F5FD; --bg-alt:#DFE8F8; --surface:#FFFFFF;
+  --text:#14213D; --muted:#46557A;
+  --primary:#1E3A8A; --primary-dark:#172E6E; --primary-ink:#1E3A8A; --primary-rgb:30,58,138;
+  --accent:#0F2A5C; --accent-rgb:15,42,92;
+  --primary-soft:#DAE4F8; --accent-soft:#D8E2F2; --marker:#BFD2F8;
+  --footer:#0F1B3A; --star:#E9B233;
+  --cta:#FFD27A; --cta-dark:#D9A43A;
+  --t1:#DAE4F8; --t2:#D8E2F2; --t3:#DDF1E6; --t4:#FBF0C8; --t5:#D5EBF6; --t6:#F3DCEA;
+  --shape1:#A9BDEB; --shape2:#9FB0D8; --shape3:#F2D999;
+}
+:root[data-theme="spring"] {
+  --bg:#F7FEE7; --bg-alt:#E8F7C6; --surface:#FFFFFF;
+  --text:#1A2E05; --muted:#46602A;
+  --primary:#3D8208; --primary-dark:#2F6606; --primary-ink:#2F6606; --primary-rgb:61,130,8;
+  --accent:#365314; --accent-rgb:54,83,20;
+  --primary-soft:#E3F5BE; --accent-soft:#DCEFC8; --marker:#D9F99D;
+  --footer:#1D2E0B; --star:#E9B233;
+  --cta:#FFD166; --cta-dark:#D9A22E;
+  --t1:#E3F5BE; --t2:#DCEFC8; --t3:#D5F0E3; --t4:#FBF0C4; --t5:#D6EAF5; --t6:#F6E0E0;
+  --shape1:#B9E27A; --shape2:#8FCB9B; --shape3:#F2DE96;
+}
+:root[data-theme="paper"] {
+  --bg:#FAF8F3; --bg-alt:#F0EDE4; --surface:#FFFEFC;
+  --text:#2B2A28; --muted:#5C5A55;
+  --primary:#44403C; --primary-dark:#292524; --primary-ink:#292524; --primary-rgb:68,64,60;
+  --accent:#57534E; --accent-rgb:87,83,78;
+  --primary-soft:#EEEAE2; --accent-soft:#EFECE6; --marker:#E7E0D0;
+  --footer:#292524; --star:#E9B233;
+  --cta:#F2B46B; --cta-dark:#C98A3C;
+  --t1:#EEEAE2; --t2:#EFECE6; --t3:#E7EDE0; --t4:#F4EDD6; --t5:#E2E9EC; --t6:#F1E6E4;
+  --shape1:#DDD6C8; --shape2:#CFC8BA; --shape3:#E8DFC6;
+}
+:root[data-theme="cvd"] {
+  --bg:#F4F8FC; --bg-alt:#E0ECF7; --surface:#FFFFFF;
+  --text:#10202E; --muted:#425669;
+  --primary:#00629B; --primary-dark:#004A78; --primary-ink:#004A78; --primary-rgb:0,98,155;
+  --accent:#A34A00; --accent-rgb:163,74,0;
+  --primary-soft:#D6E8F6; --accent-soft:#FBE5CF; --marker:#FFD9A8;
+  --footer:#0D2236; --star:#E9B233;
+  --cta:#F5A623; --cta-dark:#C9801A;
+  --t1:#D6E8F6; --t2:#FBE5CF; --t3:#E9EEF2; --t4:#FDEFC6; --t5:#D3E5F5; --t6:#F7E6D2;
+  --shape1:#9CC6E6; --shape2:#F2BE80; --shape3:#F4E3A0;
 }
 
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -245,7 +366,7 @@ nav {
   width:calc(100% - 32px); max-width:1180px; margin:12px auto 0; min-height:68px;
   padding-inline:28px 12px;
   display:flex; justify-content:space-between; align-items:center;
-  background:rgba(255,255,255,0.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+  background:rgba(var(--surface-rgb,255,255,255),0.88); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
   border:1px solid rgba(var(--primary-rgb),0.14); border-radius:999px;
   box-shadow:0 10px 34px rgba(var(--primary-rgb),0.12);
 }
@@ -255,7 +376,7 @@ nav {
 .nav-links a { white-space:nowrap; padding:9px 16px; text-decoration:none; font-size:0.9rem; font-weight:500; color:var(--muted); border-radius:999px; transition:all 0.2s; }
 .nav-links a:hover { color:var(--primary-ink); background:var(--primary-soft); }
 .nav-cta {
-  white-space:nowrap; background:var(--cta); color:var(--text); padding:11px 26px; border-radius:999px;
+  white-space:nowrap; background:var(--cta); color:var(--on-cta,var(--text)); padding:11px 26px; border-radius:999px;
   font-weight:700; font-size:0.9rem; text-decoration:none;
   box-shadow:0 4px 0 var(--cta-dark); transition:all 0.2s;
 }
@@ -264,7 +385,7 @@ nav {
 
 /* BUTTONS */
 .btn-primary {
-  background:var(--cta); color:var(--text); padding:15px 32px; border-radius:999px;
+  background:var(--cta); color:var(--on-cta,var(--text)); padding:15px 32px; border-radius:999px;
   font-weight:700; font-size:1rem; text-decoration:none;
   box-shadow:0 5px 0 var(--cta-dark), 0 14px 28px rgba(var(--primary-rgb),0.2);
   transition:all 0.2s; display:inline-flex; align-items:center; gap:8px;
@@ -322,7 +443,7 @@ button.btn-primary, button.btn-white { border:none; font-family:inherit; cursor:
   border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;
   display:flex; align-items:center; justify-content:center;
   font-size:8rem; animation:morph 18s ease-in-out infinite;
-  box-shadow:inset 0 0 0 12px rgba(255,255,255,0.55), 0 30px 60px rgba(var(--primary-rgb),0.2);
+  box-shadow:inset 0 0 0 12px rgba(var(--surface-rgb,255,255,255),0.55), 0 30px 60px rgba(var(--primary-rgb),0.2);
 }
 @keyframes morph {
   0%,100%{border-radius:40% 60% 70% 30% / 40% 50% 60% 50%;}
@@ -477,7 +598,7 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 .cta-section h2 { color:#fff; font-size:clamp(2rem,3.4vw,3rem); font-weight:800; margin-bottom:14px; }
 .cta-section p { color:rgba(255,255,255,0.95); font-size:1.08rem; max-width:480px; margin:0 auto 36px; line-height:1.75; }
 .btn-white {
-  background:var(--cta); color:var(--text); padding:17px 44px; border-radius:999px;
+  background:var(--cta); color:var(--on-cta,var(--text)); padding:17px 44px; border-radius:999px;
   font-weight:800; font-size:1.05rem; text-decoration:none; display:inline-block;
   box-shadow:0 5px 0 var(--cta-dark), 0 16px 30px rgba(0,0,0,0.22); transition:all 0.2s;
 }
@@ -549,13 +670,14 @@ html.nav-compact #langBtn, html.nav-compact .lang-menu { margin-inline-start:aut
 .a11y-fab svg { width:28px; height:28px; }
 .a11y-panel {
   position:fixed; bottom:92px; inset-inline-start:24px; z-index:9997;
-  width:330px; max-width:calc(100vw - 32px); max-height:calc(100vh - 120px); overflow-y:auto;
+  width:330px; max-width:calc(100vw - 32px); max-height:calc(100vh - 120px); max-height:calc(100dvh - 120px); overflow-y:auto; overscroll-behavior:contain;
   background:var(--surface); color:var(--text); border-radius:28px; padding:20px;
   border:2px solid var(--primary-soft); box-shadow:0 24px 64px rgba(0,0,0,0.28); outline:none;
 }
-.a11y-head { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+.a11y-head { display:flex; justify-content:space-between; align-items:center; gap:12px; position:sticky; top:-20px; z-index:2; background:var(--surface); margin:-20px -20px 14px; padding:14px 20px 10px; border-bottom:1px solid var(--primary-soft); }
 .a11y-head h2 { font-family:'Rubik','Heebo',system-ui,-apple-system,'Segoe UI',Arial,sans-serif; font-size:1.25rem; font-weight:800; }
-.a11y-close { width:36px; height:36px; border-radius:50%; border:none; cursor:pointer; background:var(--primary-soft); color:var(--primary-ink); font-size:1rem; }
+.a11y-close { width:44px; height:44px; flex-shrink:0; border-radius:50%; border:2px solid var(--primary); cursor:pointer; background:var(--primary-soft); color:var(--primary-ink); display:flex; align-items:center; justify-content:center; padding:0; }
+.a11y-close svg { width:20px; height:20px; display:block; }
 .a11y-row { margin-bottom:14px; }
 .a11y-label { display:block; font-size:0.85rem; font-weight:700; color:var(--muted); margin-bottom:8px; }
 .a11y-size { display:flex; align-items:center; gap:10px; }
@@ -572,7 +694,14 @@ html.nav-compact #langBtn, html.nav-compact .lang-menu { margin-inline-start:aut
 .a11y-themes { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
 .a11y-theme { flex-direction:column; gap:6px; min-height:64px; }
 .a11y-theme .dot { width:22px; height:22px; border-radius:50%; border:2px solid #fff; box-shadow:0 0 0 1px rgba(0,0,0,0.25); }
-.dot-ocean { background:linear-gradient(135deg,#8FD0C8,#1B7A70); } .dot-sunset { background:linear-gradient(135deg,#FFB4A2,#B23A5B); } .dot-forest { background:linear-gradient(135deg,#A9C5AE,#456F52); } .dot-violet { background:linear-gradient(135deg,#D0C5DD,#7249A2); } .dot-indigo { background:linear-gradient(135deg,#C4C7DF,#4451A7); } .dot-sky { background:linear-gradient(135deg,#BDD4E5,#2771A5); } .dot-coral { background:linear-gradient(135deg,#E5C4BD,#BA432C); } .dot-berry { background:linear-gradient(135deg,#E1C2D7,#AE3D8C); } .dot-amber { background:linear-gradient(135deg,#E8D3BB,#985D1B); } .dot-olive { background:linear-gradient(135deg,#D6DDC5,#5E7133); } .dot-slate { background:linear-gradient(135deg,#CBD1D7,#5A6C81); } .dot-mocha { background:linear-gradient(135deg,#DBCFC7,#886249); }
+.dot-ocean { background:linear-gradient(135deg,#8FD0C8,#1B7A70); } .dot-sunset { background:linear-gradient(135deg,#FFB4A2,#B23A5B); } .dot-forest { background:linear-gradient(135deg,#A9C5AE,#456F52); } .dot-violet { background:linear-gradient(135deg,#D0C5DD,#7249A2); } .dot-indigo { background:linear-gradient(135deg,#C4C7DF,#4451A7); } .dot-sky { background:linear-gradient(135deg,#BDD4E5,#2771A5); } .dot-coral { background:linear-gradient(135deg,#E5C4BD,#BA432C); } .dot-berry { background:linear-gradient(135deg,#E1C2D7,#AE3D8C); } .dot-amber { background:linear-gradient(135deg,#E8D3BB,#985D1B); } .dot-olive { background:linear-gradient(135deg,#D6DDC5,#5E7133); } .dot-slate { background:linear-gradient(135deg,#B3C4D6,#50677F); } .dot-mocha { background:linear-gradient(135deg,#DBCFC7,#886249); } .dot-mint { background:linear-gradient(135deg,#A7E3BD,#15803D); } .dot-honey { background:linear-gradient(135deg,#F2D58A,#B45309); } .dot-lavender { background:linear-gradient(135deg,#C9A6EE,#7E22CE); } .dot-graphite { background:linear-gradient(135deg,#D4D4D8,#3F3F46); } .dot-peach { background:linear-gradient(135deg,#F6B98E,#C2410C); } .dot-aqua { background:linear-gradient(135deg,#9ADCE6,#0E7490); } .dot-rose { background:linear-gradient(135deg,#EFB2C6,#B03A68); } .dot-midnight { background:linear-gradient(135deg,#A9BDEB,#1E3A8A); } .dot-spring { background:linear-gradient(135deg,#B9E27A,#3D8208); } .dot-paper { background:linear-gradient(135deg,#DDD6C8,#44403C); } .dot-cvd { background:linear-gradient(135deg,#9CC6E6,#00629B); }
+.a11y-opt-wide { grid-column:1/-1; }
+.a11y-more { border-style:dashed; color:var(--primary-ink); }
+.a11y-more svg { width:22px; height:22px; display:block; }
+.a11y-more-panel { margin-top:6px; }
+.a11y-subhead { display:block; font-size:0.78rem; font-weight:700; color:var(--muted); margin:12px 0 6px; }
+
+.a11y-opt svg { width:18px; height:18px; flex-shrink:0; }
 .a11y-read {
   width:100%; display:flex; align-items:center; justify-content:center; gap:10px; min-height:50px; margin-bottom:6px;
   border-radius:14px; border:2px solid var(--primary-soft); background:var(--bg); color:var(--text);
@@ -586,15 +715,206 @@ html.nav-compact #langBtn, html.nav-compact .lang-menu { margin-inline-start:aut
 .footer-link-btn { background:none; border:none; padding:0; font:inherit; font-size:0.92rem; color:rgba(255,255,255,0.85); cursor:pointer; text-align:start; }
 .footer-link-btn:hover { color:#fff; text-decoration:underline; }
 @media (max-width:900px) {
-  .a11y-fab { bottom:16px; inset-inline-start:16px; width:50px; height:50px; }
-  .a11y-panel { bottom:76px; inset-inline-start:16px; padding:16px; max-height:calc(100vh - 96px); }
-  .a11y-head { margin-bottom:8px; }
+  .a11y-fab { bottom:calc(16px + env(safe-area-inset-bottom,0px)); inset-inline-start:16px; width:50px; height:50px; }
+  .a11y-panel { bottom:calc(76px + env(safe-area-inset-bottom,0px)); inset-inline-start:16px; padding:16px; max-height:calc(100vh - 100px); max-height:calc(100dvh - 100px - env(safe-area-inset-bottom,0px)); }
+  .a11y-head { top:-16px; margin:-16px -16px 8px; padding:10px 16px 8px; }
   .a11y-row { margin-bottom:10px; }
   .a11y-grid { margin-bottom:10px; gap:6px; }
   .a11y-opt { min-height:46px; }
   .a11y-read { min-height:46px; }
   .a11y-theme { min-height:58px; }
 }
+
+
+/* NIGHT MODE — opt-in from the accessibility menu. Per-palette dark tokens; every component already reads tokens, so only
+   hardcoded colours needed fixing (see --on-cta, --surface-rgb). High contrast wins: night rules never match with .a11y-contrast. */
+html.a11y-night:not(.a11y-contrast) { color-scheme:dark; }
+html.a11y-night:not(.a11y-contrast)[data-theme="ocean"] {
+  --bg:#0C1716; --bg-alt:#11201F; --surface:#162927; --surface-rgb:22,41,39;
+  --text:#EDF3F2; --muted:#B8CCCA;
+  --primary:#1C7E74; --primary-rgb:28,126,116; --primary-ink:#A3EBE3; --primary-soft:#223F3C; --accent-soft:#213038; --marker:#5C3B2D;
+  --t1:#223A37; --t2:#22323A; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#1F3735; --shape2:#1F2E37; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="sunset"] {
+  --bg:#170C0F; --bg-alt:#201115; --surface:#29161C; --surface-rgb:41,22,28;
+  --text:#F3EDEE; --muted:#CCB8BD;
+  --primary:#B83C5E; --primary-rgb:184,60,94; --primary-ink:#E3AABA; --primary-soft:#3F222A; --accent-soft:#2F2138; --marker:#5C382D;
+  --t1:#3A2622; --t2:#30223A; --t3:#223A2A; --t4:#3A3322; --t5:#222E3A; --t6:#3A222B;
+  --shape1:#371F26; --shape2:#2C1F37; --shape3:#37281F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="forest"] {
+  --bg:#0C1710; --bg-alt:#112016; --surface:#16291C; --surface-rgb:22,41,28;
+  --text:#EDF3EF; --muted:#B8CCBE;
+  --primary:#4D7C5B; --primary-rgb:77,124,91; --primary-ink:#B3DBBF; --primary-soft:#223F2B; --accent-soft:#213638; --marker:#2D5C32;
+  --t1:#223A26; --t2:#22383A; --t3:#353A22; --t4:#3A3422; --t5:#22333A; --t6:#3A2722;
+  --shape1:#1F3724; --shape2:#1F3637; --shape3:#33371F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="violet"] {
+  --bg:#110C17; --bg-alt:#181120; --surface:#1F1629; --surface-rgb:31,22,41;
+  --text:#EFEDF3; --muted:#C1B8CC;
+  --primary:#7F53B1; --primary-rgb:127,83,177; --primary-ink:#C5B2DC; --primary-soft:#2F223F; --accent-soft:#382135; --marker:#5C3B2D;
+  --t1:#2D223A; --t2:#3A2237; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#2A1F37; --shape2:#371F34; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="indigo"] {
+  --bg:#0C0E17; --bg-alt:#111320; --surface:#161929; --surface-rgb:22,25,41;
+  --text:#EDEDF3; --muted:#B8BBCC;
+  --primary:#5361B9; --primary-rgb:83,97,185; --primary-ink:#AFB5DF; --primary-soft:#22263F; --accent-soft:#2E2138; --marker:#5C3B2D;
+  --t1:#22263A; --t2:#2F223A; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#1F2237; --shape2:#2C1F37; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="sky"] {
+  --bg:#0C1317; --bg-alt:#111A20; --surface:#162229; --surface-rgb:22,34,41;
+  --text:#EDF0F3; --muted:#B8C4CC;
+  --primary:#2772A7; --primary-rgb:39,114,167; --primary-ink:#A4CDEA; --primary-soft:#22333F; --accent-soft:#232138; --marker:#5C3B2D;
+  --t1:#22303A; --t2:#25223A; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#1F2D37; --shape2:#211F37; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="coral"] {
+  --bg:#170E0C; --bg-alt:#201411; --surface:#291916; --surface-rgb:41,25,22;
+  --text:#F3EEED; --muted:#CCBBB8;
+  --primary:#BC442C; --primary-rgb:188,68,44; --primary-ink:#EAAFA4; --primary-soft:#3F2722; --accent-soft:#383421; --marker:#5C3B2D;
+  --t1:#3A2622; --t2:#3A3522; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#37231F; --shape2:#37331F; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="berry"] {
+  --bg:#170C14; --bg-alt:#20111C; --surface:#291624; --surface-rgb:41,22,36;
+  --text:#F3EDF1; --muted:#CCB8C6;
+  --primary:#B03E8E; --primary-rgb:176,62,142; --primary-ink:#E2ACD2; --primary-soft:#3F2236; --accent-soft:#382122; --marker:#5C3B2D;
+  --t1:#3A2232; --t2:#3A2224; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#371F30; --shape2:#371F20; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="amber"] {
+  --bg:#17120C; --bg-alt:#201911; --surface:#292016; --surface-rgb:41,32,22;
+  --text:#F3F0ED; --muted:#CCC2B8;
+  --primary:#9C601C; --primary-rgb:156,96,28; --primary-ink:#EEC9A0; --primary-soft:#3F3122; --accent-soft:#343821; --marker:#5C3B2D;
+  --t1:#3A2E22; --t2:#353A22; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#372C1F; --shape2:#33371F; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="olive"] {
+  --bg:#14170C; --bg-alt:#1C2011; --surface:#242916; --surface-rgb:36,41,22;
+  --text:#F1F3ED; --muted:#C6CCB8;
+  --primary:#657A37; --primary-rgb:101,122,55; --primary-ink:#CFDCB2; --primary-soft:#363F22; --accent-soft:#223821; --marker:#5C3B2D;
+  --t1:#333A22; --t2:#243A22; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#30371F; --shape2:#20371F; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="slate"] {
+  --bg:#0C1217; --bg-alt:#111920; --surface:#162029; --surface-rgb:22,32,41;
+  --text:#EDF0F3; --muted:#B8C2CC;
+  --primary:#566F88; --primary-rgb:86,111,136; --primary-ink:#B3C6DB; --primary-soft:#22303F; --accent-soft:#212438; --marker:#2D475C;
+  --t1:#222E3A; --t2:#27223A; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#1F2B37; --shape2:#241F37; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="mocha"] {
+  --bg:#17110C; --bg-alt:#201711; --surface:#291E16; --surface-rgb:41,30,22;
+  --text:#F3EFED; --muted:#CCC0B8;
+  --primary:#8B644B; --primary-rgb:139,100,75; --primary-ink:#DBC3B3; --primary-soft:#3F2D22; --accent-soft:#373821; --marker:#5C3B2D;
+  --t1:#3A2D22; --t2:#383A22; --t3:#2B3A22; --t4:#3A3422; --t5:#22313A; --t6:#3A2228;
+  --shape1:#37281F; --shape2:#36371F; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="mint"] {
+  --bg:#0C1710; --bg-alt:#112017; --surface:#16291D; --surface-rgb:22,41,29;
+  --text:#EDF3EF; --muted:#B8CCBF;
+  --primary:#15823E; --primary-rgb:21,130,62; --primary-ink:#A0EEBD; --primary-soft:#223F2D; --accent-soft:#213836; --marker:#2D5C3E;
+  --t1:#223A2B; --t2:#223A36; --t3:#2C3A22; --t4:#3A3522; --t5:#22333A; --t6:#3A2228;
+  --shape1:#1F3728; --shape2:#1F3734; --shape3:#37321F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="honey"] {
+  --bg:#17110C; --bg-alt:#201811; --surface:#291F16; --surface-rgb:41,31,22;
+  --text:#F3EFED; --muted:#CCC0B8;
+  --primary:#B65409; --primary-rgb:182,84,9; --primary-ink:#EEC2A0; --primary-soft:#3F2E22; --accent-soft:#382C21; --marker:#5C532D;
+  --t1:#3A3422; --t2:#3A3022; --t3:#333A22; --t4:#3A3422; --t5:#22323A; --t6:#3A2225;
+  --shape1:#37311F; --shape2:#372D1F; --shape3:#37321F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="lavender"] {
+  --bg:#120C17; --bg-alt:#191120; --surface:#211629; --surface-rgb:33,22,41;
+  --text:#F0EDF3; --muted:#C2B8CC;
+  --primary:#9036DE; --primary-rgb:144,54,222; --primary-ink:#CAA0EE; --primary-soft:#31223F; --accent-soft:#2A2138; --marker:#442D5C;
+  --t1:#2E223A; --t2:#27223A; --t3:#223A2A; --t4:#3A3422; --t5:#222E3A; --t6:#3A222F;
+  --shape1:#2B1F37; --shape2:#221F37; --shape3:#372B1F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="graphite"] {
+  --bg:#111113; --bg-alt:#17171A; --surface:#1E1E21; --surface-rgb:30,30,33;
+  --text:#EFEFF0; --muted:#BFBFC4;
+  --primary:#6A6A76; --primary-rgb:106,106,118; --primary-ink:#C5C5C9; --primary-soft:#2F2F32; --accent-soft:#2B2B2E; --marker:#484641;
+  --t1:#302E2C; --t2:#2C2C30; --t3:#2D302C; --t4:#302F2C; --t5:#2C2E30; --t6:#302C2D;
+  --shape1:#2A2A2D; --shape2:#2A2A2D; --shape3:#2D2C2A;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="peach"] {
+  --bg:#17100C; --bg-alt:#201611; --surface:#291C16; --surface-rgb:41,28,22;
+  --text:#F3EEED; --muted:#CCBEB8;
+  --primary:#C4420C; --primary-rgb:196,66,12; --primary-ink:#EEB7A0; --primary-soft:#3F2A22; --accent-soft:#382127; --marker:#5C472D;
+  --t1:#3A2D22; --t2:#3A2227; --t3:#343A22; --t4:#3A3322; --t5:#22303A; --t6:#3A222A;
+  --shape1:#37291F; --shape2:#371F23; --shape3:#37301F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="aqua"] {
+  --bg:#0C1517; --bg-alt:#111D20; --surface:#162529; --surface-rgb:22,37,41;
+  --text:#EDF1F3; --muted:#B8C7CC;
+  --primary:#0E7895; --primary-rgb:14,120,149; --primary-ink:#A0DDEE; --primary-soft:#22393F; --accent-soft:#213038; --marker:#2D575C;
+  --t1:#22373A; --t2:#22303A; --t3:#223A2A; --t4:#3A3522; --t5:#22313A; --t6:#3A222B;
+  --shape1:#1F3437; --shape2:#1F2B37; --shape3:#37311F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="rose"] {
+  --bg:#170C11; --bg-alt:#201117; --surface:#29161E; --surface-rgb:41,22,30;
+  --text:#F3EDEF; --muted:#CCB8C0;
+  --primary:#B63C6B; --primary-rgb:182,60,107; --primary-ink:#E3ABC1; --primary-soft:#3F222D; --accent-soft:#38212B; --marker:#5C2D40;
+  --t1:#3A222B; --t2:#3A222F; --t3:#2E3A22; --t4:#3A3422; --t5:#222F3A; --t6:#3A2922;
+  --shape1:#371F27; --shape2:#371F2E; --shape3:#37301F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="midnight"] {
+  --bg:#0C142A; --bg-alt:#111B36; --surface:#162141; --surface-rgb:22,33,65;
+  --text:#EEF0F6; --muted:#B6BFD8;
+  --primary:#4067D6; --primary-rgb:64,103,214; --primary-ink:#A8BBF0; --primary-soft:#223059; --accent-soft:#1F2B4C; --marker:#2A3C6F;
+  --t1:#222F49; --t2:#223149; --t3:#224934; --t4:#494122; --t5:#223C49; --t6:#49223A;
+  --shape1:#212C45; --shape2:#212C45; --shape3:#453B21;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="spring"] {
+  --bg:#11170C; --bg-alt:#182011; --surface:#1F2916; --surface-rgb:31,41,22;
+  --text:#EFF3ED; --muted:#C1CCB8;
+  --primary:#3E8408; --primary-rgb:62,132,8; --primary-ink:#C2EEA0; --primary-soft:#2F3F22; --accent-soft:#2E3821; --marker:#4C5C2D;
+  --t1:#323A22; --t2:#2E3A22; --t3:#223A2E; --t4:#3A3522; --t5:#22313A; --t6:#3A2222;
+  --shape1:#2E371F; --shape2:#1F3724; --shape3:#37321F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="paper"] {
+  --bg:#131211; --bg-alt:#1A1917; --surface:#21201E; --surface-rgb:33,32,30;
+  --text:#F0F0EF; --muted:#C4C2BF;
+  --primary:#726B65; --primary-rgb:114,107,101; --primary-ink:#C9C7C5; --primary-soft:#32302F; --accent-soft:#2E2D2B; --marker:#484641;
+  --t1:#302F2C; --t2:#302F2C; --t3:#2E302C; --t4:#302F2C; --t5:#2C2F30; --t6:#302D2C;
+  --shape1:#2D2C2A; --shape2:#2D2C2A; --shape3:#2D2C2A;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast)[data-theme="cvd"] {
+  --bg:#0C1317; --bg-alt:#111B20; --surface:#162229; --surface-rgb:22,34,41;
+  --text:#EDF1F3; --muted:#B8C4CC;
+  --primary:#0072B4; --primary-rgb:0,114,180; --primary-ink:#A0D1EE; --primary-soft:#22343F; --accent-soft:#382C21; --marker:#5C482D;
+  --t1:#222F3A; --t2:#3A2E22; --t3:#222F3A; --t4:#3A3422; --t5:#222F3A; --t6:#3A2F22;
+  --shape1:#1F2D37; --shape2:#372C1F; --shape3:#37331F;
+  --on-cta:#1A1F22;
+}
+html.a11y-night:not(.a11y-contrast) .a11y-theme .dot { border-color:var(--surface); }
+html.a11y-night:not(.a11y-contrast) img { filter:brightness(.92); }
 
 /* ACCESSIBILITY MODES (toggled from the menu) */
 :root.a11y-contrast[data-theme] {
@@ -655,7 +975,7 @@ html.a11y-gray { filter:grayscale(1); }
 /* SKIP LINK */
 .skip-link {
   position:absolute; inset-inline-start:8px; top:-80px; z-index:100000;
-  background:#fff; color:var(--primary-ink); font-weight:700; text-decoration:none;
+  background:var(--surface); color:var(--primary-ink); font-weight:700; text-decoration:none;
   padding:10px 18px; border-radius:14px; box-shadow:0 4px 20px rgba(0,0,0,0.2);
 }
 .skip-link:focus { top:8px; }
@@ -856,7 +1176,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 <div class="a11y-panel" id="a11yPanel" role="dialog" aria-labelledby="a11yTitle" tabindex="-1" hidden="">
   <div class="a11y-head">
     <h2 id="a11yTitle" data-i18n="a11y-title">נגישות</h2>
-    <button type="button" class="a11y-close" data-a11y-close="" data-i18n-aria="chat-close" aria-label="סגור">✕</button>
+    <button type="button" class="a11y-close" data-a11y-close="" data-i18n-aria="chat-close" aria-label="סגור"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
   </div>
   <div class="a11y-row">
     <span class="a11y-label" data-i18n="a11y-text">גודל טקסט</span>
@@ -873,6 +1193,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <button type="button" class="a11y-opt" data-a11y-toggle="links" aria-pressed="false" data-i18n="a11y-links">הדגש קישורים</button>
     <button type="button" class="a11y-opt" data-a11y-toggle="spacing" aria-pressed="false" data-i18n="a11y-spacing">ריווח טקסט מוגדל</button>
     <button type="button" class="a11y-opt" data-a11y-toggle="gray" aria-pressed="false" data-i18n="a11y-gray">גווני אפור</button>
+    <button type="button" class="a11y-opt a11y-opt-wide" data-a11y-toggle="night" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg><span>מצב לילה</span></button>
   </div>
   <button type="button" class="a11y-read" id="a11yRead" aria-pressed="false" hidden="">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4Z"></path><path d="M16.5 8.5a5 5 0 0 1 0 7"></path></svg>
@@ -884,18 +1205,48 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   <div class="a11y-row">
     <span class="a11y-label" data-i18n="a11y-colors">צבעי האתר</span>
     <div class="a11y-themes" role="group" data-i18n-aria="a11y-colors" aria-label="צבעי האתר">
-      <button type="button" class="a11y-theme" data-a11y-theme="ocean" aria-pressed="true"><span class="dot dot-ocean" aria-hidden="true"></span><span data-i18n="th-ocean">ים</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="sunset" aria-pressed="false"><span class="dot dot-sunset" aria-hidden="true"></span><span data-i18n="th-sunset">שקיעה</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="ocean" aria-pressed="false"><span class="dot dot-ocean" aria-hidden="true"></span><span data-i18n="th-ocean">ים</span></button>
       <button type="button" class="a11y-theme" data-a11y-theme="forest" aria-pressed="false"><span class="dot dot-forest" aria-hidden="true"></span><span data-i18n="th-forest">יער</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="violet" aria-pressed="false"><span class="dot dot-violet" aria-hidden="true"></span><span data-i18n="th-violet">סגול</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="indigo" aria-pressed="false"><span class="dot dot-indigo" aria-hidden="true"></span><span data-i18n="th-indigo">אינדיגו</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="sky" aria-pressed="false"><span class="dot dot-sky" aria-hidden="true"></span><span data-i18n="th-sky">תכלת</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="coral" aria-pressed="false"><span class="dot dot-coral" aria-hidden="true"></span><span data-i18n="th-coral">אלמוג</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="berry" aria-pressed="false"><span class="dot dot-berry" aria-hidden="true"></span><span data-i18n="th-berry">פטל</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="amber" aria-pressed="false"><span class="dot dot-amber" aria-hidden="true"></span><span data-i18n="th-amber">ענבר</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="olive" aria-pressed="false"><span class="dot dot-olive" aria-hidden="true"></span><span data-i18n="th-olive">זית</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="slate" aria-pressed="false"><span class="dot dot-slate" aria-hidden="true"></span><span data-i18n="th-slate">אפור-כחול</span></button>
-      <button type="button" class="a11y-theme" data-a11y-theme="mocha" aria-pressed="false"><span class="dot dot-mocha" aria-hidden="true"></span><span data-i18n="th-mocha">חום</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="sunset" aria-pressed="false"><span class="dot dot-sunset" aria-hidden="true"></span><span data-i18n="th-sunset">שקיעה</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="lavender" aria-pressed="false"><span class="dot dot-lavender" aria-hidden="true"></span><span data-i18n="th-lavender">לבנדר</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="mint" aria-pressed="false"><span class="dot dot-mint" aria-hidden="true"></span><span data-i18n="th-mint">מנטה</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="paper" aria-pressed="false"><span class="dot dot-paper" aria-hidden="true"></span><span data-i18n="th-paper">נייר</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="midnight" aria-pressed="false"><span class="dot dot-midnight" aria-hidden="true"></span><span data-i18n="th-midnight">כחול חצות</span></button>
+      <button type="button" class="a11y-theme" data-a11y-theme="slate" aria-pressed="false"><span class="dot dot-slate" aria-hidden="true"></span><span data-i18n="th-slate">ענן</span></button>
+      <button type="button" class="a11y-theme a11y-more" id="a11yMore" aria-expanded="false" aria-controls="a11yMorePanel" data-more="עוד צבעים" data-less="פחות צבעים"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/></svg><span>עוד צבעים</span></button>
+    </div>
+    <div class="a11y-more-panel" id="a11yMorePanel" hidden>
+      <div role="group" aria-labelledby="a11yG-warm"><span class="a11y-subhead" id="a11yG-warm">חמים</span>
+        <div class="a11y-themes">
+          <button type="button" class="a11y-theme" data-a11y-theme="coral" aria-pressed="false"><span class="dot dot-coral" aria-hidden="true"></span><span data-i18n="th-coral">אלמוג</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="peach" aria-pressed="false"><span class="dot dot-peach" aria-hidden="true"></span><span data-i18n="th-peach">אפרסק</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="amber" aria-pressed="false"><span class="dot dot-amber" aria-hidden="true"></span><span data-i18n="th-amber">ענבר</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="honey" aria-pressed="false"><span class="dot dot-honey" aria-hidden="true"></span><span data-i18n="th-honey">שמנת ודבש</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="mocha" aria-pressed="false"><span class="dot dot-mocha" aria-hidden="true"></span><span data-i18n="th-mocha">חום</span></button>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="a11yG-pink"><span class="a11y-subhead" id="a11yG-pink">ורוד וסגול</span>
+        <div class="a11y-themes">
+          <button type="button" class="a11y-theme" data-a11y-theme="rose" aria-pressed="false"><span class="dot dot-rose" aria-hidden="true"></span><span data-i18n="th-rose">ורוד עתיק</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="berry" aria-pressed="false"><span class="dot dot-berry" aria-hidden="true"></span><span data-i18n="th-berry">פטל</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="violet" aria-pressed="false"><span class="dot dot-violet" aria-hidden="true"></span><span data-i18n="th-violet">סגול</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="indigo" aria-pressed="false"><span class="dot dot-indigo" aria-hidden="true"></span><span data-i18n="th-indigo">אינדיגו</span></button>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="a11yG-cool"><span class="a11y-subhead" id="a11yG-cool">כחול וירוק</span>
+        <div class="a11y-themes">
+          <button type="button" class="a11y-theme" data-a11y-theme="sky" aria-pressed="false"><span class="dot dot-sky" aria-hidden="true"></span><span data-i18n="th-sky">תכלת</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="aqua" aria-pressed="false"><span class="dot dot-aqua" aria-hidden="true"></span><span data-i18n="th-aqua">אקווה</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="spring" aria-pressed="false"><span class="dot dot-spring" aria-hidden="true"></span><span data-i18n="th-spring">ירוק אביב</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="olive" aria-pressed="false"><span class="dot dot-olive" aria-hidden="true"></span><span data-i18n="th-olive">זית</span></button>
+        </div>
+      </div>
+      <div role="group" aria-labelledby="a11yG-neutral"><span class="a11y-subhead" id="a11yG-neutral">ניטרלי ונגיש</span>
+        <div class="a11y-themes">
+          <button type="button" class="a11y-theme" data-a11y-theme="graphite" aria-pressed="false"><span class="dot dot-graphite" aria-hidden="true"></span><span data-i18n="th-graphite">גרפיט</span></button>
+          <button type="button" class="a11y-theme" data-a11y-theme="cvd" aria-pressed="false" aria-label="כחול וכתום – מותאם לעיוורי צבעים"><span class="dot dot-cvd" aria-hidden="true"></span><span data-i18n="th-cvd">כחול וכתום</span></button>
+        </div>
+      </div>
     </div>
   </div>
   <button type="button" class="a11y-reset" data-a11y-reset="" data-i18n="a11y-reset">איפוס הגדרות</button>
@@ -904,9 +1255,9 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 <!-- AI CHAT WIDGET -->
 
 <style>
-.ai-msg { background:white; padding:10px 14px; border-radius:18px; border-end-start-radius:4px; font-size:0.85rem; line-height:1.6; box-shadow:0 2px 8px rgba(var(--primary-rgb),0.08); max-width:90%; align-self:flex-start; }
+.ai-msg { background:var(--surface); padding:10px 14px; border-radius:18px; border-end-start-radius:4px; font-size:0.85rem; line-height:1.6; box-shadow:0 2px 8px rgba(var(--primary-rgb),0.08); max-width:90%; align-self:flex-start; }
 .user-msg { background:linear-gradient(135deg,var(--primary),var(--accent)); color:white; padding:10px 14px; border-radius:18px; border-end-end-radius:4px; font-size:0.85rem; line-height:1.6; max-width:90%; align-self:flex-end; }
-.typing { display:flex; gap:4px; padding:10px 14px; background:white; border-radius:18px; border-end-start-radius:4px; width:60px; box-shadow:0 2px 8px rgba(var(--primary-rgb),0.08); }
+.typing { display:flex; gap:4px; padding:10px 14px; background:var(--surface); border-radius:18px; border-end-start-radius:4px; width:60px; box-shadow:0 2px 8px rgba(var(--primary-rgb),0.08); }
 .typing span { width:8px; height:8px; border-radius:50%; background:var(--accent); animation:typingDot 1.2s infinite; }
 .typing span:nth-child(2) { animation-delay:0.2s; }
 .typing span:nth-child(3) { animation-delay:0.4s; }
@@ -969,8 +1320,9 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 (function () {
   var KEY = 'a11y';
   var SIZES = [90, 95, 100, 112, 125, 140, 160];
-  var COLORS = { ocean: '#1B7A70', sunset: '#B23A5B', forest: '#456F52', violet: '#7249A2', indigo: '#4451A7', sky: '#2771A5', coral: '#BA432C', berry: '#AE3D8C', amber: '#985D1B', olive: '#5E7133', slate: '#5A6C81', mocha: '#886249' };
-  var CLASSES = { contrast: 'a11y-contrast', motion: 'a11y-no-motion', font: 'a11y-font', links: 'a11y-links', spacing: 'a11y-spacing', gray: 'a11y-gray' };
+  var COLORS = {'ocean': '#1B7A70', 'sunset': '#B23A5B', 'forest': '#456F52', 'violet': '#7249A2', 'indigo': '#4451A7', 'sky': '#2771A5', 'coral': '#BA432C', 'berry': '#AE3D8C', 'amber': '#985D1B', 'olive': '#5E7133', 'slate': '#50677F', 'mocha': '#886249', 'mint': '#15803D', 'honey': '#B45309', 'lavender': '#7E22CE', 'graphite': '#3F3F46', 'peach': '#C2410C', 'aqua': '#0E7490', 'rose': '#B03A68', 'midnight': '#1E3A8A', 'spring': '#3D8208', 'paper': '#44403C', 'cvd': '#00629B'};
+  var NIGHT_BG = {'ocean': '#0C1716', 'sunset': '#170C0F', 'forest': '#0C1710', 'violet': '#110C17', 'indigo': '#0C0E17', 'sky': '#0C1317', 'coral': '#170E0C', 'berry': '#170C14', 'amber': '#17120C', 'olive': '#14170C', 'slate': '#0C1217', 'mocha': '#17110C', 'mint': '#0C1710', 'honey': '#17110C', 'lavender': '#120C17', 'graphite': '#111113', 'peach': '#17100C', 'aqua': '#0C1517', 'rose': '#170C11', 'midnight': '#0C142A', 'spring': '#11170C', 'paper': '#131211', 'cvd': '#0C1317'};
+  var CLASSES = { contrast: 'a11y-contrast', motion: 'a11y-no-motion', font: 'a11y-font', links: 'a11y-links', spacing: 'a11y-spacing', gray: 'a11y-gray', night: 'a11y-night' };
   var root = document.documentElement;
   var fab = document.getElementById('a11yFab'), panel = document.getElementById('a11yPanel');
   if (!fab || !panel) return;
@@ -986,7 +1338,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     var theme = COLORS[state.theme] ? state.theme : 'ocean';
     root.setAttribute('data-theme', theme);
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute('content', COLORS[theme]);
+    if (meta) meta.setAttribute('content', (state.night && !state.contrast) ? NIGHT_BG[theme] : COLORS[theme]);
 
     panel.querySelectorAll('[data-a11y-toggle]').forEach(function (b) {
       b.setAttribute('aria-pressed', state[b.getAttribute('data-a11y-toggle')] ? 'true' : 'false');
@@ -1032,7 +1384,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   panel.querySelectorAll('[data-a11y-toggle]').forEach(function (b) {
     b.addEventListener('click', function () {
       var k = b.getAttribute('data-a11y-toggle');
-      if (state[k]) delete state[k]; else state[k] = true;
+      if (state[k]) delete state[k]; else { state[k] = true; if (k === 'night') delete state.contrast; if (k === 'contrast') delete state.night; }
       save(); apply();
     });
   });
@@ -1043,6 +1395,15 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
       save(); apply();
     });
   });
+  function setMore(open) {
+    var mp = document.getElementById('a11yMorePanel'), mb = document.getElementById('a11yMore');
+    if (!mp || !mb) return;
+    mp.hidden = !open; mb.setAttribute('aria-expanded', open ? 'true' : 'false');
+    mb.querySelector('span').textContent = mb.getAttribute(open ? 'data-less' : 'data-more');
+  }
+  var moreBtn = document.getElementById('a11yMore');
+  if (moreBtn) moreBtn.addEventListener('click', function () { setMore(document.getElementById('a11yMorePanel').hidden); });
+  if (state.theme && document.querySelector('#a11yMorePanel [data-a11y-theme="' + state.theme + '"]')) setMore(true);
   panel.querySelector('[data-a11y-reset]').addEventListener('click', function () { state = {}; save(); apply(); });
 
   /* ---- Read page aloud (browser speech synthesis; hidden where unsupported) ---- */
