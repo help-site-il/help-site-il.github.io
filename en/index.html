@@ -629,8 +629,6 @@ footer {
 .footer-col a:hover { color:#fff; text-decoration:underline; }
 .footer-grid > * { min-width:0; }
 .footer-col a, .footer-col span { overflow-wrap:anywhere; }
-.footer-credit { max-width:1100px; margin:0 auto 16px; font-size:0.85rem; opacity:0.9; }
-.footer-credit strong { font-weight:700; }
 .footer-bottom { max-width:1100px; margin:0 auto; padding-top:20px; border-top:1px solid rgba(255,255,255,0.12); display:flex; justify-content:space-between; align-items:center; gap:12px; font-size:0.85rem; }
 
 /* BUTTONS THAT USED TO BE LINKS / KEYBOARD FOCUS */
@@ -661,6 +659,8 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid v
 .mobile-menu li a { display:block; padding:14px 18px; min-height:48px; border-radius:16px; font-weight:600; font-size:1.05rem; color:var(--text); text-decoration:none; }
 .mobile-menu li a:hover, .mobile-menu li a:focus-visible { background:var(--primary-soft); color:var(--primary-ink); }
 .mobile-menu .mobile-cta { display:flex; justify-content:center; width:100%; margin-top:8px; }
+/* mobile/compact nav: menu button on the start side (right in he/ar, left in en); language switch stays at the end */
+.nav-toggle { order:-1; margin-inline-end:10px; }
 @media (max-width:900px) { .nav-toggle { display:flex; } .nav-cta { display:none; } #langBtn, .lang-menu { margin-inline-start:auto !important; } }
 html.nav-tight .lang-name { display:none; }
 html.nav-tighter .nav-logo-emoji { display:none; }
@@ -1071,7 +1071,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   footer { padding:56px 20px 24px; border-radius:40px 40px 0 0; margin-top:-40px; }
   .footer-grid { grid-template-columns:1fr 1fr; gap:24px; }
   .footer-bottom { flex-direction:column; gap:8px; text-align:center; }
-  .footer-credit { text-align:center; }
   #chatWindow { width:calc(100vw - 48px) !important; max-width:340px; }
   #chatWidget { inset-inline-end:16px !important; bottom:16px !important; }
 }
@@ -1139,7 +1138,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <div class="hero-profile">
       <div class="profile-avatar" aria-hidden="true">😊</div>
       <div class="profile-info">
-        <div class="name" data-i18n="profile-name">I'm Uriah, 13 years old. My dream is to support every child in the world.</div>
+        <div class="name" data-i18n="profile-name">I'm Uriah, <span id="uriahAge">14</span> years old. My dream is to support every child in the world.</div>
         <div class="desc" data-i18n="profile-desc">Here to help 💙</div>
       </div>
       <div class="online-dot"></div>
@@ -1402,7 +1401,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
   </div>
 </div>
     <div class="footer-legal"><a href="privacy/" data-i18n="foot-privacy">Privacy policy</a><span aria-hidden="true">·</span><a href="terms/" data-i18n="foot-terms">Terms of use</a><span aria-hidden="true">·</span><a href="accessibility/" data-i18n="foot-accessibility">Accessibility statement</a></div>
-    <p class="footer-credit">Advice and help developing the site: <strong>Amitai Brumer</strong></p>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© Uriah. All rights reserved.</span>
     <span data-i18n="foot-copy2">🌟 Here to listen and make room for whatever is on your mind</span>
@@ -2260,4 +2258,19 @@ function removeTyping() {
 
 
 
-<script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script></body></html>
+<script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script><script>
+/* Age in the intro card: updates itself on 23 Av (Hebrew calendar, computed in the visitor's browser). Born 23 Av 5772. */
+(function () {
+  try {
+    var el = document.getElementById('uriahAge'); if (!el) return;
+    var parts = new Intl.DateTimeFormat('en-u-ca-hebrew', { year: 'numeric', month: 'long', day: 'numeric' }).formatToParts(new Date());
+    var y = 0, m = '', d = 0;
+    parts.forEach(function (p) { if (p.type === 'year') y = parseInt(p.value, 10); else if (p.type === 'month') m = p.value; else if (p.type === 'day') d = parseInt(p.value, 10); });
+    if (!y || !m || !d) return;
+    var passed = (m === 'Elul') || (m === 'Av' && d >= 23);
+    var age = y - 5772 - (passed ? 0 : 1);
+    if (age >= 13 && age <= 40) el.textContent = String(age);
+  } catch (e) {}
+})();
+</script>
+</body></html>
