@@ -1125,6 +1125,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <li><strong>أزرار المواضيع في الموقع:</strong> اختيار موضوع (مثل «حزن» أو «مشاكل في المدرسة») يتم في متصفحك فقط. لا يُرسَل اختيارك إلينا ولا يُحفظ.</li>
           <li><strong>تفضيلات العرض:</strong> الإعدادات في قائمة إمكانية الوصول (حجم النص والتباين والوضع الليلي والألوان وغيرها) تُحفظ في متصفحك فقط كي لا تضطر إلى اختيارها من جديد. لا تُرسَل إلينا. يمكنك إعادة ضبطها في أي وقت من قائمة إمكانية الوصول أو بمسح بيانات الموقع في المتصفح.</li>
           <li><strong>لغة الموقع:</strong> يفتح الموقع بلغة متصفحك (العبرية أو الإنجليزية أو العربية). اللغة التي تم اختيارها، تلقائيًا أو بواسطتك من قائمة اللغات، تُحفظ في متصفحك فقط، كي يفتح الموقع باللغة نفسها في المرة القادمة. لا تُرسَل إلينا. يمكنك حذفها في أي وقت بمسح بيانات الموقع في المتصفح.</li>
+          <li><strong>الاستخدام دون إنترنت:</strong> كي يفتح الموقع حتى عند عدم وجود إنترنت، يحتفظ متصفحك بنسخة من صفحات الموقع على جهازك (باستخدام مكوّن يسمى Service Worker). تبقى النسخة على جهازك، ولا تُرسَل إلينا، ولا تتضمن معلومات شخصية. وعند توفر الاتصال يتحدّث الموقع تلقائيًا. يمكنك حذف النسخة في أي وقت بمسح بيانات الموقع في المتصفح.</li>
         </ul>
     <h2 class="legal-h">لماذا نستخدم المعلومات</h2>
 
@@ -1148,7 +1149,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <h2 class="legal-h">أمان المعلومات</h2>
 <p>نتخذ إجراءات معقولة لحماية المعلومات، ويُقدَّم الموقع عبر اتصال مشفّر (HTTPS). ومع ذلك لا توجد طريقة تضمن أمانًا كاملًا، لذا لا ترسل إلينا كلمات مرور أو بيانات بطاقات ائتمان أو معلومات حساسة غير لازمة لرسالتك.</p>
     <h2 class="legal-h">ملفات تعريف الارتباط والتخزين المحلي</h2>
-<p>لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز) ولا يتضمّن أدوات تحليل أو إعلان أو تتبّع. الخطوط مستضافة على الموقع نفسه ولا تُحمَّل من خدمات خارجية. يُستخدم التخزين المحلي في متصفحك لتفضيلات العرض ولغة الموقع الموصوفتين أعلاه فقط. الروابط إلى خدمات خارجية، مثل واتساب، تنقلك إليها وتنطبق عليها سياساتها.</p>
+<p>لا يستخدم الموقع ملفات تعريف الارتباط (الكوكيز) ولا يتضمّن أدوات تحليل أو إعلان أو تتبّع. الخطوط مستضافة على الموقع نفسه ولا تُحمَّل من خدمات خارجية. يُستخدم التخزين المحلي في متصفحك فقط لتفضيلات العرض ولغة الموقع ونسخة محفوظة من صفحات الموقع تتيح فتحها دون إنترنت، كما هو موصوف أعلاه. الروابط إلى خدمات خارجية، مثل واتساب، تنقلك إليها وتنطبق عليها سياساتها.</p>
     <h2 class="legal-h">حقوقك</h2>
 <p>بموجب قانون حماية الخصوصية الإسرائيلي، <bdi dir="ltr">5741-1981</bdi>، يحق لك أن تطلب الاطلاع على المعلومات المحفوظة عنك أو تصحيحها أو حذفها. تواصل معنا بإحدى وسائل الاتصال أدناه وسنحاول الردّ في أقرب وقت.</p>
     <h2 class="legal-h">تغييرات على هذه السياسة</h2>
@@ -1567,4 +1568,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script><script>/* Remember the visitor's language choice from the language menu */
 (function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+<script>/* Offline support: lets the site open without internet (see sw.js) */
+(function(){try{if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",function(){navigator.serviceWorker.register("../../sw.js").catch(function(){});});}}catch(e){}})();</script>
 </body></html>

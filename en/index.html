@@ -507,7 +507,7 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 
 /* COMING SOON */
 .how-section { background:var(--bg-alt); }
-.steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px; padding-top:18px; }
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px 22px; padding-top:18px; }
 .step-card {
   background:var(--surface); border-radius:30px; padding:40px 22px 30px; text-align:center;
   border:2px dashed rgba(var(--primary-rgb),0.38); transition:all 0.3s; position:relative;
@@ -1179,11 +1179,43 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
       <h2 class="section-title" data-i18n="feat-title">What you'll find here</h2>
       <p class="section-sub"><span data-i18n="feat-sub">Every one of these is already working on the site — not just promises.</span></p>
     </div>
+<!-- ============================================================
+  "WHAT'S NEW" CARDS: RULE FOR WHOEVER EDITS THIS (person or AI)
+  The cards are ordered NEWEST -> OLDEST. First in the HTML = newest = shown first.
+  There are always exactly 6 cards (this keeps the 3x2 grid).
+  To add a new update: put its card FIRST, then delete the LAST card (the oldest).
+  Never choose what to delete by taste, always delete the last one.
+  Dropping a card only removes it from this list, never from the site itself.
+  Keep the same order and the same card in all 3 languages (he, en, ar).
+  New ideas that are not built yet go in the "under consideration" section (id="how").
+  When one is built, move it here as the first card, under the same rule.
+
+  Current order, newest -> oldest:
+    1. Works without internet (offline)   added 2026-10-29
+    2. Opens in your language             added 2026-10-29
+    3. Night mode and 23 colors
+    4. Accessibility menu                 \
+    5. Message to volunteers               > these three were added at the same time;
+    6. Privacy and no tracking            /  their order here breaks the tie
+  Dropped from the list: "Policy written in plain language" (2026-10-29)
+============================================================ -->
     <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon fi-yellow" aria-hidden="true">📲</div>
+        <h3 class="feature-title" data-i18n="f7-title">Works without internet</h3>
+        <div class="feature-desc" data-i18n="f7-desc">After one visit, the site opens even without internet, emergency numbers included, and you can add it to your home screen. When you are online, it updates itself.</div>
+        
+      </div>
       <div class="feature-card">
         <div class="feature-icon fi-blue" aria-hidden="true">🌍</div>
         <h3 class="feature-title" data-i18n="f1-title">Opens in your language</h3>
         <div class="feature-desc" data-i18n="f1-desc">The site is available in Hebrew, English and Arabic. It opens in your browser’s language and remembers the one you choose for next time.</div>
+        
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-teal" aria-hidden="true">🌙</div>
+        <h3 class="feature-title" data-i18n="f6-title">Night mode and 23 colour themes</h3>
+        <div class="feature-desc" data-i18n="f6-desc">A night mode that is easy on the eyes, and 23 colour themes to choose from, including one made for colour blindness. All from the accessibility menu.</div>
         
       </div>
       <div class="feature-card">
@@ -1202,18 +1234,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="feature-icon fi-pink" aria-hidden="true">🔒</div>
         <h3 class="feature-title" data-i18n="f4-title">Privacy, no tracking</h3>
         <div class="feature-desc" data-i18n="f4-desc">You can write using only a nickname. No registration, no cookies, no tracking visitors.</div>
-        
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon fi-yellow" aria-hidden="true">📋</div>
-        <h3 class="feature-title" data-i18n="f5-title">Policies in plain language</h3>
-        <div class="feature-desc" data-i18n="f5-desc">A privacy policy and terms of use written so a child can understand them, not just a lawyer.</div>
-        
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon fi-teal" aria-hidden="true">🌙</div>
-        <h3 class="feature-title" data-i18n="f6-title">Night mode and 23 colour themes</h3>
-        <div class="feature-desc" data-i18n="f6-desc">A night mode that is easy on the eyes, and 23 colour themes to choose from, including one made for colour blindness. All from the accessibility menu.</div>
         
       </div>
     </div>
@@ -1246,12 +1266,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="step-icon" aria-hidden="true">🙋</div>
         <h3 class="step-title" data-i18n="s4-title">Becoming a volunteer</h3>
         <div class="step-desc" data-i18n="s4-desc">A simple form to join the site's listening team.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">4</div>
-        <div class="step-icon" aria-hidden="true">📲</div>
-        <h3 class="step-title" data-i18n="s5-title">Use it without internet</h3>
-        <div class="step-desc" data-i18n="s5-desc">After one visit, you will be able to open the site and see the emergency numbers even when there is no internet, and add it to your home screen.</div>
       </div>
     </div>
   </div>
@@ -2281,4 +2295,6 @@ function removeTyping() {
 </script>
 <script>/* Remember the visitor's language choice from the language menu */
 (function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+<script>/* Offline support: lets the site open without internet (see sw.js) */
+(function(){try{if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});}}catch(e){}})();</script>
 </body></html>

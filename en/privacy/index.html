@@ -1125,6 +1125,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <li><strong>The topic buttons on the site:</strong> choosing a topic (for example “Sadness” or “School”) happens in your browser only. The choice is not sent to us and is not stored.</li>
           <li><strong>Display preferences:</strong> settings in the accessibility menu (text size, contrast, night mode, colors, and more) are saved only in your browser, so you do not have to choose them again. They are not sent to us. You can reset them at any time from the accessibility menu or by clearing the site’s data in your browser.</li>
           <li><strong>Site language:</strong> the site opens in your browser’s language (Hebrew, English or Arabic). The language that was chosen, automatically or by you in the language menu, is saved only in your browser, so the site opens in the same language next time. It is not sent to us. You can delete it at any time by clearing the site’s data in your browser.</li>
+          <li><strong>Use without internet:</strong> so the site can open even when there is no internet, your browser keeps a copy of the site’s pages on your device (using a component called a service worker). The copy stays on your device, is not sent to us, and contains no personal information. When you are online, the site updates itself. You can delete the copy at any time by clearing the site’s data in your browser.</li>
         </ul>
     <h2 class="legal-h">Why we use information</h2>
 
@@ -1148,7 +1149,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <h2 class="legal-h">Information security</h2>
 <p>We take reasonable measures to protect information, and the site is served over an encrypted connection (HTTPS). Still, no method guarantees complete security, so please do not send us passwords, credit card details, or sensitive information that is not needed for your message.</p>
     <h2 class="legal-h">Cookies and local storage</h2>
-<p>The site does not use cookies and includes no analytics, advertising, or tracking tools. The fonts are hosted on the site itself and are not loaded from external services. Your browser’s local storage is used only for the display preferences and the site language described above. Links to external services, such as WhatsApp, take you to them, and they are subject to their own policies.</p>
+<p>The site does not use cookies and includes no analytics, advertising, or tracking tools. The fonts are hosted on the site itself and are not loaded from external services. Your browser’s local storage is used only for the display preferences, the site language, and a saved copy of the site’s pages that lets them open without internet, as described above. Links to external services, such as WhatsApp, take you to them, and they are subject to their own policies.</p>
     <h2 class="legal-h">Your rights</h2>
 <p>Under Israel’s Privacy Protection Law, 5741-1981, you may ask to see the information kept about you, to correct it, or to delete it. Contact us using any of the details below and we will try to reply promptly.</p>
     <h2 class="legal-h">Changes to this policy</h2>
@@ -1567,4 +1568,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script><script>/* Remember the visitor's language choice from the language menu */
 (function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+<script>/* Offline support: lets the site open without internet (see sw.js) */
+(function(){try{if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",function(){navigator.serviceWorker.register("../../sw.js").catch(function(){});});}}catch(e){}})();</script>
 </body></html>

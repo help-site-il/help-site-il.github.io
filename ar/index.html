@@ -507,7 +507,7 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 
 /* COMING SOON */
 .how-section { background:var(--bg-alt); }
-.steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px; padding-top:18px; }
+.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px 22px; padding-top:18px; }
 .step-card {
   background:var(--surface); border-radius:30px; padding:40px 22px 30px; text-align:center;
   border:2px dashed rgba(var(--primary-rgb),0.38); transition:all 0.3s; position:relative;
@@ -1179,11 +1179,43 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
       <h2 class="section-title" data-i18n="feat-title">ما الذي تجدونه هنا</h2>
       <p class="section-sub"><span data-i18n="feat-sub">كل واحدة من هذه الميزات تعمل بالفعل في الموقع — وليست مجرد وعود.</span></p>
     </div>
+<!-- ============================================================
+  "WHAT'S NEW" CARDS: RULE FOR WHOEVER EDITS THIS (person or AI)
+  The cards are ordered NEWEST -> OLDEST. First in the HTML = newest = shown first.
+  There are always exactly 6 cards (this keeps the 3x2 grid).
+  To add a new update: put its card FIRST, then delete the LAST card (the oldest).
+  Never choose what to delete by taste, always delete the last one.
+  Dropping a card only removes it from this list, never from the site itself.
+  Keep the same order and the same card in all 3 languages (he, en, ar).
+  New ideas that are not built yet go in the "under consideration" section (id="how").
+  When one is built, move it here as the first card, under the same rule.
+
+  Current order, newest -> oldest:
+    1. Works without internet (offline)   added 2026-10-29
+    2. Opens in your language             added 2026-10-29
+    3. Night mode and 23 colors
+    4. Accessibility menu                 \
+    5. Message to volunteers               > these three were added at the same time;
+    6. Privacy and no tracking            /  their order here breaks the tie
+  Dropped from the list: "Policy written in plain language" (2026-10-29)
+============================================================ -->
     <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon fi-yellow" aria-hidden="true">📲</div>
+        <h3 class="feature-title" data-i18n="f7-title">يعمل دون إنترنت</h3>
+        <div class="feature-desc" data-i18n="f7-desc">بعد زيارة واحدة، يفتح الموقع حتى دون إنترنت، بما في ذلك أرقام الطوارئ، ويمكن إضافته إلى الشاشة الرئيسية. وعند توفر الاتصال يتحدّث تلقائيًا.</div>
+        
+      </div>
       <div class="feature-card">
         <div class="feature-icon fi-blue" aria-hidden="true">🌍</div>
         <h3 class="feature-title" data-i18n="f1-title">يفتح بلغتك</h3>
         <div class="feature-desc" data-i18n="f1-desc">الموقع متاح بالعبرية والإنجليزية والعربية. يفتح بلغة متصفحك ويتذكّر اللغة التي تختارها في المرة القادمة.</div>
+        
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon fi-teal" aria-hidden="true">🌙</div>
+        <h3 class="feature-title" data-i18n="f6-title">وضع ليلي و23 لونًا</h3>
+        <div class="feature-desc" data-i18n="f6-desc">وضع ليلي مريح للعينين، و23 مجموعة ألوان للاختيار، منها واحدة مناسبة لعمى الألوان. كل ذلك من قائمة إمكانية الوصول.</div>
         
       </div>
       <div class="feature-card">
@@ -1202,18 +1234,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="feature-icon fi-pink" aria-hidden="true">🔒</div>
         <h3 class="feature-title" data-i18n="f4-title">خصوصية بلا تتبّع</h3>
         <div class="feature-desc" data-i18n="f4-desc">يمكنك الكتابة باستخدام اسم مستعار فقط. لا تسجيل، لا ملفات تعريف ارتباط، ولا تتبّع للزوار.</div>
-        
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon fi-yellow" aria-hidden="true">📋</div>
-        <h3 class="feature-title" data-i18n="f5-title">سياسات مكتوبة بلغة بسيطة</h3>
-        <div class="feature-desc" data-i18n="f5-desc">سياسة خصوصية وشروط استخدام مكتوبة بحيث يفهمها طفل، وليس محاميًا فقط.</div>
-        
-      </div>
-      <div class="feature-card">
-        <div class="feature-icon fi-teal" aria-hidden="true">🌙</div>
-        <h3 class="feature-title" data-i18n="f6-title">وضع ليلي و23 لونًا</h3>
-        <div class="feature-desc" data-i18n="f6-desc">وضع ليلي مريح للعينين، و23 مجموعة ألوان للاختيار، منها واحدة مناسبة لعمى الألوان. كل ذلك من قائمة إمكانية الوصول.</div>
         
       </div>
     </div>
@@ -1246,12 +1266,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="step-icon" aria-hidden="true">🙋</div>
         <h3 class="step-title" data-i18n="s4-title">انضم كمتطوع/ة</h3>
         <div class="step-desc" data-i18n="s4-desc">نموذج بسيط للانضمام إلى فريق الإصغاء في الموقع.</div>
-      </div>
-      <div class="step-card">
-        <div class="step-num">4</div>
-        <div class="step-icon" aria-hidden="true">📲</div>
-        <h3 class="step-title" data-i18n="s5-title">استخدمه دون إنترنت</h3>
-        <div class="step-desc" data-i18n="s5-desc">بعد زيارة واحدة، ستتمكن من فتح الموقع ورؤية أرقام الطوارئ حتى عند عدم وجود إنترنت، وإضافته إلى الشاشة الرئيسية.</div>
       </div>
     </div>
   </div>
@@ -2281,4 +2295,6 @@ function removeTyping() {
 </script>
 <script>/* Remember the visitor's language choice from the language menu */
 (function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+<script>/* Offline support: lets the site open without internet (see sw.js) */
+(function(){try{if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});}}catch(e){}})();</script>
 </body></html>

@@ -1125,6 +1125,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
           <li><strong>כפתורי הנושאים באתר:</strong> בחירה בנושא (למשל ״עצבות״ או ״בית ספר״) נעשית בדפדפן שלכם בלבד. הבחירה לא נשלחת אלינו ולא נשמרת.</li>
           <li><strong>העדפות תצוגה:</strong> הגדרות בתפריט הנגישות (גודל טקסט, ניגודיות, מצב לילה, צבעים ועוד) נשמרות רק בדפדפן שלכם, כדי שלא תצטרכו לבחור אותן שוב. הן לא נשלחות אלינו. אפשר לאפס אותן בכל עת מתפריט הנגישות או על ידי ניקוי נתוני האתר בדפדפן.</li>
           <li><strong>שפת האתר:</strong> האתר נפתח בשפת הדפדפן שלכם (עברית, אנגלית או ערבית). השפה שנבחרה, אוטומטית או על ידי בחירה שלכם בתפריט השפות, נשמרת רק בדפדפן שלכם, כדי שהאתר ייפתח באותה שפה בפעם הבאה. היא לא נשלחת אלינו. אפשר למחוק אותה בכל עת על ידי ניקוי נתוני האתר בדפדפן.</li>
+          <li><strong>שימוש בלי אינטרנט:</strong> כדי שהאתר ייפתח גם כשאין אינטרנט, הדפדפן שלכם שומר אצלכם עותק של דפי האתר (בעזרת רכיב שנקרא Service Worker). העותק נשאר במכשיר שלכם, לא נשלח אלינו ולא כולל מידע אישי. כשיש חיבור, האתר מתעדכן לבד. אפשר למחוק את העותק בכל עת על ידי ניקוי נתוני האתר בדפדפן.</li>
         </ul>
     <h2 class="legal-h">למה אנחנו משתמשים במידע</h2>
 
@@ -1148,7 +1149,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <h2 class="legal-h">אבטחת מידע</h2>
 <p>אנחנו נוקטים אמצעים סבירים להגנה על המידע, והאתר מוגש בחיבור מוצפן (HTTPS). עם זאת, אין שיטה שמבטיחה אבטחה מלאה, ולכן אל תשלחו לנו סיסמאות, פרטי אשראי או מידע רגיש שאינו נחוץ לפנייה.</p>
     <h2 class="legal-h">עוגיות ואחסון מקומי</h2>
-<p>האתר אינו משתמש בעוגיות ואינו כולל כלי ניתוח, פרסום או מעקב. הפונטים מתארחים באתר עצמו ולא נטענים משירותים חיצוניים. האחסון המקומי בדפדפן משמש רק להעדפות התצוגה ולשפת האתר שתוארו למעלה. קישורים לשירותים חיצוניים, כמו וואטסאפ, מעבירים אתכם אליהם, והם כפופים למדיניות שלהם.</p>
+<p>האתר אינו משתמש בעוגיות ואינו כולל כלי ניתוח, פרסום או מעקב. הפונטים מתארחים באתר עצמו ולא נטענים משירותים חיצוניים. האחסון המקומי בדפדפן משמש רק להעדפות התצוגה, לשפת האתר ולעותק של דפי האתר שמאפשר לפתוח אותם בלי אינטרנט, כפי שתוארו למעלה. קישורים לשירותים חיצוניים, כמו וואטסאפ, מעבירים אתכם אליהם, והם כפופים למדיניות שלהם.</p>
     <h2 class="legal-h">הזכויות שלכם</h2>
 <p>לפי חוק הגנת הפרטיות, התשמ״א-1981, אתם רשאים לבקש לעיין במידע שנשמר עליכם, לתקן אותו או למחוק אותו. פנו אלינו באחת מדרכי הקשר שלמטה, ונשתדל להשיב בהקדם.</p>
     <h2 class="legal-h">שינויים במדיניות</h2>
@@ -1567,4 +1568,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 <script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script><script>/* Remember the visitor's language choice from the language menu */
 (function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+<script>/* Offline support: lets the site open without internet (see sw.js) */
+(function(){try{if("serviceWorker" in navigator&&location.protocol!=="file:"){window.addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});}}catch(e){}})();</script>
 </body></html>
