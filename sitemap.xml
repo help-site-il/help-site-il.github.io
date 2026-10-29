@@ -96,4 +96,28 @@
     <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/accessibility/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/accessibility/"/>
   </url>
+  <url>
+    <loc>https://help-site-il.github.io/updates/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/updates/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/updates/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/updates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/updates/"/>
+  </url>
+  <url>
+    <loc>https://help-site-il.github.io/en/updates/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/updates/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/updates/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/updates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/updates/"/>
+  </url>
+  <url>
+    <loc>https://help-site-il.github.io/ar/updates/</loc>
+    <lastmod>2026-10-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="he" href="https://help-site-il.github.io/updates/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://help-site-il.github.io/en/updates/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://help-site-il.github.io/ar/updates/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://help-site-il.github.io/updates/"/>
+  </url>
 </urlset>

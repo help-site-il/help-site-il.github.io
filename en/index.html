@@ -1175,8 +1175,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 <section class="features-section" id="features">
   <div class="section-inner">
     <div class="sec-head text-center">
-      <span class="section-tag" data-i18n="feat-tag">Already here</span>
-      <h2 class="section-title" data-i18n="feat-title">What you'll find here</h2>
+      <span class="section-tag" data-i18n="feat-tag">Latest updates</span>
+      <h2 class="section-title" data-i18n="feat-title">What's new</h2>
       <p class="section-sub"><span data-i18n="feat-sub">Every one of these is already working on the site — not just promises.</span></p>
     </div>
 <!-- ============================================================
@@ -1194,10 +1194,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     1. Calming tools in the chat          added 2026-10-29
     2. Works without internet (offline)   added 2026-10-29
     3. Opens in your language             added 2026-10-29
-    4. Night mode and 23 colors
+    4. Night mode and 23 colors           added 2026-10-28
     5. Accessibility menu
     6. Message to volunteers
   (5 and 6 were added at the same time; their order here breaks the tie)
+  EVERY user-visible update ALSO gets an entry at the top of the "What's new" page (updates/, en/updates/, ar/updates/),
+  with the same date. Entries older than 30 days hide themselves; delete them from the files whenever you edit.
   Dropped from the list (still on the site): "Privacy and no tracking", "Policy written in plain language" (2026-10-29)
 ============================================================ -->
     <div class="features-grid">
@@ -1238,6 +1240,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         
       </div>
     </div>
+    <p class="all-updates"><a href="updates/">See all updates from the past month →</a></p>
   </div>
 </section>
 
@@ -1421,7 +1424,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     </ul>
   </div>
 </div>
-    <div class="footer-legal"><a href="privacy/" data-i18n="foot-privacy">Privacy policy</a><span aria-hidden="true">·</span><a href="terms/" data-i18n="foot-terms">Terms of use</a><span aria-hidden="true">·</span><a href="accessibility/" data-i18n="foot-accessibility">Accessibility statement</a></div>
+    <div class="footer-legal"><a href="privacy/" data-i18n="foot-privacy">Privacy policy</a><span aria-hidden="true">·</span><a href="terms/" data-i18n="foot-terms">Terms of use</a><span aria-hidden="true">·</span><a href="accessibility/" data-i18n="foot-accessibility">Accessibility statement</a><span aria-hidden="true">·</span><a href="updates/" data-i18n="foot-updates">What's new</a></div>
     <div class="footer-bottom">
     <span data-i18n="foot-copy">© Uriah. All rights reserved.</span>
     <span data-i18n="foot-copy2">🌟 Here to listen and make room for whatever is on your mind</span>
@@ -1630,6 +1633,9 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
 .calm-help a { color:var(--primary-ink); text-decoration:underline; }
 .calm-step-n { font-size:2.6rem; font-weight:800; color:var(--primary-ink); line-height:1.1; }
 .calm-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.all-updates { text-align:center; margin-top:28px; }
+.all-updates a { display:inline-block; padding:10px 22px; border-radius:999px; background:var(--primary-soft); color:var(--primary-ink); font-weight:700; text-decoration:none; }
+.all-updates a:hover { text-decoration:underline; }
 
 </style>
 
@@ -2232,6 +2238,16 @@ function renderGroundDone(card) {
 }
 window.addEventListener('pagehide', stopCalm);
 </script>
+<script>
+/* Deep links from the "What's new" page: ?open=chat opens the chat, ?open=a11y opens the accessibility menu */
+(function(){try{var q=new URLSearchParams(location.search).get('open');if(!q)return;
+window.addEventListener('load',function(){setTimeout(function(){
+if(q==='chat'&&typeof toggleChat==='function'&&!chatOpen)toggleChat();
+if(q==='a11y'){var b=document.getElementById('a11yFab');if(b)b.click();}
+try{history.replaceState(null,'',location.pathname+location.hash);}catch(e){}
+},300);});}catch(e){}})();
+</script>
+
 
 
 

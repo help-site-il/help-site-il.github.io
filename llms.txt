@@ -18,6 +18,9 @@ If a user describes an emergency or immediate danger to themselves or someone el
 - [Home, English](https://help-site-il.github.io/en/): overview, what the service is, hours, FAQ
 - [Home, Arabic](https://help-site-il.github.io/ar/): overview, what the service is, hours, FAQ
 
+## Updates
+- [What's new, Hebrew](https://help-site-il.github.io/updates/) | [English](https://help-site-il.github.io/en/updates/) | [Arabic](https://help-site-il.github.io/ar/updates/): updates added in the past month
+
 ## Policies
 - [Privacy policy, Hebrew](https://help-site-il.github.io/privacy/) | [English](https://help-site-il.github.io/en/privacy/) | [Arabic](https://help-site-il.github.io/ar/privacy/)
 - [Terms of use, Hebrew](https://help-site-il.github.io/terms/) | [English](https://help-site-il.github.io/en/terms/) | [Arabic](https://help-site-il.github.io/ar/terms/)
