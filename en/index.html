@@ -507,7 +507,7 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 
 /* COMING SOON */
 .how-section { background:var(--bg-alt); }
-.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px 22px; padding-top:18px; }
+.steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px; padding-top:18px; }
 .step-card {
   background:var(--surface); border-radius:30px; padding:40px 22px 30px; text-align:center;
   border:2px dashed rgba(var(--primary-rgb),0.38); transition:all 0.3s; position:relative;
@@ -1182,8 +1182,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon fi-blue" aria-hidden="true">🌍</div>
-        <h3 class="feature-title" data-i18n="f1-title">Three languages</h3>
-        <div class="feature-desc" data-i18n="f1-desc">The site is available in Hebrew, English and Arabic, with an easy switch on every page.</div>
+        <h3 class="feature-title" data-i18n="f1-title">Opens in your language</h3>
+        <div class="feature-desc" data-i18n="f1-desc">The site is available in Hebrew, English and Arabic. It opens in your browser’s language and remembers the one you choose for next time.</div>
         
       </div>
       <div class="feature-card">
@@ -1226,7 +1226,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <div class="sec-head text-center">
       <span class="section-tag" data-i18n="how-tag">Under consideration</span>
       <h2 class="section-title" data-i18n="how-title">What else we're weighing</h2>
-      <p class="section-sub" data-i18n="how-sub">Ideas we're exploring, not a promised date. Have an opinion? Write to us.</p>
+      <p class="section-sub" data-i18n="how-sub">Ideas we're exploring, not a promised date. Not every update will be listed here in advance, and some things we'll add without announcing them. Have an opinion? Write to us.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card">
@@ -1246,6 +1246,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="step-icon" aria-hidden="true">🙋</div>
         <h3 class="step-title" data-i18n="s4-title">Becoming a volunteer</h3>
         <div class="step-desc" data-i18n="s4-desc">A simple form to join the site's listening team.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-icon" aria-hidden="true">📲</div>
+        <h3 class="step-title" data-i18n="s5-title">Use it without internet</h3>
+        <div class="step-desc" data-i18n="s5-desc">After one visit, you will be able to open the site and see the emergency numbers even when there is no internet, and add it to your home screen.</div>
       </div>
     </div>
   </div>
@@ -2273,4 +2279,6 @@ function removeTyping() {
   } catch (e) {}
 })();
 </script>
+<script>/* Remember the visitor's language choice from the language menu */
+(function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
 </body></html>

@@ -1570,4 +1570,6 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
 
 
 
-<script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script></body></html>
+<script>if(location.protocol==='file:'){document.querySelectorAll('a[href]').forEach(function(a){var h=a.getAttribute('href');if(/^(https?:|mailto:|tel:|data:|#)/.test(h))return;a.setAttribute('href',h.replace(/\/(#|$)/,'/index.html$1'));});}</script><script>/* Remember the visitor's language choice from the language menu */
+(function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
+</body></html>

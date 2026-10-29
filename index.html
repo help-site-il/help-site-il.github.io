@@ -49,6 +49,21 @@ if(location.protocol!=='file:'){var h=document.head,add=function(r,f,x){var l=do
 
 <meta name="theme-color" content="#1B7A70">
 <script>
+/* First visit: open in the browser's language (he/en/ar), otherwise stay in Hebrew. Afterwards use the saved choice. */
+(function(){try{
+if(location.protocol==='file:'||/bot|crawl|spider|lighthouse|headless|preview/i.test(navigator.userAgent)||navigator.webdriver)return;
+var ok={he:1,en:1,ar:1},saved=null,pick=null;
+try{saved=localStorage.getItem('lang');}catch(e){}
+if(saved&&ok[saved]){pick=saved;}
+else{
+var L=navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language||'he'];pick='he';
+for(var i=0;i<L.length;i++){var c=String(L[i]).toLowerCase().split('-')[0];if(c==='iw')c='he';if(ok[c]){pick=c;break;}}
+try{localStorage.setItem('lang',pick);}catch(e){}
+}
+if(pick!=='he')location.replace(pick+'/'+location.search+location.hash);
+}catch(e){}})();
+</script>
+<script>
 /* Restore the visitor's accessibility preferences before first paint (no flash) */
 (function(){try{var p=JSON.parse(localStorage.getItem('a11y'))||{},h=document.documentElement;
 if(/^(ocean|sunset|forest|violet|indigo|sky|coral|berry|amber|olive|slate|mocha|mint|honey|lavender|graphite|peach|aqua|rose|midnight|spring|paper|cvd)$/.test(p.theme))h.setAttribute('data-theme',p.theme);
@@ -507,7 +522,7 @@ main > .stats-section + section { margin-top:-76px; padding-top:168px; }
 
 /* COMING SOON */
 .how-section { background:var(--bg-alt); }
-.steps-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:28px 22px; padding-top:18px; }
+.steps-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:28px 22px; padding-top:18px; }
 .step-card {
   background:var(--surface); border-radius:30px; padding:40px 22px 30px; text-align:center;
   border:2px dashed rgba(var(--primary-rgb),0.38); transition:all 0.3s; position:relative;
@@ -1182,8 +1197,8 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-icon fi-blue" aria-hidden="true">🌍</div>
-        <h3 class="feature-title" data-i18n="f1-title">שלוש שפות</h3>
-        <div class="feature-desc" data-i18n="f1-desc">האתר זמין בעברית, באנגלית ובערבית, עם מעבר קל בין השפות בכל דף.</div>
+        <h3 class="feature-title" data-i18n="f1-title">נפתח בשפה שלך</h3>
+        <div class="feature-desc" data-i18n="f1-desc">האתר זמין בעברית, באנגלית ובערבית. הוא נפתח בשפת הדפדפן שלך, וזוכר את השפה שבחרת לפעם הבאה.</div>
         
       </div>
       <div class="feature-card">
@@ -1226,7 +1241,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
     <div class="sec-head text-center">
       <span class="section-tag" data-i18n="how-tag">בבדיקה</span>
       <h2 class="section-title" data-i18n="how-title">מה עוד אנחנו שוקלים</h2>
-      <p class="section-sub" data-i18n="how-sub">רעיונות שאנחנו בוחנים, לא הבטחה לתאריך. יש לכם דעה? כתבו לנו.</p>
+      <p class="section-sub" data-i18n="how-sub">רעיונות שאנחנו בוחנים, לא הבטחה לתאריך. לא כל עדכון יופיע כאן מראש, ויש דברים שנוסיף בלי להכריז עליהם. יש לכם דעה? כתבו לנו.</p>
     </div>
     <div class="steps-grid">
       <div class="step-card">
@@ -1246,6 +1261,12 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
         <div class="step-icon" aria-hidden="true">🙋</div>
         <h3 class="step-title" data-i18n="s4-title">הצטרפות כמתנדב/ת</h3>
         <div class="step-desc" data-i18n="s4-desc">טופס פשוט להצטרף לצוות ההקשבה של האתר.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-icon" aria-hidden="true">📲</div>
+        <h3 class="step-title" data-i18n="s5-title">שימוש גם בלי אינטרנט</h3>
+        <div class="step-desc" data-i18n="s5-desc">אחרי ביקור אחד, אפשר יהיה לפתוח את האתר ולראות את מספרי החירום גם כשאין אינטרנט, ולהוסיף אותו למסך הבית.</div>
       </div>
     </div>
   </div>
@@ -2273,4 +2294,6 @@ function removeTyping() {
   } catch (e) {}
 })();
 </script>
+<script>/* Remember the visitor's language choice from the language menu */
+(function(){try{var h=function(e){var a=e.target.closest&&e.target.closest('.lang-list a[hreflang]');if(!a)return;var l=a.getAttribute('hreflang');if(l==="he"||l==="en"||l==="ar"){try{localStorage.setItem("lang",l);}catch(x){}}};document.addEventListener("click",h);document.addEventListener("auxclick",h);}catch(e){}})();</script>
 </body></html>
