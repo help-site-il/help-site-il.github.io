@@ -4,7 +4,7 @@
    - Fonts and icons: saved copy first (they almost never change).
    Nothing is sent anywhere and no personal data is stored; only copies of the site's own files.
    To force every device to refresh its saved files, change VERSION. */
-const VERSION = 'v4';
+const VERSION = 'v5';
 const CACHE = 'help-site-' + VERSION;
 const BASE = self.registration.scope;
 const PRECACHE = [
