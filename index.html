@@ -1410,7 +1410,7 @@ html[lang="ar"] .hero-sub, html[lang="ar"] .section-sub, html[lang="ar"] .featur
       <h2 class="section-title" id="thanksTitle">תודה למי שעזר לנו</h2>
     </div>
     <div class="thanks-list">
-      <div class="thanks-card"><p class="thanks-name">אמיתי ברומר</p><p class="thanks-desc">מלווה את האתר כמבוגר מנוסה: מייעץ לנו, נותן משוב על האתר, עוזר לחבר אותנו לאנשי מקצוע, ותמיד זמין לעצה טובה.</p></div>
+      <div class="thanks-card"><p class="thanks-name">אמיתי דרומר</p><p class="thanks-desc">מלווה את האתר כמבוגר מנוסה: מייעץ לנו, נותן משוב על האתר, עוזר לחבר אותנו לאנשי מקצוע, ותמיד זמין לעצה טובה.</p></div>
     </div>
   </div>
 </section>
@@ -1885,6 +1885,7 @@ function renderTopics() {
   var lang = chatLang();
   if (typeof makeCalmChip === 'function') container.appendChild(makeCalmChip());
   if (typeof makeNotebookChip === 'function') container.appendChild(makeNotebookChip());
+  if (typeof makeLiveChatChip === 'function') container.appendChild(makeLiveChatChip());
   
   chatTopics.forEach(function(topic) {
     var btn = document.createElement('button');
@@ -4001,7 +4002,309 @@ html.a11y-contrast #nbEditor table.nb-table td { border-color:currentColor; }
     var b = e.target.closest && e.target.closest('[data-notebook-open]');
     if (b) { e.preventDefault(); openNotebook(b); }
   });
-  window.openNotebook = openNotebook; window.closeNotebook = closeNotebook; window.makeNotebookChip = makeNotebookChip; window.makeNotebookBtn = makeNotebookBtn;
+  window.nbHasRisk = hasRisk; window.openNotebook = openNotebook; window.closeNotebook = closeNotebook; window.makeNotebookChip = makeNotebookChip; window.makeNotebookBtn = makeNotebookBtn;
+})();
+</script>
+<style>
+/* ---- Live chat with a volunteer ---- */
+.lc-overlay { position:fixed; inset:0; z-index:10001; background:rgba(10,20,25,0.55); display:flex; align-items:center; justify-content:center; padding:16px; }
+.lc-overlay[hidden] { display:none; }
+body.lc-lock { overflow:hidden; }
+.lc-dialog { background:var(--surface); color:var(--text); width:min(560px,100%); max-height:min(92vh,760px); display:flex; flex-direction:column; border-radius:24px; padding:18px 20px 14px; box-shadow:0 20px 60px rgba(0,0,0,0.35); }
+.lc-dialog:focus { outline:none; }
+.lc-head { display:flex; align-items:center; gap:12px; margin-bottom:6px; }
+.lc-head h2 { margin:0; font-size:1.3rem; flex:1; color:var(--primary-ink); }
+.lc-close { min-width:44px; min-height:44px; border-radius:50%; border:2px solid rgba(var(--primary-rgb),0.4); background:var(--surface); color:var(--primary-ink); font-size:1.4rem; line-height:1; cursor:pointer; }
+.lc-body { overflow:auto; display:flex; flex-direction:column; gap:10px; min-height:0; flex:1; padding:2px; }
+.lc-h { margin:4px 0 0; font-size:1.1rem; color:var(--text); }
+.lc-h:focus { outline:none; }
+.lc-sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+.lc-p, .lc-list { margin:0; line-height:1.7; font-size:0.97rem; }
+.lc-list { padding-inline-start:1.3em; display:flex; flex-direction:column; gap:6px; }
+.lc-row { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.lc-btn { min-height:44px; padding:0 18px; border-radius:999px; border:2px solid var(--primary); background:var(--primary); color:#fff; font:inherit; font-weight:600; cursor:pointer; display:inline-flex; align-items:center; text-decoration:none; }
+.lc-btn.lc-sec { background:var(--surface); color:var(--primary-ink); border-color:rgba(var(--primary-rgb),0.45); }
+.lc-btn:hover { filter:brightness(1.05); }
+.lc-btn:focus-visible, .lc-close:focus-visible, .lc-input:focus-visible, .lc-log:focus-visible, .lc-h:focus-visible { outline:3px solid var(--primary-ink); outline-offset:2px; }
+.lc-log { flex:1; min-height:180px; max-height:46vh; overflow:auto; padding:10px; border-radius:16px; background:var(--bg); border:1.5px solid rgba(var(--primary-rgb),0.3); display:flex; flex-direction:column; gap:8px; }
+.lc-msg { max-width:88%; padding:8px 12px; border-radius:14px; line-height:1.6; white-space:pre-wrap; overflow-wrap:anywhere; }
+.lc-me { align-self:flex-start; background:var(--primary-soft); color:var(--text); }
+.lc-vol { align-self:flex-end; background:var(--surface); border:1.5px solid rgba(var(--primary-rgb),0.4); color:var(--text); }
+.lc-who { font-weight:700; color:var(--primary-ink); }
+.lc-sys { align-self:center; font-size:0.88rem; color:var(--muted); text-align:center; }
+.lc-typing { margin:0; min-height:1.3em; font-size:0.88rem; color:var(--muted); }
+.lc-form { display:flex; gap:8px; align-items:flex-end; }
+.lc-input { flex:1; min-height:48px; max-height:140px; resize:vertical; padding:10px 12px; border-radius:14px; border:2px solid rgba(var(--primary-rgb),0.4); background:var(--bg); color:var(--text); font:inherit; line-height:1.5; }
+.lc-note, .lc-risk { margin:0; padding:10px 12px; border-radius:12px; background:var(--primary-soft); color:var(--text); line-height:1.6; font-size:0.92rem; }
+.lc-note[hidden], .lc-risk[hidden] { display:none; }
+.lc-risk { border:2px solid var(--primary); }
+.lc-ask { font-size:0.93rem; }
+.lc-wait { font-weight:600; }
+.lc-foot { margin:8px 0 0; padding-top:8px; border-top:1px solid rgba(var(--primary-rgb),0.25); font-size:0.85rem; color:var(--muted); line-height:1.5; }
+@media (max-width:520px) { .lc-overlay { padding:0; align-items:stretch; } .lc-dialog { border-radius:0; max-height:none; width:100%; } .lc-log { max-height:none; } }
+@media (prefers-reduced-motion:reduce) { .lc-btn { transition:none; } }
+</style>
+<script>
+/* ---- Live chat with a volunteer (child side) ----
+   Nothing is loaded from Google until the visitor presses "start chat".
+   Nothing is stored on the device (auth is kept in memory only, no offline cache, no cookies).
+   The conversation lives in Firestore only while it lasts and is deleted when it ends. */
+(function () {
+  'use strict';
+  var L = {"chip": "💬 לדבר עם מתנדב אמיתי", "title": "שיחה עם מתנדב", "close": "סגירה", "introH": "לפני שמתחילים", "intro": ["מדברים עם מתנדב/ת אמיתי/ת, בן אדם ולא בוט. המתנדבים אינם אנשי מקצוע ואינם שירות חירום.", "אל תכתבו שם מלא, כתובת, בית ספר או טלפון. אין צורך, ואפשר לספר הכול גם בלעדיהם.", "השיחה נמחקת בסיומה. אנחנו לא שומרים אותה ולא מחברים אותה אליכם.", "כדי שהשיחה תעבוד, הדף ייצור קשר עם שרתי Google (Firebase). Google עשויה לראות כתובת IP כמו בכל אתר. המתנדבים לא רואים אותה."], "start": "התחלת שיחה", "cancel": "לא עכשיו", "connecting": "מתחברים…", "noneH": "כרגע אין מתנדבים מחוברים", "noneP": "אפשר להמתין, ואם מתנדב יתחבר בקרוב הוא יראה שהמתנת. אפשר גם לכתוב לנו, ונענה בהקדם:", "waitAnyway": "להמתין בכל זאת", "mail": "מייל", "wa": "וואטסאפ", "notebook": "המחברת הפרטית", "calm": "כלים להרגעה", "waitingH": "מחכים שמתנדב יצטרף", "waitingP": "זה יכול לקחת כמה דקות. אפשר להישאר בדף או להשתמש בינתיים בכלים להרגעה.", "waited": "זמן המתנה", "min": "דקות", "longWait": "ההמתנה מתארכת. אם קשה מאוד, אפשר להתקשר לער״ן 1201 או לכתוב לנו במייל או בוואטסאפ.", "cancelWait": "ביטול ההמתנה", "joined": "%s הצטרף/ה לשיחה", "typing": "%s מקליד/ה…", "volLabel": "מתנדב/ת", "placeholder": "כותבים כאן…", "send": "שליחה", "msgLabel": "ההודעה שלך", "youSaid": "את/ה", "end": "סיום השיחה", "endAsk": "לסיים את השיחה? היא תימחק.", "endYes": "כן, לסיים", "endNo": "להמשיך", "endedH": "השיחה הסתיימה", "endedP": "השיחה נמחקה. תודה שפנית. אפשר לחזור בכל זמן.", "endedByVol": "המתנדב/ת סיים/ה את השיחה.", "again": "שיחה חדשה", "volGone": "נראה שהמתנדב/ת התנתק/ה. אפשר להמשיך להמתין או לסיים.", "err": "משהו השתבש בחיבור. אפשר לנסות שוב, או לכתוב לנו במייל או בוואטסאפ.", "retry": "ניסיון נוסף", "notService": "לא שירות חירום. במצוקה עכשיו: ער״ן 1201 (24 שעות) · סכנה מיידית 100.", "risk": "נשמע שקשה מאוד. אפשר להתקשר עכשיו לער״ן 1201 (24 שעות). אם יש סכנה ממשית, 100.", "sent": "נשלח", "tooLong": "ההודעה ארוכה מדי (עד %s תווים)."}, CFG = {"firebase": {"apiKey": "AIzaSyC2PFN7xRH25vsfuiP3ucrCw3PZiLZqc30", "authDomain": "help-site-570d3.firebaseapp.com", "projectId": "help-site-570d3", "appId": "1:449502784346:web:e2496b2ab89f9c9b83a163"}, "sdk": "10.12.2", "maxLen": 1000, "waitAltSec": 600, "protocolHtml": ""};
+  var EMAIL = 'oriyalic10@gmail.com', WA = '972773211682';
+  var doc = document, html = doc.documentElement;
+  var SDK = 'https://www.gstatic.com/firebasejs/' + CFG.sdk + '/';
+  var MAXLEN = CFG.maxLen || 1000, ALT_MS = (CFG.waitAltSec || 600) * 1000, LIFE_MS = 6 * 3600 * 1000;
+  var fb = null, auth = null, db = null, uid = null;
+  var overlay, dialog, body, titleEl, openerEl = null, curView = '';
+  var chatRef = null, chatId = null, chatData = null, unsubChat = null, unsubMsgs = null;
+  var seen = {}, listEl = null, inputEl = null, typingEl = null, riskEl = null, noteEl = null, sendBtn = null;
+  var hb = null, tick = null, typingOn = false, typingTimer = null, startedAt = 0, volName = '', ending = false, goneShown = false, longShown = false;
+
+  function el(tag, cls, text) { var e = doc.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function T(s, a) { return String(s).replace('%s', a); }
+  function ts(ms) { return fb.firestore.Timestamp.fromMillis(ms); }
+  function now() { return fb.firestore.FieldValue.serverTimestamp(); }
+
+  /* ---------- loading the SDK (only after the visitor presses start) ---------- */
+  function loadScript(src) {
+    return new Promise(function (ok, bad) {
+      var s = doc.createElement('script'); s.src = src; s.async = false; s.onload = ok; s.onerror = function () { bad(new Error('load ' + src)); };
+      doc.head.appendChild(s);
+    });
+  }
+  function loadSdk() {
+    if (window.firebase && window.firebase.apps && window.__lcReady) return Promise.resolve();
+    return loadScript(SDK + 'firebase-app-compat.js').then(function () { return loadScript(SDK + 'firebase-auth-compat.js'); })
+      .then(function () { return loadScript(SDK + 'firebase-firestore-compat.js'); }).then(function () {
+        fb = window.firebase;
+        if (!fb.apps.length) fb.initializeApp(CFG.firebase);
+        auth = fb.auth(); db = fb.firestore();
+        window.__lcReady = true;
+        return auth.setPersistence(fb.auth.Auth.Persistence.NONE);
+      });
+  }
+  function connect() {
+    return loadSdk().then(function () { fb = window.firebase; auth = fb.auth(); db = fb.firestore(); return auth.signInAnonymously(); })
+      .then(function (c) { uid = (c && c.user && c.user.uid) || (auth.currentUser && auth.currentUser.uid); if (!uid) throw new Error('no uid'); });
+  }
+
+  /* ---------- dialog shell ---------- */
+  function setInert(on) {
+    Array.prototype.forEach.call(doc.body.children, function (c) {
+      if (c === overlay || c.tagName === 'SCRIPT') return;
+      if (on) { c.setAttribute('inert', ''); c.setAttribute('data-lc-inert', ''); } else if (c.hasAttribute('data-lc-inert')) { c.removeAttribute('inert'); c.removeAttribute('data-lc-inert'); }
+    });
+  }
+  function build() {
+    if (overlay) return;
+    overlay = el('div', 'lc-overlay'); overlay.hidden = true;
+    dialog = el('div', 'lc-dialog'); dialog.setAttribute('role', 'dialog'); dialog.setAttribute('aria-modal', 'true'); dialog.setAttribute('aria-labelledby', 'lcTitle'); dialog.tabIndex = -1;
+    var head = el('div', 'lc-head');
+    titleEl = el('h2', null, L.title); titleEl.id = 'lcTitle';
+    var x = el('button', 'lc-close', '×'); x.type = 'button'; x.setAttribute('aria-label', L.close); x.onclick = requestClose;
+    head.appendChild(titleEl); head.appendChild(x);
+    body = el('div', 'lc-body');
+    var foot = el('p', 'lc-foot', L.notService);
+    dialog.appendChild(head); dialog.appendChild(body); dialog.appendChild(foot);
+    overlay.appendChild(dialog); doc.body.appendChild(overlay);
+    overlay.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { e.preventDefault(); requestClose(); return; }
+      if (e.key !== 'Tab') return;
+      var f = Array.prototype.filter.call(dialog.querySelectorAll('button,a[href],textarea,input,[tabindex="0"]'), function (n) { return !n.disabled && !n.hidden && n.offsetParent !== null; });
+      if (!f.length) return;
+      var first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && (doc.activeElement === first || doc.activeElement === dialog)) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && doc.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    window.addEventListener('pagehide', function () { if (chatRef && !ending) { try { chatRef.update({ status: 'ended', endedBy: 'child-left', expireAt: ts(Date.now() + 3600000) }); } catch (e) {} } });
+  }
+  function show(name, focusSel) {
+    curView = name; body.innerHTML = ''; body.setAttribute('data-view', name);
+  }
+  function heading(text) { var h = el('h3', 'lc-h', text); h.tabIndex = -1; body.appendChild(h); return h; }
+  function btn(text, cls, fn) { var b = el('button', 'lc-btn' + (cls ? ' ' + cls : ''), text); b.type = 'button'; b.onclick = fn; return b; }
+  function row() { return el('div', 'lc-row'); }
+  function contactLinks() {
+    var r = row();
+    var m = el('a', 'lc-btn lc-sec', L.mail); m.href = 'mailto:' + EMAIL; r.appendChild(m);
+    var w = el('a', 'lc-btn lc-sec', L.wa); w.href = 'https://wa.me/' + WA; w.target = '_blank'; w.rel = 'noopener'; r.appendChild(w);
+    return r;
+  }
+  function toolLinks() {
+    var r = row();
+    if (typeof window.openNotebook === 'function') r.appendChild(btn(L.notebook, 'lc-sec', function () { closeDlg(true); window.openNotebook(openerEl); }));
+    return r;
+  }
+
+  /* ---------- views ---------- */
+  function viewIntro() {
+    show('intro'); var h = heading(L.introH);
+    var ul = el('ul', 'lc-list'); L.intro.forEach(function (t) { ul.appendChild(el('li', null, t)); }); body.appendChild(ul);
+    var r = row(); r.appendChild(btn(L.start, '', start)); r.appendChild(btn(L.cancel, 'lc-sec', function () { closeDlg(); })); body.appendChild(r);
+    return h;
+  }
+  function viewBusy(text) { show('busy'); var h = heading(text); var p = el('p', 'lc-p', ''); p.setAttribute('role', 'status'); body.appendChild(p); return h; }
+  function viewError(msg) {
+    show('error'); var h = heading(L.title); body.appendChild(el('p', 'lc-p', msg || L.err));
+    var r = row(); r.appendChild(btn(L.retry, '', start)); r.appendChild(btn(L.cancel, 'lc-sec', function () { closeDlg(); })); body.appendChild(r); body.appendChild(contactLinks());
+    h.focus();
+  }
+  function viewNone() {
+    show('none'); var h = heading(L.noneH); body.appendChild(el('p', 'lc-p', L.noneP)); body.appendChild(contactLinks());
+    var r = row(); r.appendChild(btn(L.waitAnyway, '', createChat)); r.appendChild(btn(L.cancel, 'lc-sec', function () { closeDlg(); })); body.appendChild(r); body.appendChild(toolLinks());
+    h.focus();
+  }
+  function viewWaiting() {
+    show('waiting'); var h = heading(L.waitingH); body.appendChild(el('p', 'lc-p', L.waitingP));
+    var w = el('p', 'lc-p lc-wait'); w.id = 'lcWait'; w.setAttribute('role', 'status'); body.appendChild(w);
+    noteEl = el('p', 'lc-note'); noteEl.hidden = true; noteEl.setAttribute('role', 'status'); body.appendChild(noteEl);
+    var r = row(); r.appendChild(btn(L.cancelWait, 'lc-sec', endChat)); body.appendChild(r); body.appendChild(toolLinks());
+    updateWait(); h.focus();
+  }
+  function updateWait() {
+    var w = doc.getElementById('lcWait'); if (!w) return;
+    var m = Math.floor((Date.now() - startedAt) / 60000); w.textContent = L.waited + ': ' + m + ' ' + L.min;
+    if (Date.now() - startedAt > ALT_MS && !longShown && noteEl) { longShown = true; noteEl.textContent = L.longWait; noteEl.hidden = false; noteEl.appendChild(contactLinks()); }
+  }
+  function viewChat() {
+    show('chat'); seen = {};
+    var h = heading(L.title); h.className = 'lc-h lc-sr';
+    riskEl = el('p', 'lc-risk', L.risk); riskEl.hidden = true; riskEl.setAttribute('role', 'status'); body.appendChild(riskEl);
+    listEl = el('div', 'lc-log'); listEl.setAttribute('role', 'log'); listEl.setAttribute('aria-live', 'polite'); listEl.setAttribute('aria-label', L.title); listEl.tabIndex = 0; body.appendChild(listEl);
+    typingEl = el('p', 'lc-typing'); typingEl.setAttribute('aria-live', 'polite'); body.appendChild(typingEl);
+    noteEl = el('p', 'lc-note'); noteEl.hidden = true; noteEl.setAttribute('role', 'status'); body.appendChild(noteEl);
+    var f = el('form', 'lc-form'); f.addEventListener('submit', function (e) { e.preventDefault(); sendMsg(); });
+    var lab = el('label', 'lc-sr', L.msgLabel); lab.setAttribute('for', 'lcInput');
+    inputEl = el('textarea', 'lc-input'); inputEl.id = 'lcInput'; inputEl.rows = 2; inputEl.maxLength = MAXLEN; inputEl.placeholder = L.placeholder;
+    inputEl.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); sendMsg(); } });
+    inputEl.addEventListener('input', onTyping);
+    sendBtn = el('button', 'lc-btn', L.send); sendBtn.type = 'submit';
+    f.appendChild(lab); f.appendChild(inputEl); f.appendChild(sendBtn); body.appendChild(f);
+    var r = row(); r.className += ' lc-endrow'; var e = btn(L.end, 'lc-sec', askEnd); e.id = 'lcEnd'; r.appendChild(e); body.appendChild(r);
+    inputEl.focus();
+  }
+  function viewEnded(byVol) {
+    show('ended'); var h = heading(L.endedH); body.appendChild(el('p', 'lc-p', (byVol ? L.endedByVol + ' ' : '') + L.endedP));
+    var r = row(); r.appendChild(btn(L.again, '', function () { reset(); viewIntro().focus(); })); r.appendChild(btn(L.close, 'lc-sec', function () { closeDlg(); })); body.appendChild(r); body.appendChild(toolLinks());
+    h.focus();
+  }
+
+  /* ---------- flow ---------- */
+  function reset() {
+    stopTimers(); if (unsubChat) { unsubChat(); unsubChat = null; } if (unsubMsgs) { unsubMsgs(); unsubMsgs = null; }
+    chatRef = null; chatId = null; chatData = null; volName = ''; ending = false; goneShown = false; longShown = false; typingOn = false; seen = {};
+  }
+  function stopTimers() { clearInterval(hb); clearInterval(tick); clearTimeout(typingTimer); hb = tick = typingTimer = null; }
+  function start() {
+    reset(); viewBusy(L.connecting).focus();
+    connect().then(function () {
+      return db.collection('presence').where('lastSeen', '>', ts(Date.now() - 120000)).get();
+    }).then(function (snap) {
+      var n = 0; snap.forEach(function (d) { if (d.data().available) n++; });
+      if (n > 0) createChat(); else viewNone();
+    }).catch(function () { viewError(); });
+  }
+  function createChat() {
+    if (!uid) { start(); return; }
+    viewBusy(L.connecting).focus();
+    chatId = db.collection('chats').doc().id; chatRef = db.collection('chats').doc(chatId); startedAt = Date.now();
+    chatRef.set({ childUid: uid, status: 'waiting', lang: html.lang || 'he', createdAt: now(), lastChildSeen: now(), expireAt: ts(Date.now() + LIFE_MS) }).then(function () {
+      viewWaiting();
+      unsubChat = chatRef.onSnapshot(onChat, function () { viewError(); });
+      hb = setInterval(function () { if (chatRef && !ending) chatRef.update({ lastChildSeen: now() }).catch(function () {}); }, 20000);
+      tick = setInterval(onTick, 5000);
+    }).catch(function () { viewError(); });
+  }
+  function onChat(snap) {
+    if (ending) return;
+    if (!snap.exists) { if (curView !== 'ended') finish(true); return; }
+    chatData = snap.data(); var s = chatData.status;
+    if (s === 'active' && curView !== 'chat') {
+      volName = chatData.volunteerName || L.volLabel; viewChat(); startMsgs();
+      sys(T(L.joined, volName));
+    }
+    if (s === 'ended') { finish(chatData.endedBy === 'vol'); return; }
+    if (curView === 'chat' && typingEl) typingEl.textContent = chatData.typingVol ? T(L.typing, volName) : '';
+  }
+  function onTick() {
+    if (curView === 'waiting') updateWait();
+    if (curView === 'chat' && chatData && chatData.lastVolSeen && chatData.lastVolSeen.toMillis && !goneShown && Date.now() - chatData.lastVolSeen.toMillis() > 90000) {
+      goneShown = true; noteEl.textContent = L.volGone; noteEl.hidden = false;
+    }
+  }
+  function startMsgs() {
+    unsubMsgs = chatRef.collection('messages').orderBy('at').onSnapshot(function (q) {
+      q.docChanges().forEach(function (c) {
+        if (c.type !== 'added' || seen[c.doc.id]) return; seen[c.doc.id] = 1;
+        var d = c.doc.data(); addMsg(d.from === 'child' ? 'me' : 'vol', d.text);
+      });
+    }, function () {});
+  }
+  function addMsg(who, text) {
+    if (!listEl) return;
+    var m = el('div', 'lc-msg lc-' + who); var n = el('span', 'lc-who', who === 'me' ? L.youSaid : volName); var t = el('span', 'lc-text', text);
+    m.appendChild(n); m.appendChild(doc.createTextNode(': ')); m.appendChild(t); n.className = 'lc-who';
+    listEl.appendChild(m); listEl.scrollTop = listEl.scrollHeight;
+  }
+  function sys(text) { if (!listEl) return; var m = el('div', 'lc-sys', text); listEl.appendChild(m); listEl.scrollTop = listEl.scrollHeight; }
+  function sendMsg() {
+    var t = (inputEl.value || '').trim(); if (!t || !chatRef) return;
+    if (t.length > MAXLEN) { noteEl.textContent = T(L.tooLong, MAXLEN); noteEl.hidden = false; return; }
+    noteEl.hidden = true; inputEl.value = ''; setTyping(false);
+    if (typeof window.nbHasRisk === 'function' && window.nbHasRisk(t)) riskEl.hidden = false;
+    chatRef.collection('messages').add({ from: 'child', text: t, at: now(), expireAt: ts(Date.now() + LIFE_MS) }).catch(function () { noteEl.textContent = L.err; noteEl.hidden = false; });
+    inputEl.focus();
+  }
+  function setTyping(on) { if (typingOn === on || !chatRef) return; typingOn = on; chatRef.update({ typingChild: on }).catch(function () {}); }
+  function onTyping() { if (!inputEl.value) { setTyping(false); return; } setTyping(true); clearTimeout(typingTimer); typingTimer = setTimeout(function () { setTyping(false); }, 4000); }
+
+  /* ---------- ending and deleting ---------- */
+  function askEnd() {
+    var b = doc.getElementById('lcEnd'); if (!b) return;
+    var r = b.parentNode; r.innerHTML = ''; r.appendChild(el('span', 'lc-ask', L.endAsk));
+    r.appendChild(btn(L.endYes, '', endChat)); r.appendChild(btn(L.endNo, 'lc-sec', function () { r.innerHTML = ''; var e = btn(L.end, 'lc-sec', askEnd); e.id = 'lcEnd'; r.appendChild(e); e.focus(); }));
+  }
+  function endChat(thenClose) {
+    if (!chatRef) { closeDlg(); return; }
+    ending = true; var ref = chatRef; stopTimers(); clearTimeout(typingTimer);
+    if (thenClose === true) { if (unsubChat) { unsubChat(); unsubChat = null; } if (unsubMsgs) { unsubMsgs(); unsubMsgs = null; } chatRef = null; closeDlg(); }
+    ref.update({ status: 'ended', endedBy: 'child', typingChild: false, expireAt: ts(Date.now() + 3600000) }).catch(function () {}).then(function () { return purge(ref); }).then(function () { if (thenClose !== true) finish(false, true); });
+  }
+  function finish(byVol, already) {
+    var ref = chatRef; stopTimers(); if (unsubChat) { unsubChat(); unsubChat = null; } if (unsubMsgs) { unsubMsgs(); unsubMsgs = null; }
+    ending = true; chatRef = null; viewEnded(byVol);
+    if (ref && !already) purge(ref);
+  }
+  function purge(ref) {
+    return ref.collection('messages').get().then(function (q) {
+      var b = db.batch(); q.forEach(function (d) { b.delete(d.ref); }); return q.size ? b.commit() : null;
+    }).catch(function () {}).then(function () { return ref.delete(); }).catch(function () {});
+  }
+  function requestClose() {
+    if (curView === 'chat') { askEnd(); var e = body.querySelector('.lc-endrow .lc-btn'); if (e) e.focus(); return; }
+    if (curView === 'waiting') { endChat(true); return; }
+    closeDlg();
+  }
+  function closeDlg(skipFocus) {
+    if (!overlay || overlay.hidden) return;
+    if (chatRef && !ending) { endChat(true); return; }
+    stopTimers();
+    overlay.hidden = true; setInert(false); doc.body.classList.remove('lc-lock');
+    if (skipFocus !== true && openerEl && openerEl.focus && doc.contains(openerEl)) openerEl.focus();
+  }
+  function openLiveChat(opener) {
+    build(); if (window.chatOpen && typeof toggleChat === 'function') toggleChat();
+    openerEl = opener || doc.activeElement; reset(); viewIntro();
+    setInert(true); overlay.hidden = false; doc.body.classList.add('lc-lock'); dialog.querySelector('.lc-h').focus();
+  }
+  function makeLiveChatChip() {
+    var b = el('button', 'calm-chip lc-chip', L.chip); b.type = 'button';
+    b.onclick = function () { openLiveChat(doc.getElementById('chatToggle')); };
+    return b;
+  }
+  window.openLiveChat = openLiveChat; window.makeLiveChatChip = makeLiveChatChip;
 })();
 </script>
 <script>/* Remember the visitor's language choice from the language menu */

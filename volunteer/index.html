@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>אזור מתנדבים – אתר העזרה</title>
+<style>
+:root{--bg:#F4FAF9;--surface:#fff;--text:#1E3A44;--muted:#4B6871;--primary:#1B7A70;--primary-ink:#13594F;--primary-rgb:27,122,112;--primary-soft:#D3EEEB;--warn:#FFF1D6;--bad:#B3261E}
+@media (prefers-color-scheme:dark){:root{--bg:#0C1716;--surface:#162927;--text:#E6F2F0;--muted:#A9C2BE;--primary:#2FA394;--primary-ink:#7FE0D2;--primary-rgb:47,163,148;--primary-soft:#1D3B37;--warn:#3A3216;--bad:#FF8A80}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Heebo,Rubik,Arial,sans-serif;line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:8px 0;color:var(--primary-ink)} h2{font-size:1.1rem;margin:0 0 8px;color:var(--primary-ink)}
+.card{background:var(--surface);border:1.5px solid rgba(var(--primary-rgb),.3);border-radius:18px;padding:14px 16px;margin:12px 0}
+.row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+button,.btn{min-height:44px;padding:0 18px;border-radius:999px;border:2px solid var(--primary);background:var(--primary);color:#fff;font:inherit;font-weight:600;cursor:pointer}
+button.sec{background:var(--surface);color:var(--primary-ink);border-color:rgba(var(--primary-rgb),.45)}
+button:disabled{opacity:.5;cursor:not-allowed}
+input[type=email],input[type=password],textarea{width:100%;min-height:44px;padding:8px 12px;border-radius:12px;border:2px solid rgba(var(--primary-rgb),.4);background:var(--bg);color:var(--text);font:inherit}
+label{display:block;font-weight:600;margin:8px 0 4px}
+:focus-visible{outline:3px solid var(--primary-ink);outline-offset:2px}
+[hidden]{display:none!important}
+.err{color:var(--bad);font-weight:600}
+.note{background:var(--warn);border-radius:12px;padding:10px 12px;margin:8px 0}
+.sw{display:flex;align-items:center;gap:10px;font-weight:600}
+.sw input{width:24px;height:24px}
+ul.q{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.q li{display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;border:1.5px solid rgba(var(--primary-rgb),.3);border-radius:14px;padding:10px 12px}
+.log{min-height:200px;max-height:48vh;overflow:auto;padding:10px;border-radius:14px;background:var(--bg);border:1.5px solid rgba(var(--primary-rgb),.3);display:flex;flex-direction:column;gap:8px}
+.m{max-width:88%;padding:8px 12px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.m.me{align-self:flex-start;background:var(--primary-soft)} .m.kid{align-self:flex-end;background:var(--surface);border:1.5px solid rgba(var(--primary-rgb),.4)}
+.sys{align-self:center;color:var(--muted);font-size:.9rem;text-align:center}
+.who{font-weight:700;color:var(--primary-ink)}
+.small{font-size:.9rem;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+details summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+</style>
+</head>
+<body>
+<main class="wrap">
+  <h1>אזור מתנדבים</h1>
+  <p class="small">הדף מיועד למתנדבי האתר בלבד. השיחות נמחקות בסיומן. אל תצלמו, תעתיקו או תשמרו שיחות.</p>
+
+  <section id="login" class="card" aria-labelledby="loginH">
+    <h2 id="loginH">כניסה</h2>
+    <form id="loginForm">
+      <label for="em">אימייל</label><input id="em" type="email" autocomplete="username" required dir="ltr">
+      <label for="pw">סיסמה</label><input id="pw" type="password" autocomplete="current-password" required dir="ltr">
+      <p id="loginErr" class="err" role="alert" hidden></p>
+      <div class="row" style="margin-top:10px"><button type="submit">כניסה</button></div>
+    </form>
+  </section>
+
+  <section id="app" hidden>
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <h2 style="margin:0">שלום <span id="who"></span></h2>
+        <button id="out" class="sec" type="button">יציאה</button>
+      </div>
+      <label class="sw" for="avail"><input id="avail" type="checkbox"> אני זמין/ה לשיחות עכשיו</label>
+      <label class="sw" for="snd"><input id="snd" type="checkbox"> צליל כשמגיעה פנייה חדשה</label>
+      <p class="small">כל עוד הדף פתוח והמתג דלוק, ילדים יראו שיש מתנדבים מחוברים. סגירת הדף מכבה את הזמינות.</p>
+    </div>
+
+    <details class="card" id="protocol">
+      <summary>נוהל בקצרה (לקרוא לפני שיחה)</summary>
+      <div id="protocolText"></div>
+    </details>
+
+    <div class="card" id="queueCard">
+      <h2>פניות ממתינות</h2>
+      <p id="noQ" class="small">אין פניות ממתינות כרגע.</p>
+      <ul id="queue" class="q" aria-live="polite"></ul>
+      <p id="claimErr" class="err" role="alert" hidden></p>
+    </div>
+
+    <div class="card" id="chatCard" hidden aria-labelledby="chatH">
+      <h2 id="chatH" tabindex="-1">שיחה פעילה</h2>
+      <div id="log" class="log" role="log" aria-live="polite" tabindex="0" aria-label="השיחה"></div>
+      <p id="kidTyping" class="small" aria-live="polite" style="min-height:1.4em"></p>
+      <p id="kidGone" class="note" hidden role="status">נראה שהפונה התנתק/ה.</p>
+      <form id="sendForm" class="row" style="align-items:flex-end;flex-wrap:nowrap">
+        <label for="msg" class="sr">ההודעה שלך</label>
+        <textarea id="msg" rows="2" maxlength="1000"></textarea>
+        <button type="submit" id="sendBtn">שליחה</button>
+      </form>
+      <div class="row" style="margin-top:10px"><button id="endBtn" class="sec" type="button">סיום השיחה</button><button id="closeBtn" class="sec" type="button" hidden>סגירה וחזרה לתור</button></div>
+    </div>
+  </section>
+</main>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+(function () {
+  'use strict';
+  var CFG = {"firebase": {"apiKey": "AIzaSyC2PFN7xRH25vsfuiP3ucrCw3PZiLZqc30", "authDomain": "help-site-570d3.firebaseapp.com", "projectId": "help-site-570d3", "appId": "1:449502784346:web:e2496b2ab89f9c9b83a163"}, "sdk": "10.12.2", "maxLen": 1000, "waitAltSec": 600, "protocolHtml": ""};
+  var $ = function (id) { return document.getElementById(id); };
+  var fb = window.firebase; fb.initializeApp(CFG.firebase);
+  var auth = fb.auth(), db = fb.firestore(), FV = fb.firestore.FieldValue, TS = fb.firestore.Timestamp;
+  var uid = null, name = '', availTimer = null, hb = null, tick = null, unsubQ = null, unsubChat = null, unsubMsgs = null;
+  var cur = null, curRef = null, seen = {}, typingOn = false, typingTimer = null, known = {}, chatEnded = false, audio = null;
+  var LIFE = 6 * 3600 * 1000;
+
+  $('protocolText').innerHTML = CFG.protocolHtml || '<p>הנוהל המלא יתעדכן לאחר הגדרתו. עד אז:</p><ul><li>אתם מתנדבים ולא אנשי מקצוע. מקשיבים, מחזקים ומכוונים לעזרה מתאימה.</li><li>לא לבקש ולא לאסוף פרטים מזהים.</li><li>אם יש חשש לסכנה: להפנות לער״ן 1201 או 100, ולפעול לפי הנוהל שנקבע.</li><li>לא לשמור שיחות ולא להעביר אותן הלאה.</li></ul>';
+
+  function setErr(id, t) { var e = $(id); e.textContent = t || ''; e.hidden = !t; }
+  auth.setPersistence(fb.auth.Auth.Persistence.SESSION).catch(function () {});
+  $('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault(); setErr('loginErr', '');
+    auth.signInWithEmailAndPassword($('em').value.trim(), $('pw').value).catch(function () { setErr('loginErr', 'האימייל או הסיסמה שגויים.'); });
+  });
+  $('out').onclick = function () { goOffline().then(function () { return auth.signOut(); }); };
+  auth.onAuthStateChanged(function (u) {
+    if (!u || u.isAnonymous) { uid = null; $('login').hidden = false; $('app').hidden = true; stopAll(); return; }
+    uid = u.uid;
+    db.collection('volunteers').doc(uid).get().then(function (d) {
+      if (!d.exists) { setErr('loginErr', 'החשבון עדיין לא אושר כמתנדב. פנו לצוות.'); $('login').hidden = false; auth.signOut(); return; }
+      name = d.data().name || 'מתנדב/ת'; $('who').textContent = name; $('login').hidden = true; $('app').hidden = false; watchQueue();
+    }).catch(function () { setErr('loginErr', 'אין הרשאה או תקלה בחיבור.'); auth.signOut(); });
+  });
+  function stopAll() { if (unsubQ) unsubQ(); unsubQ = null; stopChat(); clearInterval(availTimer); availTimer = null; }
+
+  /* availability */
+  function beat(on) { return db.collection('presence').doc(uid).set({ available: on, lastSeen: FV.serverTimestamp() }).catch(function () {}); }
+  function goOffline() { clearInterval(availTimer); availTimer = null; return uid ? beat(false) : Promise.resolve(); }
+  $('avail').addEventListener('change', function () {
+    if (this.checked) { beat(true); availTimer = setInterval(function () { beat(true); }, 30000); } else goOffline();
+  });
+  window.addEventListener('pagehide', function () { if (uid && $('avail').checked) { try { db.collection('presence').doc(uid).set({ available: false, lastSeen: FV.serverTimestamp() }); } catch (e) {} } });
+
+  /* queue */
+  function beep() {
+    if (!$('snd').checked) return;
+    try { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); var o = audio.createOscillator(), g = audio.createGain(); o.connect(g); g.connect(audio.destination); o.frequency.value = 660; g.gain.value = 0.12; o.start(); o.stop(audio.currentTime + 0.25); } catch (e) {}
+  }
+  function watchQueue() {
+    if (unsubQ) unsubQ();
+    unsubQ = db.collection('chats').where('status', '==', 'waiting').onSnapshot(function (q) {
+      var items = [], fresh = false;
+      q.forEach(function (d) {
+        var c = d.data(), seenAt = c.lastChildSeen && c.lastChildSeen.toMillis ? c.lastChildSeen.toMillis() : Date.now();
+        if (Date.now() - seenAt > 90000) return;
+        items.push({ id: d.id, c: c });
+        if (!known[d.id]) { known[d.id] = 1; fresh = true; }
+      });
+      if (fresh) beep();
+      renderQueue(items);
+    }, function () { setErr('claimErr', 'תקלה בטעינת התור.'); });
+    clearInterval(tick); tick = setInterval(function () { if (lastItems) renderQueue(lastItems); if (cur) checkKid(); }, 10000);
+  }
+  var lastItems = null;
+  function renderQueue(items) {
+    lastItems = items; var ul = $('queue'); ul.innerHTML = ''; $('noQ').hidden = items.length > 0;
+    items.sort(function (a, b) { return ((a.c.createdAt && a.c.createdAt.toMillis && a.c.createdAt.toMillis()) || 0) - ((b.c.createdAt && b.c.createdAt.toMillis && b.c.createdAt.toMillis()) || 0); });
+    items.forEach(function (it) {
+      var li = document.createElement('li'), t = document.createElement('span');
+      var m = it.c.createdAt && it.c.createdAt.toMillis ? Math.max(0, Math.floor((Date.now() - it.c.createdAt.toMillis()) / 60000)) : 0;
+      t.textContent = 'פנייה ' + it.id.slice(0, 4) + ' · ממתינה ' + m + ' דק׳ · ' + ({ he: 'עברית', en: 'אנגלית', ar: 'ערבית' }[it.c.lang] || it.c.lang);
+      var b = document.createElement('button'); b.type = 'button'; b.textContent = 'קבלת השיחה'; b.disabled = !!cur; b.onclick = function () { claim(it.id); };
+      li.appendChild(t); li.appendChild(b); ul.appendChild(li);
+    });
+  }
+  function claim(id) {
+    setErr('claimErr', ''); var ref = db.collection('chats').doc(id);
+    ref.update({ status: 'active', volunteerUid: uid, volunteerName: name, lastVolSeen: FV.serverTimestamp(), typingVol: false }).then(function () { openChat(id, ref); })
+      .catch(function () { setErr('claimErr', 'השיחה כבר נלקחה על ידי מתנדב/ת אחר/ת או שהפונה עזב/ה.'); });
+  }
+
+  /* active chat */
+  function line(cls, who, text) {
+    var m = document.createElement('div'); m.className = 'm ' + cls;
+    var w = document.createElement('span'); w.className = 'who'; w.textContent = who; m.appendChild(w); m.appendChild(document.createTextNode(': ' + text));
+    $('log').appendChild(m); $('log').scrollTop = $('log').scrollHeight;
+  }
+  function sys(t) { var d = document.createElement('div'); d.className = 'sys'; d.textContent = t; $('log').appendChild(d); $('log').scrollTop = $('log').scrollHeight; }
+  function openChat(id, ref) {
+    cur = id; curRef = ref; seen = {}; chatEnded = false; $('log').innerHTML = ''; $('chatCard').hidden = false; $('kidGone').hidden = true;
+    $('endBtn').hidden = false; $('closeBtn').hidden = true; $('sendBtn').disabled = false; $('msg').disabled = false; renderQueue(lastItems || []);
+    sys('השיחה התחילה. הפונה לא יודע/ת את שמך המלא. אפשר להציג את עצמך בשם הפרטי.');
+    unsubChat = ref.onSnapshot(function (s) {
+      if (!s.exists) { ended('הפונה סיים/ה את השיחה והיא נמחקה.'); return; }
+      var c = s.data(); $('kidTyping').textContent = c.typingChild ? 'הפונה מקליד/ה…' : ''; lastChild = c;
+      if (c.status === 'ended') ended(c.endedBy === 'vol' ? 'השיחה הסתיימה.' : 'הפונה סיים/ה את השיחה.');
+    });
+    unsubMsgs = ref.collection('messages').orderBy('at').onSnapshot(function (q) {
+      q.docChanges().forEach(function (ch) {
+        if (ch.type !== 'added' || seen[ch.doc.id]) return; seen[ch.doc.id] = 1;
+        var d = ch.doc.data(); if (d.from === 'child') line('kid', 'פונה', d.text); else line('me', 'אני', d.text);
+      });
+    });
+    clearInterval(hb); hb = setInterval(function () { if (curRef && !chatEnded) curRef.update({ lastVolSeen: FV.serverTimestamp() }).catch(function () {}); }, 20000);
+    $('chatH').focus();
+  }
+  var lastChild = null;
+  function checkKid() { if (!lastChild || chatEnded) return; var t = lastChild.lastChildSeen && lastChild.lastChildSeen.toMillis ? lastChild.lastChildSeen.toMillis() : Date.now(); $('kidGone').hidden = Date.now() - t < 90000; }
+  function ended(text) {
+    if (chatEnded) return; chatEnded = true; clearInterval(hb); sys(text + ' אפשר לקרוא את השיחה עד שתסגרו אותה, ואז היא תימחק.');
+    $('msg').disabled = true; $('sendBtn').disabled = true; $('endBtn').hidden = true; $('closeBtn').hidden = false; $('kidTyping').textContent = '';
+  }
+  function purge(ref) {
+    return ref.collection('messages').get().then(function (q) { var b = db.batch(); q.forEach(function (d) { b.delete(d.ref); }); return q.size ? b.commit() : null; })
+      .catch(function () {}).then(function () { return ref.delete(); }).catch(function () {});
+  }
+  function stopChat() { if (unsubChat) unsubChat(); if (unsubMsgs) unsubMsgs(); unsubChat = unsubMsgs = null; clearInterval(hb); cur = null; curRef = null; lastChild = null; }
+  $('endBtn').onclick = function () {
+    if (!curRef) return;
+    curRef.update({ status: 'ended', endedBy: 'vol', typingVol: false, expireAt: TS.fromMillis(Date.now() + 3600000) }).catch(function () {});
+  };
+  $('closeBtn').onclick = function () {
+    clearTimeout(typingTimer); var ref = curRef; stopChat(); $('chatCard').hidden = true; $('log').innerHTML = ''; if (ref) purge(ref); renderQueue(lastItems || []);
+  };
+  $('sendForm').addEventListener('submit', function (e) { e.preventDefault(); send(); });
+  $('msg').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); send(); } });
+  $('msg').addEventListener('input', function () {
+    if (!curRef || chatEnded) return;
+    var on = !!$('msg').value; if (on !== typingOn) { typingOn = on; curRef.update({ typingVol: on }).catch(function () {}); }
+    clearTimeout(typingTimer); if (on) typingTimer = setTimeout(function () { typingOn = false; if (curRef && !chatEnded) curRef.update({ typingVol: false }).catch(function () {}); }, 4000);
+  });
+  function send() {
+    var t = $('msg').value.trim(); if (!t || !curRef || chatEnded) return; $('msg').value = '';
+    if (typingOn) { typingOn = false; curRef.update({ typingVol: false }).catch(function () {}); }
+    curRef.collection('messages').add({ from: 'vol', text: t, at: FV.serverTimestamp(), expireAt: TS.fromMillis(Date.now() + LIFE) }).catch(function () { sys('ההודעה לא נשלחה. נסו שוב.'); });
+    $('msg').focus();
+  }
+})();
+</script>
+</body>
+</html>

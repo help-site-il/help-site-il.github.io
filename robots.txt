@@ -1,6 +1,7 @@
 # Everyone else
 User-agent: *
 Allow: /
+Disallow: /volunteer/
 
 # AI search & answer assistants: allowed (they can find, cite and link this site)
 User-agent: OAI-SearchBot
