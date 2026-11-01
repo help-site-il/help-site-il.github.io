@@ -1584,14 +1584,14 @@ if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-mot
       <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🌟</div>
       <div>
         <div class="chat-title" style="color:white;font-weight:700;font-size:0.95rem;font-family:Heebo,sans-serif;" data-i18n="chat-title">موقع المساعدة</div>
-        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;" data-i18n="chat-status">● نحاول الرد خلال يوم عمل واحد</div>
+        <div style="color:rgba(255,255,255,0.8);font-size:0.85rem;" data-i18n="chat-status">● محادثة حيّة عند وجود متطوعين<br>البريد وواتساب: خلال يوم عمل واحد</div>
       </div>
       <button type="button" class="chat-close" onclick="toggleChat()" data-i18n-aria="chat-close" aria-label="إغلاق" style="margin-inline-start:auto;background:none;border:none;color:white;font-size:1.2rem;cursor:pointer;"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
     </div>
     
     <!-- Messages -->
     <div id="chatMessages" aria-live="polite" style="height:min(400px,56vh);overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--bg);">
-      <div class="ai-msg" id="welcomeMsg" data-i18n="chat-welcome">مرحبًا! 🌟 اختر موضوعًا وسنرى كيف نساعدك. في الوقت الحالي نحاول عادةً الرد خلال يوم عمل واحد.</div>
+      <div class="ai-msg" id="welcomeMsg" data-i18n="chat-welcome">مرحبًا! 🌟 اختر موضوعًا وسنرى كيف نساعدك. يمكنك التحدث مع متطوع في محادثة حيّة عندما يكون هناك متطوعون متصلون، أو مراسلتنا ونحاول عادةً الرد خلال يوم عمل واحد.</div>
       <div id="topicsContainer"></div>
     </div>
     
@@ -1825,7 +1825,8 @@ var CHAT_STR = {
     "dangerQuiet": "إذا كنت في خطر حقيقي الآن، فاتصل بالرقم 100. المزيد من خطوط الطوارئ في ",
     "dangerLink": "شروط الاستخدام",
     "hours": [
-      "⏳ في الوقت الحالي: عادةً خلال يوم عمل واحد (الأحد–الخميس)",
+      "💬 المحادثة الحيّة: عندما يكون هناك متطوعون متصلون (بلا ساعات ثابتة)",
+      "⏳ البريد وواتساب: عادةً خلال يوم عمل واحد (الأحد–الخميس)",
       "⏳ في أيام السبت والأعياد قد يتأخر الرد"
     ],
     "crisisEran": "📞 اتصل بـ«عيران»: <bdi dir=\"ltr\">1201</bdi> (على مدار الساعة)",
