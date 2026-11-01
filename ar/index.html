@@ -1870,7 +1870,6 @@ function renderTopics() {
   var lang = chatLang();
   if (typeof makeCalmChip === 'function') container.appendChild(makeCalmChip());
   if (typeof makeNotebookChip === 'function') container.appendChild(makeNotebookChip());
-  if (typeof makeLiveChatChip === 'function') container.appendChild(makeLiveChatChip());
   
   chatTopics.forEach(function(topic) {
     var btn = document.createElement('button');
@@ -1966,6 +1965,7 @@ function selectTopic(topic) {
     waBtn.style.cssText = 'display:flex;align-items:center;justify-content:center;gap:8px;background:var(--surface);color:var(--primary-ink);border:2px solid var(--primary);padding:10px 16px;border-radius:14px;text-decoration:none;font-family:Heebo,sans-serif;font-weight:700;font-size:0.88rem;margin-top:2px;';
     waBtn.innerHTML = '💬 ' + T.sendWhatsApp;
     msgs.appendChild(waBtn);
+    if (!topic.crisis && typeof makeLiveChatButton === 'function') msgs.appendChild(makeLiveChatButton());
     
     // Agent hours note
     var noteDiv = document.createElement('div');
@@ -4028,6 +4028,9 @@ body.lc-lock { overflow:hidden; }
 .lc-foot { margin:8px 0 0; padding-top:8px; border-top:1px solid rgba(var(--primary-rgb),0.25); font-size:0.85rem; color:var(--muted); line-height:1.5; }
 @media (max-width:520px) { .lc-overlay { padding:0; align-items:stretch; } .lc-dialog { border-radius:0; max-height:none; width:100%; } .lc-log { max-height:none; } }
 @media (prefers-reduced-motion:reduce) { .lc-btn { transition:none; } }
+.lc-chatbtn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; min-height:44px; background:var(--primary-soft); color:var(--primary-ink); border:2px solid var(--primary); padding:10px 16px; border-radius:14px; font-family:Heebo,sans-serif; font-weight:700; font-size:0.88rem; margin-top:2px; cursor:pointer; }
+.lc-chatbtn:hover { filter:brightness(0.97); }
+.lc-chatbtn:focus-visible { outline:3px solid var(--primary-ink); outline-offset:2px; }
 </style>
 <script>
 /* ---- Live chat with a volunteer (child side) ----
@@ -4289,6 +4292,12 @@ body.lc-lock { overflow:hidden; }
     b.onclick = function () { openLiveChat(doc.getElementById('chatToggle')); };
     return b;
   }
+  function makeLiveChatButton() {
+    var b = el('button', 'lc-chatbtn', L.chip); b.type = 'button';
+    b.onclick = function () { openLiveChat(doc.getElementById('chatToggle')); };
+    return b;
+  }
+  window.makeLiveChatButton = makeLiveChatButton;
   window.openLiveChat = openLiveChat; window.makeLiveChatChip = makeLiveChatChip;
 })();
 </script>
