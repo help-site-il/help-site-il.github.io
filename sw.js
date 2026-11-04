@@ -4,7 +4,7 @@
    - Fonts and icons: saved copy first (they almost never change).
    Nothing is sent anywhere and no personal data is stored; only copies of the site's own files.
    To force every device to refresh its saved files, change VERSION. */
-const VERSION = 'v5';
+const VERSION = 'v6';
 const CACHE = 'help-site-' + VERSION;
 const BASE = self.registration.scope;
 const PRECACHE = [
@@ -12,7 +12,10 @@ const PRECACHE = [
   'favicon.svg', 'favicon.ico', 'site.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
   'fonts/heebo-hebrew.woff2', 'fonts/heebo-latin.woff2',
-  'fonts/rubik-hebrew.woff2', 'fonts/rubik-latin.woff2', 'fonts/rubik-arabic.woff2'
+  'fonts/rubik-hebrew.woff2', 'fonts/rubik-latin.woff2', 'fonts/rubik-arabic.woff2',
+  'assets/349095aa.css',
+  'assets/78733bf1.css',
+  'assets/9ae346ed.css'
 ].map(function (p) { return new URL(p, BASE).href; });
 
 self.addEventListener('install', function (e) {
@@ -68,6 +71,6 @@ self.addEventListener('fetch', function (e) {
   if (r.method !== 'GET') return;
   if (r.url.indexOf(BASE) !== 0) return;
   var rel = r.url.slice(BASE.length);
-  if (rel.indexOf('fonts/') === 0 || rel.indexOf('icons/') === 0) { e.respondWith(cacheFirst(r)); return; }
+  if (rel.indexOf('fonts/') === 0 || rel.indexOf('icons/') === 0 || rel.indexOf('assets/') === 0) { e.respondWith(cacheFirst(r)); return; }
   e.respondWith(networkFirst(r));
 });
