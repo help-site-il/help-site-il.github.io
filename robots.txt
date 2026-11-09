@@ -2,6 +2,7 @@
 User-agent: *
 Allow: /
 Disallow: /volunteer/
+Disallow: /tech/
 
 # AI search & answer assistants: allowed (they can find, cite and link this site)
 User-agent: OAI-SearchBot
