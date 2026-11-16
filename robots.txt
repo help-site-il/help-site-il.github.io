@@ -4,7 +4,8 @@ Allow: /
 Disallow: /volunteer/
 Disallow: /tech/
 
-# AI search & answer assistants: allowed (they can find, cite and link this site)
+# AI search & answer assistants: allowed (they can find, cite and link this site),
+# but still kept out of the volunteer/tech areas, same as everyone else above.
 User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
 User-agent: Claude-SearchBot
@@ -17,6 +18,8 @@ User-agent: Googlebot
 User-agent: Google-Extended
 User-agent: meta-externalfetcher
 Allow: /
+Disallow: /volunteer/
+Disallow: /tech/
 
 # AI model-training crawlers: not allowed
 User-agent: GPTBot
