@@ -4,18 +4,23 @@
    - Fonts and icons: saved copy first (they almost never change).
    Nothing is sent anywhere and no personal data is stored; only copies of the site's own files.
    To force every device to refresh its saved files, change VERSION. */
-const VERSION = 'v6';
+const VERSION = 'v7';
 const CACHE = 'help-site-' + VERSION;
 const BASE = self.registration.scope;
 const PRECACHE = [
   '', 'en/', 'ar/',
+  // v43: precache the legal/info subpages too, so a slow/offline visit shows that actual
+  // page instead of silently falling back to the locale homepage under its URL.
+  'privacy/', 'en/privacy/', 'ar/privacy/',
+  'terms/', 'en/terms/', 'ar/terms/',
+  'updates/', 'en/updates/', 'ar/updates/',
+  'accessibility/', 'en/accessibility/', 'ar/accessibility/',
   'favicon.svg', 'favicon.ico', 'site.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png',
   'fonts/heebo-hebrew.woff2', 'fonts/heebo-latin.woff2',
   'fonts/rubik-hebrew.woff2', 'fonts/rubik-latin.woff2', 'fonts/rubik-arabic.woff2',
-  'assets/349095aa.css',
-  'assets/78733bf1.css',
-  'assets/9ae346ed.css'
+  // v43 (Perf#7): CSS bundles are no longer force-precached here; cacheFirst()
+  // below caches each one lazily the first time a page actually requests it.
 ].map(function (p) { return new URL(p, BASE).href; });
 
 self.addEventListener('install', function (e) {
