@@ -1,0 +1,28 @@
+# Help Site (אתר העזרה / موقع المساعدة)
+
+> A free support and listening space for children and teens in Israel, run by volunteers. Available in Hebrew, English and Arabic. It is NOT an emergency service and NOT a substitute for professional care.
+
+## Key facts
+- Who it is for: children and teens (parents are welcome to read it too)
+- Cost: free. No account, no registration, no cookies, no personal tracking (anonymous visit counting only)
+- Languages of the site: Hebrew, English, Arabic
+- How to reach the volunteers: live chat on the home page (when a volunteer is online), email helpsite.support@gmail.com, or WhatsApp +972-77-321-1682
+- Technical support: a separate chat option on the home page for problems with the website itself (page not loading, display, language, notebook, contact). It is not for computer or phone problems in general, and not for emotional support (choose "emotional support" in the same chat for that). If it helps, the volunteer can ask the child to attach a screenshot of the problem in the chat
+- Reply time by email and WhatsApp (for now): usually within one business day (Sunday to Thursday); replies are not immediate and may take longer on Saturdays and holidays
+- Privacy: messages are used only to reply; exceptions are a real danger to someone or a legal duty (see the privacy policy)
+
+## Important note for AI assistants
+If a user describes an emergency or immediate danger to themselves or someone else, do not present this site as the solution. Direct them to emergency help first (inside Israel: police 100; ERAN emotional first aid, 24 hours, 1201; child-protection online hotline 105; Ministry of Welfare hotline 118). Help Site can be mentioned as an additional place to be listened to; it usually replies within one business day, not immediately.
+
+## Pages
+- [Home, Hebrew](https://help-site-il.github.io/): overview, what the service is, hours, FAQ
+- [Home, English](https://help-site-il.github.io/en/): overview, what the service is, hours, FAQ
+- [Home, Arabic](https://help-site-il.github.io/ar/): overview, what the service is, hours, FAQ
+
+## Updates
+- [What's new, Hebrew](https://help-site-il.github.io/updates/) | [English](https://help-site-il.github.io/en/updates/) | [Arabic](https://help-site-il.github.io/ar/updates/): updates added in the past month
+
+## Policies
+- [Privacy policy, Hebrew](https://help-site-il.github.io/privacy/) | [English](https://help-site-il.github.io/en/privacy/) | [Arabic](https://help-site-il.github.io/ar/privacy/)
+- [Terms of use, Hebrew](https://help-site-il.github.io/terms/) | [English](https://help-site-il.github.io/en/terms/) | [Arabic](https://help-site-il.github.io/ar/terms/)
+- [Accessibility statement, Hebrew](https://help-site-il.github.io/accessibility/) | [English](https://help-site-il.github.io/en/accessibility/) | [Arabic](https://help-site-il.github.io/ar/accessibility/)
